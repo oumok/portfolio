@@ -1,25 +1,24 @@
 {
   "architecture": [
+   {
+  "title": "Sunset Getaway Office",
+  "description": "Design for a wellness café combining natural materials with minimal interiors.",
+  "thumbnail": "images/sunset1.png",
+  "gallery": [
     {
-      "title": "Sunset getaway office",
-      "description": "Design for a wellness café combining natural materials with minimal interiors.",
-      "thumbnail": "images/sunset1.png",
-      "images": [
-        "images/sunset1.png",
-        "images/sunset2.png",
-        "images/sunset3.png"
-      ]
+      "src": "images/sunset1.png",
+      "caption": "Exterior perspective – sunset mood."
     },
-    { 
-      "title": "Bloom & Brew Kiosk ",
-      "description": "Design for a wellness café combining natural materials with minimal interiors.",
-      "thumbnail": "images/healthcafe1.jpg",
-      "images": [
-        "images/healthcafe1.jpg",
-        "images/healthcafe2.jpg",
-        "images/healthcafe3.jpg"
-      ]
+    {
+      "src": "images/sunset2.png",
+      "caption": "Interior showing seating with natural textures."
+    },
+    {
+      "src": "images/sunset3.png",
+      "caption": "Exploded axonometric showing layout."
     }
+  ]
+}
   ],
   "production": [
     {
@@ -38,6 +37,7 @@
     }
   ]
 }
+
 
 
 
