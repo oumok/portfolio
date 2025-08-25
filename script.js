@@ -15,6 +15,40 @@ const modalGallery = qs('#modal-gallery');
 const lightbox = qs('#lightbox');
 const lightboxImg = qs('#lightbox-img');
 const lightboxClose = qs('#lightbox-close');
+let currentIndex = 0;
+let currentImages = [];
+
+function openLightbox(images, index, captionText) {
+  currentImages = images;
+  currentIndex = index;
+
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const caption = document.getElementById("caption");
+
+  lightbox.style.display = "block";
+  lightboxImg.src = currentImages[currentIndex];
+  caption.innerHTML = captionText || "";
+}
+
+function closeLightbox() {
+  document.getElementById("lightbox").style.display = "none";
+}
+
+function changeImage(step) {
+  currentIndex = (currentIndex + step + currentImages.length) % currentImages.length;
+  document.getElementById("lightbox-img").src = currentImages[currentIndex];
+}
+
+document.querySelector(".lightbox .close").onclick = closeLightbox;
+document.querySelector(".lightbox .next").onclick = () => changeImage(1);
+document.querySelector(".lightbox .prev").onclick = () => changeImage(-1);
+
+// Optional: Close on outside click
+document.getElementById("lightbox").onclick = (e) => {
+  if (e.target.id === "lightbox") closeLightbox();
+};
+
 
 // Close handlers
 function closeModal(){ modal.classList.remove('is-open'); lockScroll(false); }
@@ -103,3 +137,4 @@ function openProject(project){
     console.error('Failed to load projects.json', err);
   }
 })();
+
