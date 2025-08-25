@@ -3,11 +3,11 @@
     {
       "title": "Sunset getaway office",
       "description": "Design for a wellness café combining natural materials with minimal interiors.",
-      "thumbnail": "images/sunset 1.png",
+      "thumbnail": "images/sunset1.png",
       "images": [
-        "images/sunset 1.png",
-        "images/sunset 2.png",
-        "images/sunset 3.png"
+        "images/sunset1.png",
+        "images/sunset2.png",
+        "images/sunset3.png"
       ]
     }
     { 
@@ -38,6 +38,7 @@
     }
   ]
 }
+
 
 
 
