@@ -1,55 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Oum Kuvelkar | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Oum | Portfolio</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-
-  <!-- Header -->
-  <header>
-    <h1>Oum Kuvelkar</h1>
-    <nav>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+  <!-- Landing -->
+  <header id="landing" class="landing">
+    <div class="intro">
+      <h1 class="intro__name">Oum</h1>
+      <p class="intro__tagline">Architect · Production Designer · Product Designer</p>
+      <nav class="intro__nav">
+        <a href="#architecture" class="chip">Architecture</a>
+        <a href="#production" class="chip">Production Design</a>
+        <a href="#product" class="chip">Product Design</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- About Section -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      Architect & Production Designer passionate about spatial design, 
-      retail experiences, and crafting immersive visuals.
-    </p>
-  </section>
+  <!-- Sections -->
+  <main>
+    <section id="architecture" class="section">
+      <h2 class="section__title">Architecture</h2>
+      <div id="architecture-grid" class="grid"></div>
+    </section>
 
-  <!-- Projects Section -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects-container">
-      <!-- 🔹 Your projects file content will be inserted here -->
-      <div id="project-grid"></div>
+    <section id="production" class="section">
+      <h2 class="section__title">Production Design</h2>
+      <div id="production-grid" class="grid"></div>
+    </section>
+
+    <section id="product" class="section">
+      <h2 class="section__title">Product Design</h2>
+      <div id="product-grid" class="grid"></div>
+    </section>
+  </main>
+
+  <!-- Project Modal -->
+  <div id="project-modal" class="modal" aria-hidden="true" aria-labelledby="modal-title" role="dialog">
+    <div class="modal__panel" role="document">
+      <button class="modal__close" id="modal-close" aria-label="Close project">×</button>
+      <h3 id="modal-title" class="modal__title"></h3>
+      <p id="modal-description" class="modal__desc"></p>
+      <div id="modal-details" class="modal__details"></div>
+      <div id="modal-gallery" class="gallery"></div>
     </div>
-  </section>
+  </div>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:yourmail@gmail.com">yourmail@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/oumkuvelkar" target="_blank">linkedin.com/in/oumkuvelkar</a></p>
-  </section>
-
-  <!-- Lightbox Popup -->
-  <div id="lightbox" class="lightbox">
-    <span class="close">&times;</span>
-    <img class="lightbox-content" id="lightbox-img" alt="">
-    <p id="lightbox-caption"></p>
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
+    <button class="lightbox__close" id="lightbox-close" aria-label="Close image">×</button>
+    <img id="lightbox-img" alt="Enlarged project image"/>
   </div>
 
   <script src="script.js"></script>
