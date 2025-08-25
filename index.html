@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Oum | Portfolio</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <!-- Landing -->
@@ -20,7 +20,7 @@
     </div>
   </header>
 
-  <!-- Sections -->
+  <!-- Main -->
   <main>
     <section id="architecture" class="section">
       <h2 class="section__title">Architecture</h2>
@@ -39,28 +39,25 @@
   </main>
 
   <!-- Project Modal -->
-  <div id="project-modal" class="modal" aria-hidden="true" aria-labelledby="modal-title" role="dialog">
+  <div id="project-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
     <div class="modal__panel" role="document">
       <button class="modal__close" id="modal-close" aria-label="Close project">×</button>
       <h3 id="modal-title" class="modal__title"></h3>
       <p id="modal-description" class="modal__desc"></p>
       <div id="modal-details" class="modal__details"></div>
-      <div id="modal-gallery" class="gallery"></div>
+      <div id="modal-gallery" class="gallery" aria-live="polite"></div>
     </div>
   </div>
 
   <!-- Lightbox -->
- <!-- Lightbox -->
-<div id="lightbox" class="lightbox">
-  <span class="close">&times;</span>
-  <span class="prev">&#10094;</span>
-  <img class="lightbox-content" id="lightbox-img" />
-  <span class="next">&#10095;</span>
-  <div id="caption"></div>
-</div>
-
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
+    <button class="lightbox__close" id="lightbox-close" aria-label="Close image">×</button>
+    <button class="lightbox__nav lightbox__prev" id="lightbox-prev" aria-label="Previous image">❮</button>
+    <img id="lightbox-img" alt="Enlarged project image" />
+    <button class="lightbox__nav lightbox__next" id="lightbox-next" aria-label="Next image">❯</button>
+    <div id="lightbox-caption" class="lightbox__caption"></div>
+  </div>
 
   <script src="script.js"></script>
 </body>
 </html>
-
