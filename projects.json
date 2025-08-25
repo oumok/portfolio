@@ -3,14 +3,14 @@
     {
       "title": "Sunset getaway office",
       "description": "Design for a wellness café combining natural materials with minimal interiors.",
-      "thumbnail": "images/sunset 1.jpg",
+      "thumbnail": "images/sunset 1.png",
       "images": [
-        "images/healthcafe1.jpg",
-        "images/healthcafe2.jpg",
-        "images/healthcafe3.jpg"
+        "images/sunset 1.png",
+        "images/sunset 2.png",
+        "images/sunset 3.png"
       ]
     }
-    { {
+    { 
       "title": "Bloom & Brew Kiosk ",
       "description": "Design for a wellness café combining natural materials with minimal interiors.",
       "thumbnail": "images/healthcafe1.jpg",
@@ -38,5 +38,6 @@
     }
   ]
 }
+
 
 
