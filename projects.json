@@ -6,16 +6,16 @@
   "thumbnail": "images/sunset1.png",
   "gallery": [
     {
-      "src": "images/sunset1.png",
-      "caption": "Exterior perspective – sunset mood."
+      "src": "images/sunset2.png",
+      "caption": "Exploded axonometric showing layout."
     },
     {
-      "src": "images/sunset2.png",
-      "caption": "Interior showing seating with natural textures."
+      "src": "images/sunset1.png",
+      "caption": "Accounts section."
     },
     {
       "src": "images/sunset3.png",
-      "caption": "Exploded axonometric showing layout."
+      "caption": "Work section."
     },
     {
       "src": "images/sunset4.png",
@@ -53,6 +53,7 @@
     }
   ]
 }
+
 
 
 
