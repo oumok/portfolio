@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Oum Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Landing Section -->
+  <section id="landing" class="landing">
+    <div class="intro">
+      <h1>Oum</h1>
+      <p>Architect | Production Designer | Product Designer</p>
+      <div class="buttons">
+        <a href="#architecture">Architecture</a>
+        <a href="#production">Production Design</a>
+        <a href="#product">Product Design</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Sections -->
+  <section id="architecture" class="projects">
+    <h2>Architecture</h2>
+    <div class="grid" id="architecture-grid"></div>
+  </section>
+
+  <section id="production" class="projects">
+    <h2>Production Design</h2>
+    <div class="grid" id="production-grid"></div>
+  </section>
+
+  <section id="product" class="projects">
+    <h2>Product Design</h2>
+    <div class="grid" id="product-grid"></div>
+  </section>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3 id="modal-title"></h3>
+      <p id="modal-description"></p>
+      <div id="modal-gallery" class="gallery"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

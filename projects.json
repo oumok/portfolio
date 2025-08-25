@@ -1,0 +1,30 @@
+{
+  "architecture": [
+    {
+      "title": "Health Café",
+      "description": "Design for a wellness café combining natural materials with minimal interiors.",
+      "thumbnail": "images/healthcafe1.jpg",
+      "images": [
+        "images/healthcafe1.jpg",
+        "images/healthcafe2.jpg",
+        "images/healthcafe3.jpg"
+      ]
+    }
+  ],
+  "production": [
+    {
+      "title": "Film Set XYZ",
+      "description": "Production design for a period drama, focusing on authentic detailing.",
+      "thumbnail": "images/set1.jpg",
+      "images": ["images/set1.jpg", "images/set2.jpg"]
+    }
+  ],
+  "product": [
+    {
+      "title": "Ant Bait Station",
+      "description": "Consumer-friendly product designed for easy assembly and low-cost production.",
+      "thumbnail": "images/product1.jpg",
+      "images": ["images/product1.jpg", "images/product2.jpg"]
+    }
+  ]
+}
