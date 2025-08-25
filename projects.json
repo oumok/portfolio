@@ -3,34 +3,34 @@
    {
   "title": "Sunset Getaway Office",
   "description": "Design for a wellness café combining natural materials with minimal interiors.",
-  "thumbnail": "images/sunset1.png",
+  "thumbnail": "images/architecture/sunset/sunset1.png",
   "gallery": [
     {
-      "src": "images/sunset2.png",
+      "src": "images/architecture/sunset/sunset2.png",
       "caption": "Exploded axonometric showing layout."
     },
     {
-      "src": "images/sunset1.png",
+      "src": "images/architecture/sunset/sunset1.png",
       "caption": "Accounts section."
     },
     {
-      "src": "images/sunset3.png",
+      "src": "images/architecture/sunset/sunset3.png",
       "caption": "Work section."
     },
     {
-      "src": "images/sunset4.png",
+      "src": "images/architecture/sunset/sunset4.png",
       "caption": "Exploded axonometric showing layout."
     },
     {
-      "src": "images/sunset5.png",
+      "src": "images/architecture/sunset/sunset5.png",
       "caption": "Exploded axonometric showing layout."
     },
     {
-      "src": "images/sunse6.png",
+      "src": "images/architecture/sunset/sunse6.png",
       "caption": "Exploded axonometric showing layout."
     },
     {
-      "src": "images/sunset7.png",
+      "src": "images/architecture/sunset/sunset7.png",
       "caption": "Exploded axonometric showing layout."
     }
   ]
@@ -38,7 +38,7 @@
     {
   "title": "Bloom & Brew kiosk",
   "description": "Design for a wellness café combining natural materials with minimal interiors.",
-  "thumbnail": "images/sunset1.png",
+  "thumbnail": "images/architecture/bb/bbcover.png",
   "gallery": [
     {
       "src": "images/sunset2.png",
@@ -88,6 +88,7 @@
     }
   ]
 }
+
 
 
 
