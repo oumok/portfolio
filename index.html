@@ -3,55 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Oum’s Portfolio</title>
+  <title>Oum Kuvelkar | Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- ===== LANDING ===== -->
-  <section class="landing">
-    <div>
-      <h1>Oum Kuvelkar</h1>
-      <p>Architect & Production Designer</p>
+
+  <!-- Header -->
+  <header>
+    <h1>Oum Kuvelkar</h1>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Architect & Production Designer passionate about spatial design, 
+      retail experiences, and crafting immersive visuals.
+    </p>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects-container">
+      <!-- 🔹 Your projects file content will be inserted here -->
+      <div id="project-grid"></div>
     </div>
   </section>
 
-  <!-- ===== PROJECTS ===== -->
-  <section class="projects container">
-    <h2>Selected Works</h2>
-    <div class="project-grid">
-
-      <!-- Project Card -->
-      <div class="project-card" data-description="Small description about Project 1.">
-        <img src="images/project1.jpg" alt="Project 1">
-        <div class="project-title">Project 1</div>
-      </div>
-
-      <div class="project-card" data-description="Details about Project 2.">
-        <img src="images/project2.jpg" alt="Project 2">
-        <div class="project-title">Project 2</div>
-      </div>
-
-      <div class="project-card" data-description="Quick writeup of Project 3.">
-        <img src="images/project3.jpg" alt="Project 3">
-        <div class="project-title">Project 3</div>
-      </div>
-
-      <!-- Add more projects as needed -->
-    </div>
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:yourmail@gmail.com">yourmail@gmail.com</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/oumkuvelkar" target="_blank">linkedin.com/in/oumkuvelkar</a></p>
   </section>
 
-  <!-- ===== LIGHTBOX POPUP ===== -->
-  <div class="lightbox" id="lightbox">
-    <span class="close-btn" id="lightboxClose">&times;</span>
-    <img id="lightboxImage" src="" alt="Project Image">
-    <div class="description" id="lightboxDescription"></div>
-    <div class="lightbox-controls">
-      <span id="prevBtn">&#10094;</span>
-      <span id="nextBtn">&#10095;</span>
-    </div>
+  <!-- Lightbox Popup -->
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" alt="">
+    <p id="lightbox-caption"></p>
   </div>
 
   <script src="script.js"></script>
 </body>
 </html>
-
