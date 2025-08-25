@@ -1,56 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Oum’s Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <!-- ===== LANDING ===== -->
-  <section class="landing">
-    <div>
-      <h1>Oum Mokashi</h1>
-      <p>Architect & Production Designer</p>
-    </div>
-  </section>
+// Lightbox functionality
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const lightboxCaption = document.getElementById("lightbox-caption");
+const closeBtn = document.querySelector(".lightbox .close");
 
-  <!-- ===== PROJECTS ===== -->
-  <section class="projects container">
-    <h2>Selected Works</h2>
-    <div class="project-grid">
+// Open lightbox on project image click
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("project-img")) {
+    lightbox.style.display = "flex";
+    lightboxImg.src = e.target.src;
+    lightboxCaption.textContent = e.target.dataset.caption || "";
+  }
+});
 
-      <!-- Project Card -->
-      <div class="project-card" data-description="Small description about Project 1.">
-        <img src="images/project1.jpg" alt="Project 1">
-        <div class="project-title">Project 1</div>
-      </div>
+// Close lightbox
+closeBtn.addEventListener("click", () => {
+  lightbox.style.display = "none";
+});
 
-      <div class="project-card" data-description="Details about Project 2.">
-        <img src="images/project2.jpg" alt="Project 2">
-        <div class="project-title">Project 2</div>
-      </div>
-
-      <div class="project-card" data-description="Quick writeup of Project 3.">
-        <img src="images/project3.jpg" alt="Project 3">
-        <div class="project-title">Project 3</div>
-      </div>
-
-      <!-- Add more projects as needed -->
-    </div>
-  </section>
-
-  <!-- ===== LIGHTBOX POPUP ===== -->
-  <div class="lightbox" id="lightbox">
-    <span class="close-btn" id="lightboxClose">&times;</span>
-    <img id="lightboxImage" src="" alt="Project Image">
-    <div class="description" id="lightboxDescription"></div>
-    <div class="lightbox-controls">
-      <span id="prevBtn">&#10094;</span>
-      <span id="nextBtn">&#10095;</span>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
+// Close on outside click
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox) {
+    lightbox.style.display = "none";
+  }
+});
