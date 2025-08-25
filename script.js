@@ -1,35 +1,56 @@
-document.addEventListener("DOMContentLoaded", () => {
-  fetch("projects.json")
-    .then(res => res.json())
-    .then(data => {
-      ["architecture", "production", "product"].forEach(category => {
-        const grid = document.getElementById(`${category}-grid`);
-        data[category].forEach(project => {
-          let img = document.createElement("img");
-          img.src = project.thumbnail;
-          img.alt = project.title;
-          img.addEventListener("click", () => openModal(project));
-          grid.appendChild(img);
-        });
-      });
-    });
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oum’s Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ===== LANDING ===== -->
+  <section class="landing">
+    <div>
+      <h1>Oum Mokashi</h1>
+      <p>Architect & Production Designer</p>
+    </div>
+  </section>
 
-  const modal = document.getElementById("modal");
-  const closeBtn = document.querySelector(".close");
+  <!-- ===== PROJECTS ===== -->
+  <section class="projects container">
+    <h2>Selected Works</h2>
+    <div class="project-grid">
 
-  function openModal(project) {
-    document.getElementById("modal-title").innerText = project.title;
-    document.getElementById("modal-description").innerText = project.description;
-    const gallery = document.getElementById("modal-gallery");
-    gallery.innerHTML = "";
-    project.images.forEach(img => {
-      let image = document.createElement("img");
-      image.src = img;
-      gallery.appendChild(image);
-    });
-    modal.style.display = "flex";
-  }
+      <!-- Project Card -->
+      <div class="project-card" data-description="Small description about Project 1.">
+        <img src="images/project1.jpg" alt="Project 1">
+        <div class="project-title">Project 1</div>
+      </div>
 
-  closeBtn.onclick = () => modal.style.display = "none";
-  window.onclick = e => { if (e.target == modal) modal.style.display = "none"; }
-});
+      <div class="project-card" data-description="Details about Project 2.">
+        <img src="images/project2.jpg" alt="Project 2">
+        <div class="project-title">Project 2</div>
+      </div>
+
+      <div class="project-card" data-description="Quick writeup of Project 3.">
+        <img src="images/project3.jpg" alt="Project 3">
+        <div class="project-title">Project 3</div>
+      </div>
+
+      <!-- Add more projects as needed -->
+    </div>
+  </section>
+
+  <!-- ===== LIGHTBOX POPUP ===== -->
+  <div class="lightbox" id="lightbox">
+    <span class="close-btn" id="lightboxClose">&times;</span>
+    <img id="lightboxImage" src="" alt="Project Image">
+    <div class="description" id="lightboxDescription"></div>
+    <div class="lightbox-controls">
+      <span id="prevBtn">&#10094;</span>
+      <span id="nextBtn">&#10095;</span>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
