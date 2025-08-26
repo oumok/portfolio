@@ -19,19 +19,29 @@
     },
     {
       "src": "images/architecture/sunset/sunset4.png",
-      "caption": "Exploded axonometric showing layout."
+      "caption": "Fun zone / Informal meetings zone."
     },
     {
       "src": "images/architecture/sunset/sunset5.png",
-      "caption": "Exploded axonometric showing layout."
+      "caption": "Fun zone / Informal meetings zone."
     },
     {
-      "src": "images/architecture/sunset/sunse6.png",
-      "caption": "Exploded axonometric showing layout."
+      "src": "images/architecture/sunset/sunset6.png",
+      "caption": "Entrance axis, Standing discussion table."
     },
     {
       "src": "images/architecture/sunset/sunset7.png",
-      "caption": "Exploded axonometric showing layout."
+      "caption": "Workspaces."
+    }
+  ]
+"livePhotos": [
+    {
+      "src": "images/architecture/sunset/live1.jpg",
+      "caption": "Completed office lobby."
+    },
+    {
+      "src": "images/architecture/sunset/live2.jpg",
+      "caption": "Workstations in use."
     }
   ]
 },
@@ -70,6 +80,7 @@
     }
   ]
 }
+
   ],
   "production": [
     {
@@ -88,6 +99,7 @@
     }
   ]
 }
+
 
 
 
