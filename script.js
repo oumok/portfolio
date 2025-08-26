@@ -3,73 +3,59 @@ document.addEventListener("DOMContentLoaded", () => {
   setupPopup();
 });
 
-function loadProjects() {
-  fetch("projects.json")
-    .then(res => res.json())
-    .then(data => {
-      data.forEach(project => {
-        const container = document.getElementById(`${project.category}-projects`);
-        if (!container) return;
+async function loadProjects() {
+  try {
+    const response = await fetch("projects.json");
+    const projects = await response.json();
 
-        const card = document.createElement("div");
-        card.className = "project-card";
-        card.innerHTML = `
-          <img src="${project.images[0]}" alt="${project.title}">
-          <h3>${project.title}</h3>
-        `;
-        card.addEventListener("click", () => openPopup(project));
-        container.appendChild(card);
-      });
-    })
-    .catch(err => console.error("Error loading projects.json:", err));
+    projects.forEach(project => {
+      const container = document.getElementById(`${project.category}-projects`);
+      if (!container) return;
+
+      const card = document.createElement("div");
+      card.className = "project-card";
+
+      const img = document.createElement("img");
+      img.src = project.thumbnail;
+      img.alt = project.title;
+
+      const title = document.createElement("h3");
+      title.textContent = project.title;
+
+      card.appendChild(img);
+      card.appendChild(title);
+
+      card.addEventListener("click", () => openPopup(project));
+
+      container.appendChild(card);
+    });
+  } catch (error) {
+    console.error("Error loading projects.json:", error);
+  }
 }
-
-let currentProject = null;
-let currentIndex = 0;
 
 function setupPopup() {
   const popup = document.getElementById("popup");
-  const closeBtn = document.getElementById("popup-close");
-  const prevBtn = document.getElementById("prev-btn");
-  const nextBtn = document.getElementById("next-btn");
-
-  closeBtn.addEventListener("click", () => popup.classList.add("hidden"));
-  prevBtn.addEventListener("click", showPrevImage);
-  nextBtn.addEventListener("click", showNextImage);
+  const closeBtn = popup.querySelector(".close");
+  closeBtn.addEventListener("click", () => {
+    popup.style.display = "none";
+  });
 }
 
 function openPopup(project) {
-  currentProject = project;
-  currentIndex = 0;
-
+  const popup = document.getElementById("popup");
   document.getElementById("popup-title").textContent = project.title;
   document.getElementById("popup-description").textContent = project.description;
 
-  const imgContainer = document.getElementById("popup-images");
-  imgContainer.innerHTML = "";
+  const popupImages = document.getElementById("popup-images");
+  popupImages.innerHTML = ""; // clear old images
 
-  project.images.forEach((img, i) => {
-    const imageEl = document.createElement("img");
-    imageEl.src = img;
-    if (i === 0) imageEl.classList.add("active");
-    imgContainer.appendChild(imageEl);
+  project.images.forEach(src => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = project.title;
+    popupImages.appendChild(img);
   });
 
-  document.getElementById("popup").classList.remove("hidden");
-}
-
-function showPrevImage() {
-  if (!currentProject) return;
-  const imgs = document.querySelectorAll("#popup-images img");
-  imgs[currentIndex].classList.remove("active");
-  currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
-  imgs[currentIndex].classList.add("active");
-}
-
-function showNextImage() {
-  if (!currentProject) return;
-  const imgs = document.querySelectorAll("#popup-images img");
-  imgs[currentIndex].classList.remove("active");
-  currentIndex = (currentIndex + 1) % imgs.length;
-  imgs[currentIndex].classList.add("active");
+  popup.style.display = "block";
 }
