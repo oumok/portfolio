@@ -22,6 +22,84 @@ img { display:block; max-width:100%; height:auto; }
   background:transparent; color:inherit; transition:transform .15s, background .18s;
 }
 .chip:hover { background:#fff; color:#0b0b0c; transform:translateY(-2px); }
+/* Popup */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  overflow-y: auto;
+  z-index: 999;
+}
+
+.popup-content {
+  background: var(--bg);
+  color: var(--text);
+  margin: 50px auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 1000px;
+  border-radius: 10px;
+}
+
+.popup-section {
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+/* Image modal */
+.image-modal {
+  display: none;
+  position: fixed;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.image-modal img {
+  max-width: 90%;
+  max-height: 80%;
+  margin-bottom: 10px;
+}
+
+.image-modal .prev,
+.image-modal .next {
+  position: absolute;
+  top: 50%;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  user-select: none;
+}
+
+.image-modal .prev { left: 20px; }
+.image-modal .next { right: 20px; }
+
+/* Theme */
+:root {
+  --bg: #fff;
+  --text: #000;
+}
+.dark-mode {
+  --bg: #121212;
+  --text: #eee;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
 /* Sections */
 .section { padding:4rem 6vw; }
@@ -137,3 +215,4 @@ img { display:block; max-width:100%; height:auto; }
 }
 .star { width: 2px; height: 2px; }
 .big-star { width: 4px; height: 4px; }
+
