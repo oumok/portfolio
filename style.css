@@ -1,157 +1,54 @@
 /* Reset & base */
-* { box-sizing: border-box; }
-html,body { height:100%; }
-body {
-  margin:0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background:#0f0f10; color:#fff; line-height:1.5;
-}
-img { display:block; max-width:100%; height:auto; }
-
 /* Landing (right aligned) */
-.landing {
-  min-height:100vh; display:flex; align-items:center; justify-content:flex-end;
-  padding:4rem 6vw; background:linear-gradient(180deg,#0f0f10,#0b0b0c);
-}
+.landing { min-height:100vh; display:flex; align-items:center; justify-content:flex-end; padding:4rem 6vw; background:linear-gradient(180deg, var(--bg), #0b0b0c); }
 .intro { text-align:right; animation:slideIn .7s ease-out both; }
 .intro__name { margin:0; font-size:clamp(2.4rem,6vw,4.8rem); }
-.intro__tagline { margin:.5rem 0 1.25rem; color:#cfcfd6; font-size:clamp(1rem,2vw,1.25rem); }
+.intro__tagline { margin:.5rem 0 1.25rem; color:var(--muted); font-size:clamp(1rem,2vw,1.25rem); }
 .intro__nav { display:flex; gap:.6rem; justify-content:flex-end; flex-wrap:wrap; }
-.chip {
-  padding:.55rem 1.1rem; border:1px solid rgba(255,255,255,.14); border-radius:999px;
-  background:transparent; color:inherit; transition:transform .15s, background .18s;
-}
+.chip { padding:.55rem 1.1rem; border:1px solid var(--border); border-radius:999px; background:transparent; color:inherit; transition:transform .15s, background .18s; text-decoration:none; }
 .chip:hover { background:#fff; color:#0b0b0c; transform:translateY(-2px); }
-/* Popup */
-.popup {
-  display: none;
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.7);
-  overflow-y: auto;
-  z-index: 999;
-}
 
-.popup-content {
-  background: var(--bg);
-  color: var(--text);
-  margin: 50px auto;
-  padding: 20px;
-  width: 80%;
-  max-width: 1000px;
-  border-radius: 10px;
-}
-
-.popup-section {
-  margin-top: 20px;
-  border-top: 1px solid #ccc;
-  padding-top: 10px;
-}
-
-/* Image modal */
-.image-modal {
-  display: none;
-  position: fixed;
-  top:0; left:0; right:0; bottom:0;
-  background: rgba(0,0,0,0.9);
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  z-index: 1000;
-}
-
-.image-modal img {
-  max-width: 90%;
-  max-height: 80%;
-  margin-bottom: 10px;
-}
-
-.image-modal .prev,
-.image-modal .next {
-  position: absolute;
-  top: 50%;
-  font-size: 2rem;
-  color: white;
-  cursor: pointer;
-  padding: 10px;
-  user-select: none;
-}
-
-.image-modal .prev { left: 20px; }
-.image-modal .next { right: 20px; }
-
-/* Theme */
-:root {
-  --bg: #fff;
-  --text: #000;
-}
-.dark-mode {
-  --bg: #121212;
-  --text: #eee;
-  background: var(--bg);
-  color: var(--text);
-}
-
-.theme-toggle {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 8px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-}
 
 /* Sections */
 .section { padding:4rem 6vw; }
 .section__title { margin:0 0 1.5rem; font-size:clamp(1.3rem,3vw,1.9rem); color:#f6f6f8; }
 
+
 /* Grid 3-up */
-.grid {
-  display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem;
-}
+.grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
 @media (max-width:1024px){ .grid{ grid-template-columns:repeat(2,1fr); } }
 @media (max-width:640px){ .grid{ grid-template-columns:1fr; } }
 
-.card {
-  position:relative; overflow:hidden; border-radius:14px; background:#161616; cursor:pointer;
-  transition: transform .25s ease, box-shadow .25s ease;
-}
+
+.card { position:relative; overflow:hidden; border-radius:14px; background:var(--card); cursor:pointer; transition: transform .25s ease, box-shadow .25s ease; }
 .card:hover { transform:scale(1.02); box-shadow:0 10px 36px rgba(0,0,0,.6); }
 .card__thumb { width:100%; aspect-ratio:4/3; object-fit:cover; background:#111; display:block; }
-.card__label {
-  position:absolute; left:0; right:0; bottom:0; padding:.75rem 1rem;
-  background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.72) 90%); font-size:.98rem;
-}
+.card__label { position:absolute; left:0; right:0; bottom:0; padding:.75rem 1rem; background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.72) 90%); font-size:.98rem; }
+.card__desc { position:absolute; left:0; right:0; bottom:0; padding:.75rem 1rem 1.1rem; color:#ddd; font-size:.85rem; }
+
 
 /* Modal (project) */
-.modal {
-  position:fixed; inset:0; display:none; place-items:center; padding:3vh 3vw;
-  background:rgba(0,0,0,.85); z-index:50;
-}
+.modal { position:fixed; inset:0; display:none; place-items:center; padding:3vh 3vw; background:rgba(0,0,0,.85); z-index:50; }
 .modal.is-open { display:grid; animation:fadeIn .18s ease; }
-.modal__panel {
-  width:min(100%,1100px); max-height:90vh; overflow:auto; background:#0f0f11; border-radius:12px;
-  padding:1.4rem; box-shadow:0 18px 60px rgba(0,0,0,.6);
-}
+.modal__panel { width:min(100%,1100px); max-height:90vh; overflow:auto; background:var(--panel); border-radius:12px; padding:1.4rem; box-shadow:0 18px 60px rgba(0,0,0,.6); }
 .modal__close { position:sticky; top:0; float:right; border:0; background:transparent; color:#aaa; font-size:1.8rem; cursor:pointer; margin:-.5rem -.33rem .4rem 0; }
 .modal__title { margin:.2rem 0 .6rem; font-size:1.3rem; }
-.modal__desc { margin:0 0 .75rem; color:#d8d8df; }
+.modal__desc { margin:0 0 .75rem; color:var(--muted); }
 .modal__details { margin:0 0 1rem; color:#bdbdc6; font-size:.95rem; }
 
-/* Gallery in modal (3-up) */
-.gallery {
-  display:grid; grid-template-columns:repeat(3,1fr); gap:.75rem;
-}
+
+/* Gallery Groups */
+.group { margin:1.25rem 0; }
+.group__title { margin:.2rem 0 .6rem; font-size:1.05rem; color:#e9e9ee; border-top:1px solid var(--border); padding-top:.75rem; }
+.gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:.75rem; }
 @media (max-width:900px){ .gallery{ grid-template-columns:repeat(2,1fr); } }
 @media (max-width:560px){ .gallery{ grid-template-columns:1fr; } }
 .gallery img { width:100%; border-radius:8px; cursor:pointer; transition:transform .18s ease; }
 .gallery img:hover { transform:scale(1.03); }
 
+
 /* Lightbox */
-.lightbox {
-  position:fixed; inset:0; display:none; place-items:center; background:rgba(0,0,0,.95);
-  z-index:60; padding:4vh 4vw;
-}
+.lightbox { position:fixed; inset:0; display:none; place-items:center; background:rgba(0,0,0,.95); z-index:60; padding:4vh 4vw; }
 .lightbox.is-open { display:grid; animation:fadeIn .12s ease; }
 .lightbox__close { position:fixed; top:14px; right:18px; border:0; background:transparent; color:#fff; font-size:1.8rem; cursor:pointer; }
 .lightbox__nav { position:fixed; top:50%; transform:translateY(-50%); background:transparent; border:0; color:#fff; font-size:2.2rem; cursor:pointer; padding:.4rem .8rem; opacity:.9; }
@@ -159,60 +56,16 @@ img { display:block; max-width:100%; height:auto; }
 #lightbox-img { max-width:92vw; max-height:86vh; border-radius:10px; box-shadow:0 12px 44px rgba(0,0,0,.6); }
 .lightbox__caption { margin-top:12px; color:#ddd; text-align:center; max-width:90%; }
 
+
 /* Lock page scroll when modal/lightbox open */
 .body--lock { overflow:hidden; }
+
 
 /* Animations */
 @keyframes slideIn { from{opacity:0; transform:translateX(28px);} to{opacity:1; transform:none;} }
 @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
 
-/* =====================================================
-   Background layers (stars + shapes)
-   ===================================================== */
 
-/* Small stars background */
-.stars {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: transparent;
-  overflow: hidden;
-  z-index: -3; /* push way behind content */
-  pointer-events: none;
-}
-
-/* Big hero stars */
-.big-stars {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: transparent;
-  overflow: hidden;
-  z-index: -2;
-  pointer-events: none;
-}
-
-/* Canvas for shapes/buildings */
-#shapeCanvas {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: -1;
-  pointer-events: none; /* important: shapes don’t block clicks */
-}
-
-/* Optional twinkle animation for stars */
-@keyframes twinkle {
-  0%, 100% { opacity: 0.9; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.85); }
-}
-.star, .big-star {
-  position: absolute;
-  border-radius: 50%;
-  background: white;
-  opacity: 0.8;
-  animation: twinkle 4s infinite ease-in-out;
-}
-.star { width: 2px; height: 2px; }
-.big-star { width: 4px; height: 4px; }
-
+/* Background layers (stars + shapes) */
+.stars,.big-stars{ position:fixed; top:0; left:0; width:100%; height:100%; background:transparent; overflow:hidden; pointer-events:none; }
+.stars{ z-index:-3
