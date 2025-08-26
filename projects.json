@@ -31,37 +31,7 @@ json
     },
     /* more projects… */
   ],
-    {
-      "title": "Bloom & Brew kiosk",
-      "description": "Compact roadside coffee kiosk designed for a salon lounge and commuters.",
-      "thumbnail": "images/architecture/bb/bbcover.png",
-      "galleryGroups": [
-        {
-          "title": "Concept & Renders",
-          "images": [
-            {
-              "src": "images/architecture/bb/bb1.png",
-              "caption": "Exploded axonometric showing layout."
-            },
-            {
-              "src": "images/architecture/bb/bb2.png",
-              "caption": "Accounts section."
-            },
-            {
-              "src": "images/architecture/bb/bb3.png",
-              "caption": "Work section."
-            },
-            {
-              "src": "images/architecture/bb/bb4.png",
-              "caption": "Kiosk render."
-            },
-            {
-              "src": "images/architecture/bb/bb5.png",
-              "caption": "Interior render."
-            }
-          ]
-        }
-      ]
+
     }
   ],
   "production": [
@@ -81,4 +51,5 @@ json
     }
   ]
 }
+
 
