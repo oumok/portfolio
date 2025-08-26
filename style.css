@@ -87,3 +87,53 @@ img { display:block; max-width:100%; height:auto; }
 /* Animations */
 @keyframes slideIn { from{opacity:0; transform:translateX(28px);} to{opacity:1; transform:none;} }
 @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+
+/* =====================================================
+   Background layers (stars + shapes)
+   ===================================================== */
+
+/* Small stars background */
+.stars {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: transparent;
+  overflow: hidden;
+  z-index: -3; /* push way behind content */
+  pointer-events: none;
+}
+
+/* Big hero stars */
+.big-stars {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: transparent;
+  overflow: hidden;
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* Canvas for shapes/buildings */
+#shapeCanvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1;
+  pointer-events: none; /* important: shapes don’t block clicks */
+}
+
+/* Optional twinkle animation for stars */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.9; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+.star, .big-star {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  opacity: 0.8;
+  animation: twinkle 4s infinite ease-in-out;
+}
+.star { width: 2px; height: 2px; }
+.big-star { width: 4px; height: 4px; }
