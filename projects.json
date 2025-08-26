@@ -4,65 +4,57 @@
       "title": "Sunset Getaway Office",
       "description": "Design for a wellness café combining natural materials with minimal interiors.",
       "thumbnail": "images/architecture/sunset/sunsetcover.png",
-      "gallery": [
-"galleryGroups": [
-  {
-    "title": "Concept",
-    "images": [
-      { "src": "images/architecture/sunset/sunset2.png", "caption": "Exploded axonometric showing layout." }
-    ]
-  },
-  {
-    "title": "Renders",
-    "images": [
-      { "src": "images/architecture/sunset/sunset1.png", "caption": "Accounts section." }
-    ]
-  },
-  {
-    "title": "Live Photos",
-    "images": [
-      { "src": "images/architecture/sunset/live1.jpg", "caption": "Completed office lobby." },
-      { "src": "images/architecture/sunset/live2.jpg", "caption": "Workstations in use." }
-    ]
-  }
-]
+      "galleryGroups": [
         {
-          "src": "images/architecture/sunset/sunset2.png",
-          "caption": "Exploded axonometric showing layout."
+          "title": "Concept",
+          "images": [
+            {
+              "src": "images/architecture/sunset/sunset2.png",
+              "caption": "Exploded axonometric showing layout."
+            }
+          ]
         },
         {
-          "src": "images/architecture/sunset/sunset1.png",
-          "caption": "Accounts section."
+          "title": "Renders",
+          "images": [
+            {
+              "src": "images/architecture/sunset/sunset1.png",
+              "caption": "Accounts section."
+            },
+            {
+              "src": "images/architecture/sunset/sunset3.png",
+              "caption": "Work section."
+            },
+            {
+              "src": "images/architecture/sunset/sunset4.png",
+              "caption": "Fun zone / Informal meetings zone."
+            },
+            {
+              "src": "images/architecture/sunset/sunset5.png",
+              "caption": "Fun zone / Informal meetings zone."
+            },
+            {
+              "src": "images/architecture/sunset/sunset6.png",
+              "caption": "Entrance axis, Standing discussion table."
+            },
+            {
+              "src": "images/architecture/sunset/sunset7.png",
+              "caption": "Workspaces."
+            }
+          ]
         },
         {
-          "src": "images/architecture/sunset/sunset3.png",
-          "caption": "Work section."
-        },
-        {
-          "src": "images/architecture/sunset/sunset4.png",
-          "caption": "Fun zone / Informal meetings zone."
-        },
-        {
-          "src": "images/architecture/sunset/sunset5.png",
-          "caption": "Fun zone / Informal meetings zone."
-        },
-        {
-          "src": "images/architecture/sunset/sunset6.png",
-          "caption": "Entrance axis, Standing discussion table."
-        },
-        {
-          "src": "images/architecture/sunset/sunset7.png",
-          "caption": "Workspaces."
-        }
-      ],
-      "livePhotos": [
-        {
-          "src": "images/architecture/sunset/live1.jpg",
-          "caption": "Completed office lobby."
-        },
-        {
-          "src": "images/architecture/sunset/live2.jpg",
-          "caption": "Workstations in use."
+          "title": "Live Photos",
+          "images": [
+            {
+              "src": "images/architecture/sunset/live1.jpg",
+              "caption": "Completed office lobby."
+            },
+            {
+              "src": "images/architecture/sunset/live2.jpg",
+              "caption": "Workstations in use."
+            }
+          ]
         }
       ]
     },
@@ -70,26 +62,31 @@
       "title": "Bloom & Brew kiosk",
       "description": "Compact roadside coffee kiosk designed for a salon lounge and commuters.",
       "thumbnail": "images/architecture/bb/bbcover.png",
-      "gallery": [
+      "galleryGroups": [
         {
-          "src": "images/architecture/bb/bb1.png",
-          "caption": "Exploded axonometric showing layout."
-        },
-        {
-          "src": "images/architecture/bb/bb2.png",
-          "caption": "Accounts section."
-        },
-        {
-          "src": "images/architecture/bb/bb3.png",
-          "caption": "Work section."
-        },
-        {
-          "src": "images/architecture/bb/bb4.png",
-          "caption": "Kiosk render."
-        },
-        {
-          "src": "images/architecture/bb/bb5.png",
-          "caption": "Interior render."
+          "title": "Concept & Renders",
+          "images": [
+            {
+              "src": "images/architecture/bb/bb1.png",
+              "caption": "Exploded axonometric showing layout."
+            },
+            {
+              "src": "images/architecture/bb/bb2.png",
+              "caption": "Accounts section."
+            },
+            {
+              "src": "images/architecture/bb/bb3.png",
+              "caption": "Work section."
+            },
+            {
+              "src": "images/architecture/bb/bb4.png",
+              "caption": "Kiosk render."
+            },
+            {
+              "src": "images/architecture/bb/bb5.png",
+              "caption": "Interior render."
+            }
+          ]
         }
       ]
     }
@@ -111,4 +108,3 @@
     }
   ]
 }
-
