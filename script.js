@@ -1,173 +1,121 @@
-/* =====================================================
-   script.js - Loads projects.json, renders grids,
-   handles project modal and lightbox with prev/next.
-   Works with grouped projects.json (architecture/production/product)
-   or you can keep your existing grouped format.
-   ===================================================== */
+// ===============================
+// PROJECT POPUP HANDLING
+// ===============================
 
-/* helpers */
-const qs = (sel, el = document) => el.querySelector(sel);
-const qsa = (sel, el = document) => Array.from(el.querySelectorAll(sel));
-const setLock = (lock) => document.body.classList.toggle('body--lock', lock);
-
-/* modal elements */
-const modal = qs('#project-modal');
-const modalClose = qs('#modal-close');
-const modalTitle = qs('#modal-title');
-const modalDesc = qs('#modal-description');
-const modalDetails = qs('#modal-details');
-const modalGallery = qs('#modal-gallery');
-
-/* lightbox elements */
-const lightbox = qs('#lightbox');
-const lightboxImg = qs('#lightbox-img');
-const lightboxClose = qs('#lightbox-close');
-const lightboxPrev = qs('#lightbox-prev');
-const lightboxNext = qs('#lightbox-next');
-const lightboxCaption = qs('#lightbox-caption');
-
-/* state for lightbox navigation */
-let lbImages = [];
-let lbIndex = 0;
-
-/* render a single project card inside target grid */
-function renderCard(project, gridEl) {
-  const cover = project.thumbnail || (project.images && project.images[0]) || '';
-  const title = project.title || '';
-
-  const card = document.createElement('article');
-  card.className = 'card';
-  card.tabIndex = 0;
-  card.innerHTML = `
-    <img class="card__thumb" src="${cover}" alt="${escapeHtml(title)}">
-    <div class="card__label">${escapeHtml(title)}</div>
+// Open project popup
+function openPopup(project) {
+  const popup = document.getElementById("popup-content");
+  popup.innerHTML = `
+    <h2>${project.title}</h2>
+    <p>${project.description}</p>
   `;
 
-  const openHandler = () => openProject(project);
-  card.addEventListener('click', openHandler);
-  card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openHandler(); } });
+  // Render grouped sections
+  project.sections.forEach(section => {
+    const sectionDiv = document.createElement("div");
+    sectionDiv.classList.add("popup-section");
 
-  gridEl.appendChild(card);
-}
+    sectionDiv.innerHTML = `
+      <h3 class="popup-section-title">${section.title}</h3>
+    `;
 
-/* open project modal */
-function openProject(project) {
-  modalTitle.textContent = project.title || '';
-  modalDesc.textContent = project.description || '';
-  modalDetails.textContent = project.details || '';
+    // Loop through images in this section
+    section.images.forEach((img, index) => {
+      const imgWrapper = document.createElement("div");
+      imgWrapper.classList.add("popup-img-wrapper");
 
-  // Build gallery items
-  modalGallery.innerHTML = '';
-  const items = Array.isArray(project.gallery) && project.gallery.length
-    ? project.gallery.map(g => (typeof g === 'string' ? { src: g } : g))
-    : (project.images || []).map(s => ({ src: s }));
+      const imgEl = document.createElement("img");
+      imgEl.src = img.src;
+      imgEl.alt = img.caption;
+      imgEl.classList.add("popup-img");
 
-  lbImages = items.map(i => i.src).filter(Boolean);
-  lbIndex = 0;
+      // On click -> open enlarged view
+      imgEl.addEventListener("click", () => {
+        openImageModal(section.images, index);
+      });
 
-  items.forEach(item => {
-    if (!item || !item.src) return;
-    const img = document.createElement('img');
-    img.src = item.src;
-    img.alt = item.caption || project.title || '';
-    img.addEventListener('click', () => openLightbox(item.src, item.caption || ''));
-    modalGallery.appendChild(img);
+      imgWrapper.appendChild(imgEl);
+
+      if (img.caption) {
+        const cap = document.createElement("p");
+        cap.innerText = img.caption;
+        cap.classList.add("caption");
+        imgWrapper.appendChild(cap);
+      }
+
+      sectionDiv.appendChild(imgWrapper);
+    });
+
+    popup.appendChild(sectionDiv);
   });
 
-  modal.classList.add('is-open');
-  setLock(true);
+  document.getElementById("popup").style.display = "block";
 }
 
-/* close modal */
-function closeModal() {
-  modal.classList.remove('is-open');
-  setLock(false);
+// Close project popup
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
 }
 
-/* open lightbox showing src (sync index to src) */
-function openLightbox(src, caption = '') {
-  lbIndex = lbImages.indexOf(src);
-  if (lbIndex < 0) lbIndex = 0;
-  updateLightbox(caption);
-  lightbox.classList.add('is-open');
-  setLock(true);
+
+
+// ===============================
+// IMAGE ENLARGEMENT MODAL
+// ===============================
+let currentImages = [];
+let currentIndex = 0;
+
+function openImageModal(images, index) {
+  currentImages = images;
+  currentIndex = index;
+
+  const modal = document.getElementById("image-modal");
+  const modalImg = document.getElementById("modal-img");
+  const modalCap = document.getElementById("modal-caption");
+
+  modalImg.src = currentImages[currentIndex].src;
+  modalCap.innerText = currentImages[currentIndex].caption || "";
+
+  modal.style.display = "flex";
 }
 
-/* update lightbox image/caption */
-function updateLightbox(caption = '') {
-  const src = lbImages[lbIndex];
-  lightboxImg.src = src || '';
-  lightboxCaption.textContent = caption || '';
+function closeImageModal() {
+  document.getElementById("image-modal").style.display = "none";
 }
 
-/* close lightbox */
-function closeLightbox() {
-  lightbox.classList.remove('is-open');
-  lightboxImg.src = '';
-  // if modal still open keep lock; otherwise release
-  if (!modal.classList.contains('is-open')) setLock(false);
+function showNextImage() {
+  currentIndex = (currentIndex + 1) % currentImages.length;
+  updateModalImage();
 }
 
-/* move image index */
-function changeLightbox(step) {
-  if (!lbImages.length) return;
-  lbIndex = (lbIndex + step + lbImages.length) % lbImages.length;
-  updateLightbox();
+function showPrevImage() {
+  currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+  updateModalImage();
 }
 
-/* event wiring */
-modalClose.addEventListener('click', closeModal);
-modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+function updateModalImage() {
+  const modalImg = document.getElementById("modal-img");
+  const modalCap = document.getElementById("modal-caption");
 
-lightboxClose.addEventListener('click', closeLightbox);
-lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-lightboxPrev.addEventListener('click', () => changeLightbox(-1));
-lightboxNext.addEventListener('click', () => changeLightbox(1));
+  modalImg.src = currentImages[currentIndex].src;
+  modalCap.innerText = currentImages[currentIndex].caption || "";
+}
 
-document.addEventListener('keydown', e => {
-  if (lightbox.classList.contains('is-open')) {
-    if (e.key === 'ArrowRight') changeLightbox(1);
-    if (e.key === 'ArrowLeft') changeLightbox(-1);
-    if (e.key === 'Escape') closeLightbox();
-  } else if (modal.classList.contains('is-open')) {
-    if (e.key === 'Escape') closeModal();
+
+
+// ===============================
+// DARK / LIGHT MODE TOGGLE
+// ===============================
+function toggleTheme() {
+  document.body.classList.toggle("dark-mode");
+  const mode = document.body.classList.contains("dark-mode") ? "Dark" : "Light";
+  localStorage.setItem("theme", mode);
+}
+
+// Load saved theme
+window.addEventListener("DOMContentLoaded", () => {
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "Dark") {
+    document.body.classList.add("dark-mode");
   }
 });
-
-/* load projects.json and render grids
-   supports grouped object { architecture:[..], production:[..], product:[..] }
-*/
-(async function init() {
-  try {
-    const res = await fetch('projects.json', { cache: 'no-store' });
-    const data = await res.json();
-
-    const byCat = { architecture: [], production: [], product: [] };
-    if (Array.isArray(data)) {
-      // if data were flat list, you'd need category property on each item
-      data.forEach(p => {
-        const cat = (p.category || '').toLowerCase();
-        if (byCat[cat]) byCat[cat].push(p);
-      });
-    } else if (data && typeof data === 'object') {
-      byCat.architecture = data.architecture || [];
-      byCat.production = data.production || [];
-      byCat.product = data.product || [];
-    }
-
-    Object.entries(byCat).forEach(([cat, list]) => {
-      const grid = qs(`#${cat}-grid`);
-      if (!grid || !Array.isArray(list)) return;
-      list.forEach(p => renderCard(p, grid));
-    });
-  } catch (err) {
-    console.error('projects.json load failed:', err);
-  }
-})();
-
-/* small helper to avoid XSS if any data is untrusted */
-function escapeHtml(str = '') {
-  return String(str).replace(/[&<>"']/g, function (m) {
-    return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[m];
-  });
-}
