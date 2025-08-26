@@ -1,98 +1,177 @@
-body {
+/* Reset & Base */
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #111;
-  color: #eee;
-}
-
-header {
-  padding: 1rem;
-  text-align: center;
-  background: #222;
-}
-
-nav ul {
-  list-style: none;
   padding: 0;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: #0f0f0f;
+  color: #f2f2f2;
+  line-height: 1.5;
+}
+
+/* Header */
+header {
+  padding: 1rem 2rem;
+  background: #1a1a1a;
   display: flex;
-  justify-content: center;
-  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 nav a {
+  color: #f2f2f2;
   text-decoration: none;
-  color: #eee;
+  margin-left: 1.5rem;
+  transition: color 0.2s;
 }
 
-h2 {
-  text-align: center;
-  margin-top: 2rem;
+nav a:hover {
+  color: #aaa;
 }
 
-.project-grid {
+/* Sections */
+main {
+  padding: 2rem;
+}
+
+section {
+  margin-bottom: 4rem;
+}
+
+section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #333;
+  padding-bottom: 0.5rem;
+}
+
+/* Project grid */
+.projects-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
 }
 
 .project-card {
-  background: #333;
-  padding: 1rem;
-  border-radius: 8px;
+  background: #1c1c1c;
+  border-radius: 10px;
+  overflow: hidden;
   cursor: pointer;
-  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
 }
 
 .project-card img {
-  max-width: 100%;
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
   border-radius: 6px;
+  margin-bottom: 0.75rem;
 }
 
-/* Popup */
-.popup {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.popup.hidden {
-  display: none;
-}
-
-.popup-content {
-  background: #222;
-  padding: 1rem;
-  border-radius: 10px;
-  max-width: 90%;
-  max-height: 90%;
-  overflow-y: auto;
-  color: #fff;
-  position: relative;
-}
-
-#popup-close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.popup-images img {
-  max-width: 100%;
-  display: none;
-  margin: 0 auto;
-}
-
-.popup-images img.active {
-  display: block;
-}
-
-.popup-controls {
+.project-card h3 {
+  font-size: 1rem;
   text-align: center;
+  font-weight: 500;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Popup Slider */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  padding: 3rem 2rem;
+  overflow: hidden;
+}
+
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+}
+
+.popup h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.popup p {
+  margin-bottom: 2rem;
+  max-width: 800px;
+}
+
+/* Slider container */
+.slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+}
+
+.slider img {
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+}
+
+/* Navigation arrows */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.4);
+  user-select: none;
+  transition: background 0.2s;
+}
+
+.prev:hover, .next:hover {
+  background: rgba(0,0,0,0.7);
+}
+
+.prev {
+  left: 20px;
+}
+.next {
+  right: 20px;
+}
+
+/* Slide index text */
+#slide-caption {
   margin-top: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  color: #ddd;
 }
