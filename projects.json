@@ -33,7 +33,7 @@
       "src": "images/architecture/sunset/sunset7.png",
       "caption": "Workspaces."
     }
-  ]
+  ],
 "livePhotos": [
     {
       "src": "images/architecture/sunset/live1.jpg",
@@ -71,7 +71,7 @@
       "caption": "Exploded axonometric showing layout."
     },
     {
-      "src": "images/sunse6.png",
+      "src": "images/sunset6.png",
       "caption": "Exploded axonometric showing layout."
     },
     {
@@ -99,6 +99,7 @@
     }
   ]
 }
+
 
 
 
