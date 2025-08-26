@@ -1,121 +1,75 @@
-// script.js
-
-let projectsData = {};
-let currentProject = null;
-let currentGroupIndex = 0;
-let currentImageIndex = 0;
-
 document.addEventListener("DOMContentLoaded", () => {
-    loadProjects();
-    setupThemeToggle();
+  loadProjects();
+  setupPopup();
 });
 
-// -------------------- LOAD PROJECTS --------------------
-async function loadProjects() {
-    try {
-        const response = await fetch("projects.json");
-        projectsData = await response.json();
+function loadProjects() {
+  fetch("projects.json")
+    .then(res => res.json())
+    .then(data => {
+      data.forEach(project => {
+        const container = document.getElementById(`${project.category}-projects`);
+        if (!container) return;
 
-        ["architecture", "production", "product"].forEach(category => {
-            const container = document.getElementById(`${category}-projects`);
-            if (projectsData[category]) {
-                projectsData[category].forEach((project, index) => {
-                    const card = document.createElement("div");
-                    card.classList.add("project-card");
-                    card.innerHTML = `
-                        <img src="${project.thumbnail}" alt="${project.title}">
-                        <h3>${project.title}</h3>
-                        <p>${project.description}</p>
-                    `;
-                    card.addEventListener("click", () => openPopup(category, index));
-                    container.appendChild(card);
-                });
-            }
-        });
-    } catch (error) {
-        console.error("Error loading projects.json:", error);
-    }
+        const card = document.createElement("div");
+        card.className = "project-card";
+        card.innerHTML = `
+          <img src="${project.images[0]}" alt="${project.title}">
+          <h3>${project.title}</h3>
+        `;
+        card.addEventListener("click", () => openPopup(project));
+        container.appendChild(card);
+      });
+    })
+    .catch(err => console.error("Error loading projects.json:", err));
 }
 
-// -------------------- POPUP --------------------
-function openPopup(category, index) {
-    currentProject = projectsData[category][index];
-    currentGroupIndex = 0;
-    currentImageIndex = 0;
+let currentProject = null;
+let currentIndex = 0;
 
-    document.getElementById("popup-title").textContent = currentProject.title;
-    document.getElementById("popup-description").textContent = currentProject.description;
+function setupPopup() {
+  const popup = document.getElementById("popup");
+  const closeBtn = document.getElementById("popup-close");
+  const prevBtn = document.getElementById("prev-btn");
+  const nextBtn = document.getElementById("next-btn");
 
-    renderGroups();
-    showImage();
-
-    document.getElementById("popup").style.display = "flex";
+  closeBtn.addEventListener("click", () => popup.classList.add("hidden"));
+  prevBtn.addEventListener("click", showPrevImage);
+  nextBtn.addEventListener("click", showNextImage);
 }
 
-function closePopup() {
-    document.getElementById("popup").style.display = "none";
+function openPopup(project) {
+  currentProject = project;
+  currentIndex = 0;
+
+  document.getElementById("popup-title").textContent = project.title;
+  document.getElementById("popup-description").textContent = project.description;
+
+  const imgContainer = document.getElementById("popup-images");
+  imgContainer.innerHTML = "";
+
+  project.images.forEach((img, i) => {
+    const imageEl = document.createElement("img");
+    imageEl.src = img;
+    if (i === 0) imageEl.classList.add("active");
+    imgContainer.appendChild(imageEl);
+  });
+
+  document.getElementById("popup").classList.remove("hidden");
 }
 
-// -------------------- GROUPS --------------------
-function renderGroups() {
-    const groupsContainer = document.getElementById("popup-groups");
-    groupsContainer.innerHTML = "";
-
-    currentProject.galleryGroups.forEach((group, gIndex) => {
-        const btn = document.createElement("button");
-        btn.textContent = group.title;
-        btn.classList.add("group-btn");
-        if (gIndex === currentGroupIndex) btn.classList.add("active");
-
-        btn.addEventListener("click", () => {
-            currentGroupIndex = gIndex;
-            currentImageIndex = 0;
-            renderGroups();
-            showImage();
-        });
-
-        groupsContainer.appendChild(btn);
-    });
+function showPrevImage() {
+  if (!currentProject) return;
+  const imgs = document.querySelectorAll("#popup-images img");
+  imgs[currentIndex].classList.remove("active");
+  currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
+  imgs[currentIndex].classList.add("active");
 }
 
-// -------------------- IMAGE DISPLAY --------------------
-function showImage() {
-    const group = currentProject.galleryGroups[currentGroupIndex];
-    const imageObj = group.images[currentImageIndex];
-
-    const imageEl = document.getElementById("popup-image");
-    const captionEl = document.getElementById("popup-caption");
-
-    imageEl.src = imageObj.src;
-    imageEl.alt = imageObj.caption;
-    captionEl.textContent = imageObj.caption;
-}
-
-// -------------------- NAVIGATION --------------------
-function prevImage() {
-    const group = currentProject.galleryGroups[currentGroupIndex];
-    currentImageIndex = (currentImageIndex - 1 + group.images.length) % group.images.length;
-    showImage();
-}
-
-function nextImage() {
-    const group = currentProject.galleryGroups[currentGroupIndex];
-    currentImageIndex = (currentImageIndex + 1) % group.images.length;
-    showImage();
-}
-
-// -------------------- THEME TOGGLE --------------------
-function setupThemeToggle() {
-    const toggleBtn = document.getElementById("theme-toggle");
-
-    // Load saved preference
-    if (localStorage.getItem("theme") === "dark") {
-        document.body.classList.add("dark");
-    }
-
-    toggleBtn.addEventListener("click", () => {
-        document.body.classList.toggle("dark");
-        const theme = document.body.classList.contains("dark") ? "dark" : "light";
-        localStorage.setItem("theme", theme);
-    });
+function showNextImage() {
+  if (!currentProject) return;
+  const imgs = document.querySelectorAll("#popup-images img");
+  imgs[currentIndex].classList.remove("active");
+  currentIndex = (currentIndex + 1) % imgs.length;
+  imgs[currentIndex].classList.add("active");
 }
