@@ -8,6 +8,7 @@
         {
           "src": "images/architecture/sunset/sunset2.png",
           "caption": "Exploded axonometric showing layout."
+           "description":"Exploded axonometric showing layout."
         },
         {
           "src": "images/architecture/sunset/sunset1.png",
@@ -90,3 +91,4 @@
     }
   ]
 }
+
