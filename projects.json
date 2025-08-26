@@ -3,62 +3,34 @@ json
   "architecture": [
     {
       "title": "Sunset Getaway Office",
-      "description": "Design for a wellness café combining natural materials with minimal interiors.",
+      "description": "…",
       "thumbnail": "images/architecture/sunset/sunsetcover.png",
       "galleryGroups": [
         {
           "title": "Concept",
           "images": [
-            {
-              "src": "images/architecture/sunset/sunset2.png",
-              "caption": "Exploded axonometric showing layout."
-            }
+            { "src": "images/architecture/sunset/sunset2.png", "caption": "Exploded axonometric" }
           ]
         },
         {
           "title": "Renders",
           "images": [
-            {
-              "src": "images/architecture/sunset/sunset1.png",
-              "caption": "Accounts section."
-            },
-            {
-              "src": "images/architecture/sunset/sunset3.png",
-              "caption": "Work section."
-            },
-            {
-              "src": "images/architecture/sunset/sunset4.png",
-              "caption": "Fun zone / Informal meetings zone."
-            },
-            {
-              "src": "images/architecture/sunset/sunset5.png",
-              "caption": "Fun zone / Informal meetings zone."
-            },
-            {
-              "src": "images/architecture/sunset/sunset6.png",
-              "caption": "Entrance axis, Standing discussion table."
-            },
-            {
-              "src": "images/architecture/sunset/sunset7.png",
-              "caption": "Workspaces."
-            }
+            { "src": "images/architecture/sunset/sunset1.png", "caption": "Accounts section." },
+            { "src": "images/architecture/sunset/sunset3.png", "caption": "Work section." },
+            /* more renders... */
           ]
         },
         {
           "title": "Live Photos",
           "images": [
-            {
-              "src": "images/architecture/sunset/live1.jpg",
-              "caption": "Completed office lobby."
-            },
-            {
-              "src": "images/architecture/sunset/live2.jpg",
-              "caption": "Workstations in use."
-            }
+            { "src": "images/architecture/sunset/live1.jpg", "caption": "Completed office lobby." },
+            { "src": "images/architecture/sunset/live2.jpg", "caption": "Workstations in use." }
           ]
         }
       ]
     },
+    /* more projects… */
+  ],
     {
       "title": "Bloom & Brew kiosk",
       "description": "Compact roadside coffee kiosk designed for a salon lounge and commuters.",
@@ -109,3 +81,4 @@ json
     }
   ]
 }
+
