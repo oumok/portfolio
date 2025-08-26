@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Oum Kuvelkar | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oum Kuvelkar Portfolio</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
     <h1>Oum Kuvelkar</h1>
     <nav>
-      <a href="#architecture">Architecture</a>
-      <a href="#production">Production Design</a>
-      <a href="#art">Art</a>
+      <ul>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#production">Production</a></li>
+      </ul>
     </nav>
   </header>
 
@@ -26,20 +27,19 @@
       <h2>Production Design</h2>
       <div class="project-grid" id="production-projects"></div>
     </section>
-
-    <section id="art">
-      <h2>Art</h2>
-      <div class="project-grid" id="art-projects"></div>
-    </section>
   </main>
 
-  <!-- Popup Modal -->
-  <div id="project-modal" class="modal">
-    <span class="close">&times;</span>
-    <div class="modal-content">
-      <h2 id="modal-title"></h2>
-      <p id="modal-description"></p>
-      <div id="modal-gallery"></div>
+  <!-- Popup -->
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      <span id="popup-close">&times;</span>
+      <h3 id="popup-title"></h3>
+      <p id="popup-description"></p>
+      <div id="popup-images" class="popup-images"></div>
+      <div class="popup-controls">
+        <button id="prev-btn">Prev</button>
+        <button id="next-btn">Next</button>
+      </div>
     </div>
   </div>
 
