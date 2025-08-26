@@ -11,6 +11,7 @@
   <div class="stars"></div>
   <div class="big-stars"></div>
   <canvas id="shapeCanvas"></canvas>
+
   <!-- Landing -->
   <header id="landing" class="landing">
     <div class="intro">
@@ -62,48 +63,11 @@
     <div id="lightbox-caption" class="lightbox__caption"></div>
   </div>
 
-  <!-- Project containers -->
-<div id="architecture-projects"></div>
-<div id="production-projects"></div>
-<div id="product-projects"></div>
+  <!-- Dark/Light Toggle -->
+  <button id="theme-toggle" class="theme-toggle">🌙 / ☀️</button>
 
-<!-- Popup -->
-<div id="popup" class="popup">
-  <div class="popup-content">
-    <span class="close-btn" onclick="closePopup()">&times;</span>
-    <h2 id="popup-title"></h2>
-    <p id="popup-description"></p>
-
-    <div id="popup-groups"></div> <!-- Subdivision buttons -->
-
-    <div class="popup-gallery">
-      <button onclick="prevImage()">&#10094;</button>
-      <img id="popup-image" src="" alt="">
-      <button onclick="nextImage()">&#10095;</button>
-    </div>
-
-    <p id="popup-caption"></p>
-  </div>
-</div>
-
-<!-- Dark/Light Toggle -->
-<button id="theme-toggle">Toggle Theme</button>
-  
-<!-- Image Modal -->
-<div id="image-modal" class="image-modal">
-  <span class="close" onclick="closeImageModal()">&times;</span>
-  <span class="prev" onclick="showPrevImage()">&#10094;</span>
-  <img id="modal-img" />
-  <span class="next" onclick="showNextImage()">&#10095;</span>
-  <p id="modal-caption"></p>
-</div>
-
-<!-- Dark/Light Toggle Button -->
-<button onclick="toggleTheme()" class="theme-toggle">🌙 / ☀️</button>
- <script src="script.js"></script>
+  <!-- Scripts -->
+  <script src="script.js"></script>
   <script src="background.js"></script>
 </body>
 </html>
-
-
-
