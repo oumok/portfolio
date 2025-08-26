@@ -1,60 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Oum | Portfolio</title>
-<link rel="stylesheet" href="style.css" />
-<!-- Prevent theme flash -->
-<script>try{if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark-mode');}}catch(e){}</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oum Kuvelkar | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<!-- Background layers (optional visual taste) -->
-<div class="stars" aria-hidden="true"></div>
-<div class="big-stars" aria-hidden="true"></div>
-<canvas id="shapeCanvas" aria-hidden="true"></canvas>
+  <header>
+    <h1>Oum Kuvelkar</h1>
+    <nav>
+      <a href="#architecture">Architecture</a>
+      <a href="#production">Production Design</a>
+      <a href="#art">Art</a>
+    </nav>
+  </header>
 
+  <main>
+    <section id="architecture">
+      <h2>Architecture</h2>
+      <div class="project-grid" id="architecture-projects"></div>
+    </section>
 
-<!-- Landing (right-aligned) -->
-<header id="landing" class="landing">
-<div class="intro">
-<h1 class="intro__name">Oum</h1>
-<p class="intro__tagline">Architect · Production Designer · Product Designer</p>
-<nav class="intro__nav">
-<a href="#architecture" class="chip">Architecture</a>
-<a href="#production" class="chip">Production Design</a>
-<a href="#product" class="chip">Product Design</a>
-</nav>
-</div>
-</header>
+    <section id="production">
+      <h2>Production Design</h2>
+      <div class="project-grid" id="production-projects"></div>
+    </section>
 
+    <section id="art">
+      <h2>Art</h2>
+      <div class="project-grid" id="art-projects"></div>
+    </section>
+  </main>
 
-<main>
-<section id="architecture" class="section">
-<h2 class="section__title">Architecture</h2>
-<div id="architecture-grid" class="grid"></div>
-</section>
+  <!-- Popup Modal -->
+  <div id="project-modal" class="modal">
+    <span class="close">&times;</span>
+    <div class="modal-content">
+      <h2 id="modal-title"></h2>
+      <p id="modal-description"></p>
+      <div id="modal-gallery"></div>
+    </div>
+  </div>
 
-
-<section id="production" class="section">
-<h2 class="section__title">Production Design</h2>
-<div id="production-grid" class="grid"></div>
-</section>
-
-
-<section id="product" class="section">
-<h2 class="section__title">Product Design</h2>
-<div id="product-grid" class="grid"></div>
-</section>
-</main>
-
-
-<!-- Project Modal -->
-<div id="project-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
-<div class="modal__panel" role="document">
-<button class="modal__close" id="modal-close" aria-label="Close project">×</button>
-<h3 id="modal-title" class="modal__title"></h3>
-<p id="modal-description" class="modal__desc"></p>
-<div id="modal-details" class="modal__details"></div>
-<div id="modal-gallery" class="gallery" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
 </html>
