@@ -5,6 +5,27 @@
       "description": "Design for a wellness café combining natural materials with minimal interiors.",
       "thumbnail": "images/architecture/sunset/sunsetcover.png",
       "gallery": [
+"galleryGroups": [
+  {
+    "title": "Concept",
+    "images": [
+      { "src": "images/architecture/sunset/sunset2.png", "caption": "Exploded axonometric showing layout." }
+    ]
+  },
+  {
+    "title": "Renders",
+    "images": [
+      { "src": "images/architecture/sunset/sunset1.png", "caption": "Accounts section." }
+    ]
+  },
+  {
+    "title": "Live Photos",
+    "images": [
+      { "src": "images/architecture/sunset/live1.jpg", "caption": "Completed office lobby." },
+      { "src": "images/architecture/sunset/live2.jpg", "caption": "Workstations in use." }
+    ]
+  }
+]
         {
           "src": "images/architecture/sunset/sunset2.png",
           "caption": "Exploded axonometric showing layout."
@@ -90,3 +111,4 @@
     }
   ]
 }
+
