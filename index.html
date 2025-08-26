@@ -61,9 +61,26 @@
     <button class="lightbox__nav lightbox__next" id="lightbox-next" aria-label="Next image">❯</button>
     <div id="lightbox-caption" class="lightbox__caption"></div>
   </div>
+<!-- Popup -->
+<div id="popup" class="popup">
+  <div id="popup-content" class="popup-content"></div>
+  <span class="close" onclick="closePopup()">&times;</span>
+</div>
 
+<!-- Image Modal -->
+<div id="image-modal" class="image-modal">
+  <span class="close" onclick="closeImageModal()">&times;</span>
+  <span class="prev" onclick="showPrevImage()">&#10094;</span>
+  <img id="modal-img" />
+  <span class="next" onclick="showNextImage()">&#10095;</span>
+  <p id="modal-caption"></p>
+</div>
+
+<!-- Dark/Light Toggle Button -->
+<button onclick="toggleTheme()" class="theme-toggle">🌙 / ☀️</button>
  <script src="script.js"></script>
   <script src="background.js"></script>
 </body>
 </html>
+
 
