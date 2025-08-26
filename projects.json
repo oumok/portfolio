@@ -1,15 +1,14 @@
-json
 {
   "architecture": [
     {
       "title": "Sunset Getaway Office",
-      "description": "…",
+      "description": "Design for a wellness café combining natural materials with minimal interiors.",
       "thumbnail": "images/architecture/sunset/sunsetcover.png",
       "galleryGroups": [
         {
           "title": "Concept",
           "images": [
-            { "src": "images/architecture/sunset/sunset2.png", "caption": "Exploded axonometric" }
+            { "src": "images/architecture/sunset/sunset2.png", "caption": "Exploded axonometric showing layout." }
           ]
         },
         {
@@ -17,7 +16,10 @@ json
           "images": [
             { "src": "images/architecture/sunset/sunset1.png", "caption": "Accounts section." },
             { "src": "images/architecture/sunset/sunset3.png", "caption": "Work section." },
-            /* more renders... */
+            { "src": "images/architecture/sunset/sunset4.png", "caption": "Fun zone / Informal meetings zone." },
+            { "src": "images/architecture/sunset/sunset5.png", "caption": "Fun zone / Informal meetings zone." },
+            { "src": "images/architecture/sunset/sunset6.png", "caption": "Entrance axis, Standing discussion table." },
+            { "src": "images/architecture/sunset/sunset7.png", "caption": "Workspaces." }
           ]
         },
         {
@@ -29,9 +31,22 @@ json
         }
       ]
     },
-    /* more projects… */
-  ],
-
+    {
+      "title": "Bloom & Brew kiosk",
+      "description": "Compact roadside coffee kiosk designed for a salon lounge and commuters.",
+      "thumbnail": "images/architecture/bb/bbcover.png",
+      "galleryGroups": [
+        {
+          "title": "Concept & Renders",
+          "images": [
+            { "src": "images/architecture/bb/bb1.png", "caption": "Exploded axonometric showing layout." },
+            { "src": "images/architecture/bb/bb2.png", "caption": "Accounts section." },
+            { "src": "images/architecture/bb/bb3.png", "caption": "Work section." },
+            { "src": "images/architecture/bb/bb4.png", "caption": "Kiosk render." },
+            { "src": "images/architecture/bb/bb5.png", "caption": "Interior render." }
+          ]
+        }
+      ]
     }
   ],
   "production": [
@@ -39,7 +54,15 @@ json
       "title": "Film Set XYZ",
       "description": "Production design for a period drama, focusing on authentic detailing.",
       "thumbnail": "images/set1.jpg",
-      "images": ["images/set1.jpg", "images/set2.jpg"]
+      "galleryGroups": [
+        {
+          "title": "On Set",
+          "images": [
+            { "src": "images/set1.jpg", "caption": "Set overview." },
+            { "src": "images/set2.jpg", "caption": "Close-up of props." }
+          ]
+        }
+      ]
     }
   ],
   "product": [
@@ -47,9 +70,15 @@ json
       "title": "Ant Bait Station",
       "description": "Consumer-friendly product designed for easy assembly and low-cost production.",
       "thumbnail": "images/product1.jpg",
-      "images": ["images/product1.jpg", "images/product2.jpg"]
+      "galleryGroups": [
+        {
+          "title": "Prototypes",
+          "images": [
+            { "src": "images/product1.jpg", "caption": "Prototype view 1." },
+            { "src": "images/product2.jpg", "caption": "Prototype view 2." }
+          ]
+        }
+      ]
     }
   ]
 }
-
-
