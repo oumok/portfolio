@@ -1,544 +1,60 @@
-Below are the complete files for a clean, working version of your portfolio with:
-
-* Right‑aligned landing
-* 3‑up grids
-* One project modal with grouped sections
-* Lightbox with prev/next + keyboard
-* Dark/Light mode toggle (saved to localStorage)
-* Safe GitHub Pages paths (all relative)
-* `projects.json` support **with inline fallback** (so the site still works if fetch fails)
-
----
-
-## /index.html
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Oum | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <!-- Prevent theme flash -->
-  <script>try{if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark-mode');}}catch(e){}</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Oum | Portfolio</title>
+<link rel="stylesheet" href="style.css" />
+<!-- Prevent theme flash -->
+<script>try{if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark-mode');}}catch(e){}</script>
 </head>
 <body>
-  <!-- Background layers (optional visual taste) -->
-  <div class="stars" aria-hidden="true"></div>
-  <div class="big-stars" aria-hidden="true"></div>
-  <canvas id="shapeCanvas" aria-hidden="true"></canvas>
+<!-- Background layers (optional visual taste) -->
+<div class="stars" aria-hidden="true"></div>
+<div class="big-stars" aria-hidden="true"></div>
+<canvas id="shapeCanvas" aria-hidden="true"></canvas>
 
-  <!-- Landing (right-aligned) -->
-  <header id="landing" class="landing">
-    <div class="intro">
-      <h1 class="intro__name">Oum</h1>
-      <p class="intro__tagline">Architect · Production Designer · Product Designer</p>
-      <nav class="intro__nav">
-        <a href="#architecture" class="chip">Architecture</a>
-        <a href="#production" class="chip">Production Design</a>
-        <a href="#product" class="chip">Product Design</a>
-      </nav>
-    </div>
-  </header>
 
-  <main>
-    <section id="architecture" class="section">
-      <h2 class="section__title">Architecture</h2>
-      <div id="architecture-grid" class="grid"></div>
-    </section>
+<!-- Landing (right-aligned) -->
+<header id="landing" class="landing">
+<div class="intro">
+<h1 class="intro__name">Oum</h1>
+<p class="intro__tagline">Architect · Production Designer · Product Designer</p>
+<nav class="intro__nav">
+<a href="#architecture" class="chip">Architecture</a>
+<a href="#production" class="chip">Production Design</a>
+<a href="#product" class="chip">Product Design</a>
+</nav>
+</div>
+</header>
 
-    <section id="production" class="section">
-      <h2 class="section__title">Production Design</h2>
-      <div id="production-grid" class="grid"></div>
-    </section>
 
-    <section id="product" class="section">
-      <h2 class="section__title">Product Design</h2>
-      <div id="product-grid" class="grid"></div>
-    </section>
-  </main>
+<main>
+<section id="architecture" class="section">
+<h2 class="section__title">Architecture</h2>
+<div id="architecture-grid" class="grid"></div>
+</section>
 
-  <!-- Project Modal -->
-  <div id="project-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
-    <div class="modal__panel" role="document">
-      <button class="modal__close" id="modal-close" aria-label="Close project">×</button>
-      <h3 id="modal-title" class="modal__title"></h3>
-      <p id="modal-description" class="modal__desc"></p>
-      <div id="modal-details" class="modal__details"></div>
-      <div id="modal-gallery" class="gallery" aria-live="polite"></div>
-    </div>
-  </div>
 
-  <!-- Lightbox for enlarged images -->
-  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
-    <button class="lightbox__close" id="lightbox-close" aria-label="Close image">×</button>
-    <button class="lightbox__nav lightbox__prev" id="lightbox-prev" aria-label="Previous image">❮</button>
-    <img id="lightbox-img" alt="Enlarged project image" />
-    <button class="lightbox__nav lightbox__next" id="lightbox-next" aria-label="Next image">❯</button>
-    <div id="lightbox-caption" class="lightbox__caption"></div>
-  </div>
+<section id="production" class="section">
+<h2 class="section__title">Production Design</h2>
+<div id="production-grid" class="grid"></div>
+</section>
 
-  <!-- Dark/Light toggle -->
-  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙 / ☀️</button>
 
-  <!-- Optional inline fallback data (used only if projects.json fails) -->
-  <script type="application/json" id="projects-data">
-  {
-    "architecture": [
-      {
-        "title": "Sunset Getaway Office",
-        "description": "Design for a wellness café combining natural materials with minimal interiors.",
-        "thumbnail": "images/architecture/sunset/sunsetcover.png",
-        "galleryGroups": [
-          { "title": "Concept", "images": [
-            { "src": "images/architecture/sunset/sunset2.png", "caption": "Exploded axonometric showing layout." }
-          ]},
-          { "title": "Renders", "images": [
-            { "src": "images/architecture/sunset/sunset1.png", "caption": "Accounts section." },
-            { "src": "images/architecture/sunset/sunset3.png", "caption": "Work section." },
-            { "src": "images/architecture/sunset/sunset4.png", "caption": "Fun zone / Informal meetings zone." },
-            { "src": "images/architecture/sunset/sunset5.png", "caption": "Fun zone / Informal meetings zone." },
-            { "src": "images/architecture/sunset/sunset6.png", "caption": "Entrance axis, Standing discussion table." },
-            { "src": "images/architecture/sunset/sunset7.png", "caption": "Workspaces." }
-          ]},
-          { "title": "Live Photos", "images": [
-            { "src": "images/architecture/sunset/live1.jpg", "caption": "Completed office lobby." },
-            { "src": "images/architecture/sunset/live2.jpg", "caption": "Workstations in use." }
-          ]}
-        ]
-      }
-    ],
-    "production": [
-      {
-        "title": "Film Set XYZ",
-        "description": "Production design for a period drama, focusing on authentic detailing.",
-        "thumbnail": "images/set1.jpg",
-        "galleryGroups": [
-          { "title": "On Set", "images": [
-            { "src": "images/set1.jpg", "caption": "Set overview." },
-            { "src": "images/set2.jpg", "caption": "Close-up of props." }
-          ]}
-        ]
-      }
-    ],
-    "product": [
-      {
-        "title": "Ant Bait Station",
-        "description": "Consumer-friendly product designed for easy assembly and low-cost production.",
-        "thumbnail": "images/product1.jpg",
-        "galleryGroups": [
-          { "title": "Prototypes", "images": [
-            { "src": "images/product1.jpg", "caption": "Prototype view 1." },
-            { "src": "images/product2.jpg", "caption": "Prototype view 2." }
-          ]}
-        ]
-      }
-    ]
-  }
-  </script>
+<section id="product" class="section">
+<h2 class="section__title">Product Design</h2>
+<div id="product-grid" class="grid"></div>
+</section>
+</main>
 
-  <script src="script.js"></script>
-  <script src="background.js"></script>
-</body>
+
+<!-- Project Modal -->
+<div id="project-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+<div class="modal__panel" role="document">
+<button class="modal__close" id="modal-close" aria-label="Close project">×</button>
+<h3 id="modal-title" class="modal__title"></h3>
+<p id="modal-description" class="modal__desc"></p>
+<div id="modal-details" class="modal__details"></div>
+<div id="modal-gallery" class="gallery" aria-live="polite"></div>
 </html>
-```
-
----
-
-## /style.css
-
-```css
-/* Reset & base */
-* { box-sizing: border-box; }
-html,body { height:100%; }
-:root { --bg:#0f0f10; --text:#ffffff; --muted:#cfcfd6; --panel:#0f0f11; --card:#161616; --border:rgba(255,255,255,0.14); }
-.dark-mode { --bg:#121214; --text:#f1f1f5; --muted:#c9c9d2; --panel:#0d0d0f; --card:#18181b; --border:rgba(255,255,255,0.16); }
-body { margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:var(--bg); color:var(--text); line-height:1.5; }
-img { display:block; max-width:100%; height:auto; }
-
-/* Landing (right aligned) */
-.landing { min-height:100vh; display:flex; align-items:center; justify-content:flex-end; padding:4rem 6vw; background:linear-gradient(180deg, var(--bg), #0b0b0c); }
-.intro { text-align:right; animation:slideIn .7s ease-out both; }
-.intro__name { margin:0; font-size:clamp(2.4rem,6vw,4.8rem); }
-.intro__tagline { margin:.5rem 0 1.25rem; color:var(--muted); font-size:clamp(1rem,2vw,1.25rem); }
-.intro__nav { display:flex; gap:.6rem; justify-content:flex-end; flex-wrap:wrap; }
-.chip { padding:.55rem 1.1rem; border:1px solid var(--border); border-radius:999px; background:transparent; color:inherit; transition:transform .15s, background .18s; text-decoration:none; }
-.chip:hover { background:#fff; color:#0b0b0c; transform:translateY(-2px); }
-
-/* Sections */
-.section { padding:4rem 6vw; }
-.section__title { margin:0 0 1.5rem; font-size:clamp(1.3rem,3vw,1.9rem); color:#f6f6f8; }
-
-/* Grid 3-up */
-.grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
-@media (max-width:1024px){ .grid{ grid-template-columns:repeat(2,1fr); } }
-@media (max-width:640px){ .grid{ grid-template-columns:1fr; } }
-
-.card { position:relative; overflow:hidden; border-radius:14px; background:var(--card); cursor:pointer; transition: transform .25s ease, box-shadow .25s ease; }
-.card:hover { transform:scale(1.02); box-shadow:0 10px 36px rgba(0,0,0,.6); }
-.card__thumb { width:100%; aspect-ratio:4/3; object-fit:cover; background:#111; display:block; }
-.card__label { position:absolute; left:0; right:0; bottom:0; padding:.75rem 1rem; background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.72) 90%); font-size:.98rem; }
-.card__desc { position:absolute; left:0; right:0; bottom:0; padding:.75rem 1rem 1.1rem; color:#ddd; font-size:.85rem; }
-
-/* Modal (project) */
-.modal { position:fixed; inset:0; display:none; place-items:center; padding:3vh 3vw; background:rgba(0,0,0,.85); z-index:50; }
-.modal.is-open { display:grid; animation:fadeIn .18s ease; }
-.modal__panel { width:min(100%,1100px); max-height:90vh; overflow:auto; background:var(--panel); border-radius:12px; padding:1.4rem; box-shadow:0 18px 60px rgba(0,0,0,.6); }
-.modal__close { position:sticky; top:0; float:right; border:0; background:transparent; color:#aaa; font-size:1.8rem; cursor:pointer; margin:-.5rem -.33rem .4rem 0; }
-.modal__title { margin:.2rem 0 .6rem; font-size:1.3rem; }
-.modal__desc { margin:0 0 .75rem; color:var(--muted); }
-.modal__details { margin:0 0 1rem; color:#bdbdc6; font-size:.95rem; }
-
-/* Gallery Groups */
-.group { margin:1.25rem 0; }
-.group__title { margin:.2rem 0 .6rem; font-size:1.05rem; color:#e9e9ee; border-top:1px solid var(--border); padding-top:.75rem; }
-.gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:.75rem; }
-@media (max-width:900px){ .gallery{ grid-template-columns:repeat(2,1fr); } }
-@media (max-width:560px){ .gallery{ grid-template-columns:1fr; } }
-.gallery img { width:100%; border-radius:8px; cursor:pointer; transition:transform .18s ease; }
-.gallery img:hover { transform:scale(1.03); }
-
-/* Lightbox */
-.lightbox { position:fixed; inset:0; display:none; place-items:center; background:rgba(0,0,0,.95); z-index:60; padding:4vh 4vw; }
-.lightbox.is-open { display:grid; animation:fadeIn .12s ease; }
-.lightbox__close { position:fixed; top:14px; right:18px; border:0; background:transparent; color:#fff; font-size:1.8rem; cursor:pointer; }
-.lightbox__nav { position:fixed; top:50%; transform:translateY(-50%); background:transparent; border:0; color:#fff; font-size:2.2rem; cursor:pointer; padding:.4rem .8rem; opacity:.9; }
-.lightbox__prev { left:10px; } .lightbox__next { right:10px; }
-#lightbox-img { max-width:92vw; max-height:86vh; border-radius:10px; box-shadow:0 12px 44px rgba(0,0,0,.6); }
-.lightbox__caption { margin-top:12px; color:#ddd; text-align:center; max-width:90%; }
-
-/* Lock page scroll when modal/lightbox open */
-.body--lock { overflow:hidden; }
-
-/* Animations */
-@keyframes slideIn { from{opacity:0; transform:translateX(28px);} to{opacity:1; transform:none;} }
-@keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
-
-/* Background layers (stars + shapes) */
-.stars,.big-stars{ position:fixed; top:0; left:0; width:100%; height:100%; background:transparent; overflow:hidden; pointer-events:none; }
-.stars{ z-index:-3; } .big-stars{ z-index:-2; }
-#shapeCanvas{ position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; pointer-events:none; }
-
-/* Theme toggle */
-.theme-toggle{ position:fixed; bottom:20px; right:20px; padding:8px 12px; border-radius:8px; border:1px solid var(--border); background:var(--panel); color:var(--text); cursor:pointer; }
-```
-
----
-
-## /script.js
-
-```javascript
-// script.js
-let DATA = null; // populated from projects.json or inline fallback
-let currentProject = null;
-let allImagesFlat = []; // flattened list for lightbox navigation
-let currentIndex = 0;
-
-// Apply saved theme on load (class is also toggled early in index.html)
-document.addEventListener('DOMContentLoaded', () => {
-  setupThemeToggle();
-  initData().then(renderAll).catch(console.error);
-  setupModal();
-  setupLightbox();
-});
-
-async function initData() {
-  // Try external JSON first
-  try {
-    const res = await fetch('projects.json', { cache: 'no-store' });
-    if (!res.ok) throw new Error('projects.json not found ('+res.status+')');
-    DATA = await res.json();
-    return;
-  } catch (e) {
-    // Fallback to inline JSON
-    const el = document.getElementById('projects-data');
-    if (el) {
-      try { DATA = JSON.parse(el.textContent); return; } catch(err){ console.error('Inline JSON parse error', err); }
-    }
-    throw e;
-  }
-}
-
-function renderAll() {
-  ['architecture','production','product'].forEach(cat => {
-    const grid = document.getElementById(`${cat}-grid`);
-    grid.innerHTML = '';
-    const arr = (DATA && DATA[cat]) ? DATA[cat] : [];
-    arr.forEach((project, idx) => {
-      const card = document.createElement('article');
-      card.className = 'card';
-      card.innerHTML = `
-        <img class="card__thumb" src="${project.thumbnail}" alt="${escapeHtml(project.title)}"/>
-        <div class="card__label">${escapeHtml(project.title)}</div>
-      `;
-      card.addEventListener('click', () => openProject(project));
-      grid.appendChild(card);
-    });
-  });
-}
-
-// ---------------- Modal & Gallery Groups ----------------
-function setupModal(){
-  document.getElementById('modal-close').addEventListener('click', closeProject);
-  document.addEventListener('keydown', (e)=>{
-    const modal = document.getElementById('project-modal');
-    const lightbox = document.getElementById('lightbox');
-    if (e.key==='Escape'){
-      if (lightbox.classList.contains('is-open')) closeLightbox();
-      else if (modal.classList.contains('is-open')) closeProject();
-    }
-  });
-}
-
-function openProject(project){
-  currentProject = project;
-  document.getElementById('modal-title').textContent = project.title || '';
-  document.getElementById('modal-description').textContent = project.description || '';
-  const galleryRoot = document.getElementById('modal-gallery');
-  galleryRoot.innerHTML = '';
-
-  allImagesFlat = [];
-  const groups = project.galleryGroups || [];
-  groups.forEach((group) => {
-    // Group title
-    const wrap = document.createElement('div');
-    wrap.className = 'group';
-    const h = document.createElement('h4');
-    h.className = 'group__title';
-    h.textContent = group.title || 'Gallery';
-    wrap.appendChild(h);
-
-    // Grid
-    const grid = document.createElement('div');
-    grid.className = 'gallery';
-
-    (group.images || []).forEach((img) => {
-      const i = document.createElement('img');
-      i.src = img.src;
-      i.alt = img.caption || '';
-      const idxInFlat = allImagesFlat.length;
-      i.addEventListener('click', () => openLightbox(idxInFlat));
-      grid.appendChild(i);
-      allImagesFlat.push({ src: img.src, caption: img.caption || '' });
-    });
-
-    wrap.appendChild(grid);
-    galleryRoot.appendChild(wrap);
-  });
-
-  openModal();
-}
-
-function openModal(){
-  const m = document.getElementById('project-modal');
-  m.classList.add('is-open');
-  document.body.classList.add('body--lock');
-}
-function closeProject(){
-  document.getElementById('project-modal').classList.remove('is-open');
-  document.body.classList.remove('body--lock');
-}
-
-// ---------------- Lightbox ----------------
-function setupLightbox(){
-  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
-  document.getElementById('lightbox-prev').addEventListener('click', prevImage);
-  document.getElementById('lightbox-next').addEventListener('click', nextImage);
-}
-
-function openLightbox(index){
-  currentIndex = index;
-  updateLightbox();
-  document.getElementById('lightbox').classList.add('is-open');
-}
-function closeLightbox(){
-  document.getElementById('lightbox').classList.remove('is-open');
-}
-function prevImage(){
-  if (!allImagesFlat.length) return;
-  currentIndex = (currentIndex - 1 + allImagesFlat.length) % allImagesFlat.length;
-  updateLightbox();
-}
-function nextImage(){
-  if (!allImagesFlat.length) return;
-  currentIndex = (currentIndex + 1) % allImagesFlat.length;
-  updateLightbox();
-}
-function updateLightbox(){
-  const item = allImagesFlat[currentIndex] || {src:'',caption:''};
-  const img = document.getElementById('lightbox-img');
-  const cap = document.getElementById('lightbox-caption');
-  img.src = item.src; img.alt = item.caption; cap.textContent = item.caption;
-}
-
-// ---------------- Theme ----------------
-function setupThemeToggle(){
-  const btn = document.getElementById('theme-toggle');
-  const apply = () => {
-    const isDark = document.documentElement.classList.toggle('dark-mode');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  };
-  btn.addEventListener('click', apply);
-}
-
-// ---------------- Utils ----------------
-function escapeHtml(str){
-  return String(str).replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[s]));
-}
-```
-
----
-
-## /background.js
-
-```javascript
-// background.js — lightweight background stars + shapes
-(function(){
-  const stars = document.querySelector('.stars');
-  const big = document.querySelector('.big-stars');
-  if (stars) spawnDots(stars, 120, 2);
-  if (big) spawnDots(big, 60, 4);
-
-  function spawnDots(container, count, size){
-    const frag = document.createDocumentFragment();
-    for (let i=0;i<count;i++){
-      const d = document.createElement('div');
-      d.className = size>2 ? 'big-star' : 'star';
-      d.style.left = Math.random()*100 + '%';
-      d.style.top = Math.random()*100 + '%';
-      d.style.animationDelay = (Math.random()*4).toFixed(2)+'s';
-      frag.appendChild(d);
-    }
-    container.appendChild(frag);
-  }
-
-  // (Optional) simple cursor-follow shape drawing
-  const canvas = document.getElementById('shapeCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  function resize(){ canvas.width = innerWidth; canvas.height = innerHeight; }
-  resize(); addEventListener('resize', resize);
-
-  let points = [];
-  addEventListener('mousemove', e => {
-    points.push({x:e.clientX, y:e.clientY, life:1});
-  });
-
-  function tick(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    for (let i=points.length-1; i>=0; i--){
-      const p = points[i];
-      ctx.globalAlpha = p.life*0.4;
-      ctx.fillStyle = '#ffffff';
-      drawIsoBlock(ctx, p.x, p.y, 10 + 12*(1-p.life));
-      p.life -= 0.02; if (p.life<=0) points.splice(i,1);
-    }
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-
-  function drawIsoBlock(ctx, x, y, s){
-    // simple isometric cube-ish marker
-    ctx.save();
-    ctx.translate(x,y);
-    ctx.beginPath();
-    ctx.moveTo(0,-s);
-    ctx.lineTo(s,0); ctx.lineTo(0,s); ctx.lineTo(-s,0); ctx.closePath();
-    ctx.fill();
-    ctx.restore();
-  }
-})();
-```
-
----
-
-## /projects.json (external file — optional if you prefer editing here)
-
-> Put this file next to `index.html`. If present, it will override the inline fallback.
-
-```json
-{
-  "architecture": [
-    {
-      "title": "Sunset Getaway Office",
-      "description": "Design for a wellness café combining natural materials with minimal interiors.",
-      "thumbnail": "images/architecture/sunset/sunsetcover.png",
-      "galleryGroups": [
-        {
-          "title": "Concept",
-          "images": [
-            { "src": "images/architecture/sunset/sunset2.png", "caption": "Exploded axonometric showing layout." }
-          ]
-        },
-        {
-          "title": "Renders",
-          "images": [
-            { "src": "images/architecture/sunset/sunset1.png", "caption": "Accounts section." },
-            { "src": "images/architecture/sunset/sunset3.png", "caption": "Work section." },
-            { "src": "images/architecture/sunset/sunset4.png", "caption": "Fun zone / Informal meetings zone." },
-            { "src": "images/architecture/sunset/sunset5.png", "caption": "Fun zone / Informal meetings zone." },
-            { "src": "images/architecture/sunset/sunset6.png", "caption": "Entrance axis, Standing discussion table." },
-            { "src": "images/architecture/sunset/sunset7.png", "caption": "Workspaces." }
-          ]
-        },
-        {
-          "title": "Live Photos",
-          "images": [
-            { "src": "images/architecture/sunset/live1.jpg", "caption": "Completed office lobby." },
-            { "src": "images/architecture/sunset/live2.jpg", "caption": "Workstations in use." }
-          ]
-        }
-      ]
-    }
-  ],
-  "production": [
-    {
-      "title": "Film Set XYZ",
-      "description": "Production design for a period drama, focusing on authentic detailing.",
-      "thumbnail": "images/set1.jpg",
-      "galleryGroups": [
-        {
-          "title": "On Set",
-          "images": [
-            { "src": "images/set1.jpg", "caption": "Set overview." },
-            { "src": "images/set2.jpg", "caption": "Close-up of props." }
-          ]
-        }
-      ]
-    }
-  ],
-  "product": [
-    {
-      "title": "Ant Bait Station",
-      "description": "Consumer-friendly product designed for easy assembly and low-cost production.",
-      "thumbnail": "images/product1.jpg",
-      "galleryGroups": [
-        {
-          "title": "Prototypes",
-          "images": [
-            { "src": "images/product1.jpg", "caption": "Prototype view 1." },
-            { "src": "images/product2.jpg", "caption": "Prototype view 2." }
-          ]
-        }
-      ]
-    }
-  ]
-}
-```
-
----
-
-### How to deploy on GitHub Pages
-
-1. Put **all four files** (and your **images** folder) at the repo root of `portfolio`.
-2. Commit & push.
-3. Ensure GitHub Pages is enabled for the `main` branch (Settings → Pages → Branch: `main` → `/root`).
-4. Visit `https://oumok.github.io/portfolio/`.
-
-### How to add projects
-
-* Edit `projects.json` (recommended) **or** edit the inline JSON in `index.html` inside the `<script id="projects-data">` tag.
-* No JS changes needed — it auto-renders.
-
-If anything looks off, tell me which file you pasted and I’ll tweak it fast. 🛠️
