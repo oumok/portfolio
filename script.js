@@ -77,6 +77,20 @@ function openProject(project) {
   modal.classList.add('is-open');
   setLock(true);
 }
+// Tab switching inside modal
+document.addEventListener("click", function(e) {
+  if (e.target.classList.contains("tab-btn")) {
+    let tabs = e.target.parentElement.querySelectorAll(".tab-btn");
+    tabs.forEach(btn => btn.classList.remove("active"));
+    e.target.classList.add("active");
+
+    let gallery = document.getElementById("modal-gallery");
+    gallery.querySelectorAll(".gallery-group").forEach(group => group.classList.remove("active"));
+    let target = e.target.getAttribute("data-tab");
+    gallery.querySelector("." + target).classList.add("active");
+  }
+});
+
 
 /* close modal */
 function closeModal() {
@@ -171,3 +185,4 @@ function escapeHtml(str = '') {
     return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[m];
   });
 }
+
