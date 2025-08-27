@@ -169,5 +169,48 @@ img { display:block; max-width:100%; height:auto; }
   object-fit: cover;
   cursor: pointer;
   border-radius: 8px;
+
+
+  /* -------------------------------- */
+/* MODAL GALLERY SPECIFIC STYLES    */
+/* -------------------------------- */
+#modal-gallery .gallery-group {
+  display: none; /* hide all groups by default */
 }
+
+#modal-gallery .gallery-group.active {
+  display: grid; /* only active group shows in a grid */
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 1rem;
+}
+
+#modal-gallery .gallery-group img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Style tab buttons */
+.modal__tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tab-btn {
+  background: #eee;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.tab-btn.active {
+  background: #333;
+  color: #fff;
+}
+
+}
+
 
