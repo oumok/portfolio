@@ -46,9 +46,8 @@
       ]
     },
 
-    
-    {
-      "title": "Bloom & Brew kiosk",
+     {
+     "title": "Bloom & Brew kiosk",
       "description": "Compact roadside coffee kiosk designed for a salon lounge and commuters.",
       "thumbnail": "images/architecture/bb/bbcover.png",
       "gallery": [
@@ -66,16 +65,22 @@
         },
         {
           "src": "images/architecture/bb/bb4.png",
-          "caption": "Kiosk render."
+          "caption": "Fun zone / Informal meetings zone."
         },
         {
           "src": "images/architecture/bb/bb5.png",
-          "caption": "Interior render."
+          "caption": "Fun zone / Informal meetings zone."
+        },
+        {
+          "src": "images/architecture/bb/bb6.png",
+          "caption": "Entrance axis, Standing discussion table."
+        },
+        {
+          "src": "images/architecture/bb/bb7.png",
+          "caption": "Workspaces."
         }
-      ]
-    }
-  ],
-   "livePhotos": [
+      ],
+      "livePhotos": [
         {
           "src": "images/architecture/sunset/live1.jpg",
           "caption": "Completed office lobby."
@@ -87,11 +92,11 @@
       ]
     },
 
-  {
-      "title": "Benaulim Flat",
+     {
+    "title": "Benaulim Flat",
       "description": "A 1BHK transformed into a 2BHK through smart spatial planning and modern Goan aesthetics — compact yet effortlessly airy.",
       "thumbnail": "images/architecture/bb/bbcover.png",
-      "gallery": [
+      "gallery":  [
         {
           "src": "images/architecture/bb/bb1.png",
           "caption": "Exploded axonometric showing layout."
@@ -106,16 +111,22 @@
         },
         {
           "src": "images/architecture/bb/bb4.png",
-          "caption": "Kiosk render."
+          "caption": "Fun zone / Informal meetings zone."
         },
         {
           "src": "images/architecture/bb/bb5.png",
-          "caption": "Interior render."
+          "caption": "Fun zone / Informal meetings zone."
+        },
+        {
+          "src": "images/architecture/bb/bb6.png",
+          "caption": "Entrance axis, Standing discussion table."
+        },
+        {
+          "src": "images/architecture/bb/bb7.png",
+          "caption": "Workspaces."
         }
-      ]
-    }
-  ],
-   "livePhotos": [
+      ],
+      "livePhotos": [
         {
           "src": "images/architecture/sunset/live1.jpg",
           "caption": "Completed office lobby."
@@ -126,6 +137,8 @@
         }
       ]
     },
+   
+  ],
 
   "production": [
     {
@@ -144,6 +157,7 @@
     }
   ]
 }
+
 
 
 
