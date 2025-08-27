@@ -102,14 +102,21 @@ function openProject(project) {modalTitle.textContent = project.title || '';
 // Tab switching inside modal
 document.addEventListener("click", function(e) {
   if (e.target.classList.contains("tab-btn")) {
-    let tabs = e.target.parentElement.querySelectorAll(".tab-btn");
-    tabs.forEach(btn => btn.classList.remove("active"));
+    const tab = e.target.getAttribute("data-tab");
+
+    // Switch active tab button
+    e.target.parentElement.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
     e.target.classList.add("active");
 
-    let gallery = document.getElementById("modal-gallery");
-    gallery.querySelectorAll(".gallery-group").forEach(group => group.classList.remove("active"));
-    let target = e.target.getAttribute("data-tab");
-    gallery.querySelector("." + target).classList.add("active");
+    // Switch gallery groups
+    const gallery = qs("#modal-gallery");
+    gallery.querySelectorAll(".gallery-group").forEach(g => g.classList.remove("active"));
+    const activeGroup = gallery.querySelector("." + tab);
+    activeGroup.classList.add("active");
+
+    // Update lightbox image list to only include active group’s images
+    lbImages = qsa("img", activeGroup).map(img => img.src);
+    lbIndex = 0;
   }
 });
 
@@ -213,6 +220,7 @@ function escapeHtml(str = '') {
     return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[m];
   });
 }
+
 
 
 
