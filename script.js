@@ -133,6 +133,12 @@ function openLightbox(src, caption = '') {
 function updateLightbox(caption = '') {
   const src = lbImages[lbIndex];
   lightboxImg.src = src || '';
+  // fallback: pull caption from DOM if not passed
+  if (!caption) {
+    const activeGroup = qs("#modal-gallery .gallery-group.active");
+    const imgs = qsa("img", activeGroup);
+    if (imgs[lbIndex]) caption = imgs[lbIndex].alt;
+  }
   lightboxCaption.textContent = caption || '';
 }
 
@@ -207,5 +213,6 @@ function escapeHtml(str = '') {
     return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[m];
   });
 }
+
 
 
