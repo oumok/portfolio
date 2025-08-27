@@ -4,7 +4,7 @@
       "title": "Sunset Getaway Office",
       "description": "Design for a wellness café combining natural materials with minimal interiors.",
       "thumbnail": "images/architecture/sunset/sunsetcover.png",
-      "gallery": [
+      "renders": [
         {
           "src": "images/architecture/sunset/sunset2.png",
           "caption": "Exploded axonometric showing layout."
@@ -90,5 +90,6 @@
     }
   ]
 }
+
 
 
