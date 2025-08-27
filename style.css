@@ -122,11 +122,11 @@ img { display:block; max-width:100%; height:auto; }
 }
 
 /* Show only the active one in grid */
-#modal-gallery .gallery-group.active {
+/* #modal-gallery .gallery-group.active {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 0.75rem;
-}
+} 
 
 #modal-gallery .gallery-group img {
   width: 100%;
@@ -134,10 +134,38 @@ img { display:block; max-width:100%; height:auto; }
   object-fit: cover;
   cursor: pointer;
   transition: transform 0.18s ease;
+} old code */
+
+/* Gallery active state */
+#modal-gallery .gallery-group.active {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* flexible sizing */
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Gallery images */
+#modal-gallery .gallery-group img {
+  width: 100%;          /* fills grid cell */
+  height: auto;         /* keeps ratio */
+  object-fit: cover;    /* crops nicely if needed */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.18s ease;
 }
 
 #modal-gallery .gallery-group img:hover {
   transform: scale(1.03);
 }
+
+/* Mobile optimization */
+@media (max-width: 600px) {
+  #modal-gallery .gallery-group.active {
+    grid-template-columns: 1fr; /* stack images on small screens */
+  }
+}
+
+
+
 
 
