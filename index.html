@@ -45,7 +45,15 @@
       <h3 id="modal-title" class="modal__title"></h3>
       <p id="modal-description" class="modal__desc"></p>
       <div id="modal-details" class="modal__details"></div>
-      <div id="modal-gallery" class="gallery" aria-live="polite"></div>
+      <div class="modal__tabs">
+  <button class="tab-btn active" data-tab="concept">Concept Renders</button>
+  <button class="tab-btn" data-tab="real">Real-life Photos</button>
+</div>
+
+<div id="modal-gallery" class="gallery">
+  <div class="gallery-group concept active"></div>
+  <div class="gallery-group real"></div>
+</div>
     </div>
   </div>
 
@@ -62,5 +70,6 @@
 <script src="background.js"></script>
 </body>
 </html>
+
 
 
