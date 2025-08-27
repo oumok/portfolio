@@ -166,6 +166,29 @@ img { display:block; max-width:100%; height:auto; }
 }
 
 
+/* Force gallery into grid */
+#modal-gallery {
+  width: 100%;
+}
+
+#modal-gallery .gallery-group {
+  display: none; /* hide by default */
+}
+
+#modal-gallery .gallery-group.active {
+  display: grid !important; /* force override */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+#modal-gallery .gallery-group img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
 
 
 
