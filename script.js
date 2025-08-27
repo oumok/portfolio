@@ -51,28 +51,50 @@ function renderCard(project, gridEl) {
 }
 
 /* open project modal */
-function openProject(project) {
-  modalTitle.textContent = project.title || '';
+function openProject(project) {modalTitle.textContent = project.title || '';
   modalDesc.textContent = project.description || '';
   modalDetails.textContent = project.details || '';
 
-  // Build gallery items
-  modalGallery.innerHTML = '';
-  const items = Array.isArray(project.gallery) && project.gallery.length
-    ? project.gallery.map(g => (typeof g === 'string' ? { src: g } : g))
-    : (project.images || []).map(s => ({ src: s }));
+  // Reset groups
+  const conceptGroup = qs('.gallery-group.concept');
+  const realGroup = qs('.gallery-group.real');
+  conceptGroup.innerHTML = '';
+  realGroup.innerHTML = '';
 
-  lbImages = items.map(i => i.src).filter(Boolean);
-  lbIndex = 0;
-
-  items.forEach(item => {
-    if (!item || !item.src) return;
+  // Fill concept renders (gallery)
+  const conceptItems = Array.isArray(project.gallery) ? project.gallery : (project.images || []);
+  conceptItems.forEach(item => {
+    const data = typeof item === 'string' ? { src: item } : item;
+    if (!data.src) return;
     const img = document.createElement('img');
-    img.src = item.src;
-    img.alt = item.caption || project.title || '';
-    img.addEventListener('click', () => openLightbox(item.src, item.caption || ''));
-    modalGallery.appendChild(img);
+    img.src = data.src;
+    img.alt = data.caption || project.title || '';
+    img.addEventListener('click', () => openLightbox(data.src, data.caption || ''));
+    conceptGroup.appendChild(img);
   });
+
+  // Fill real photos (livePhotos)
+  if (Array.isArray(project.livePhotos)) {
+    project.livePhotos.forEach(item => {
+      const data = typeof item === 'string' ? { src: item } : item;
+      if (!data.src) return;
+      const img = document.createElement('img');
+      img.src = data.src;
+      img.alt = data.caption || project.title || '';
+      img.addEventListener('click', () => openLightbox(data.src, data.caption || ''));
+      realGroup.appendChild(img);
+    });
+  }
+
+  // Default to concept tab
+  qsa('.tab-btn').forEach(btn => btn.classList.remove('active'));
+  qs(".tab-btn[data-tab='concept']").classList.add("active");
+  conceptGroup.classList.add("active");
+  realGroup.classList.remove("active");
+
+  // Prep lightbox with concept images initially
+  lbImages = conceptItems.map(i => (typeof i === 'string' ? i : i.src)).filter(Boolean);
+  lbIndex = 0;
 
   modal.classList.add('is-open');
   setLock(true);
@@ -185,4 +207,5 @@ function escapeHtml(str = '') {
     return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[m];
   });
 }
+
 
