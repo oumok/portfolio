@@ -124,7 +124,7 @@ img { display:block; max-width:100%; height:auto; }
 /* Show only the active one in grid */
 #modal-gallery .gallery-group.active {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 0.75rem;
 }
 
@@ -139,4 +139,5 @@ img { display:block; max-width:100%; height:auto; }
 #modal-gallery .gallery-group img:hover {
   transform: scale(1.03);
 }
+
 
