@@ -45,15 +45,7 @@
       <h3 id="modal-title" class="modal__title"></h3>
       <p id="modal-description" class="modal__desc"></p>
       <div id="modal-details" class="modal__details"></div>
-      <div class="modal__tabs">
-  <button class="tab-btn active" data-tab="concept">Concept Renders</button>
-  <button class="tab-btn" data-tab="real">Real-life Photos</button>
-</div>
-
-<div id="modal-gallery" class="gallery">
-  <div class="gallery-group concept active"></div>
-  <div class="gallery-group real"></div>
-</div>
+      <div id="modal-gallery" class="gallery" aria-live="polite"></div>
     </div>
   </div>
 
@@ -66,12 +58,104 @@
     <div id="lightbox-caption" class="lightbox__caption"></div>
   </div>
 
-  <script src="script.js"></script>
+  
+<script id="projects-data" type="application/json">
+{
+  "architecture": [
+    {
+      "title": "Sunset Getaway Office",
+      "description": "Design for a wellness café combining natural materials with minimal interiors.",
+      "thumbnail": "images/architecture/sunset/sunsetcover.png",
+      "gallery": [
+        {
+          "src": "images/architecture/sunset/sunset2.png",
+          "caption": "Exploded axonometric showing layout."
+        },
+        {
+          "src": "images/architecture/sunset/sunset1.png",
+          "caption": "Accounts section."
+        },
+        {
+          "src": "images/architecture/sunset/sunset3.png",
+          "caption": "Work section."
+        },
+        {
+          "src": "images/architecture/sunset/sunset4.png",
+          "caption": "Fun zone / Informal meetings zone."
+        },
+        {
+          "src": "images/architecture/sunset/sunset5.png",
+          "caption": "Fun zone / Informal meetings zone."
+        },
+        {
+          "src": "images/architecture/sunset/sunset6.png",
+          "caption": "Entrance axis, Standing discussion table."
+        },
+        {
+          "src": "images/architecture/sunset/sunset7.png",
+          "caption": "Workspaces."
+        }
+      ],
+      "livePhotos": [
+        {
+          "src": "images/architecture/sunset/live1.jpg",
+          "caption": "Completed office lobby."
+        },
+        {
+          "src": "images/architecture/sunset/live2.jpg",
+          "caption": "Workstations in use."
+        }
+      ]
+    },
+    {
+      "title": "Bloom & Brew kiosk",
+      "description": "Compact roadside coffee kiosk designed for a salon lounge and commuters.",
+      "thumbnail": "images/architecture/bb/bbcover.png",
+      "gallery": [
+        {
+          "src": "images/architecture/bb/bb1.png",
+          "caption": "Exploded axonometric showing layout."
+        },
+        {
+          "src": "images/architecture/bb/bb2.png",
+          "caption": "Accounts section."
+        },
+        {
+          "src": "images/architecture/bb/bb3.png",
+          "caption": "Work section."
+        },
+        {
+          "src": "images/architecture/bb/bb4.png",
+          "caption": "Kiosk render."
+        },
+        {
+          "src": "images/architecture/bb/bb5.png",
+          "caption": "Interior render."
+        }
+      ]
+    }
+  ],
+  "production": [
+    {
+      "title": "Film Set XYZ",
+      "description": "Production design for a period drama, focusing on authentic detailing.",
+      "thumbnail": "images/set1.jpg",
+      "images": ["images/set1.jpg", "images/set2.jpg"]
+    }
+  ],
+  "product": [
+    {
+      "title": "Ant Bait Station",
+      "description": "Consumer-friendly product designed for easy assembly and low-cost production.",
+      "thumbnail": "images/product1.jpg",
+      "images": ["images/product1.jpg", "images/product2.jpg"]
+    }
+  ]
+}
+</script>
+<script src="script.js"></script>
 <script src="background.js"></script>
 </body>
 </html>
-
-
-
 
 

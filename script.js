@@ -51,75 +51,32 @@ function renderCard(project, gridEl) {
 }
 
 /* open project modal */
-function openProject(project) {modalTitle.textContent = project.title || '';
+function openProject(project) {
+  modalTitle.textContent = project.title || '';
   modalDesc.textContent = project.description || '';
   modalDetails.textContent = project.details || '';
 
-  // Reset groups
-  const conceptGroup = qs('.gallery-group.concept');
-  const realGroup = qs('.gallery-group.real');
-  conceptGroup.innerHTML = '';
-  realGroup.innerHTML = '';
+  // Build gallery items
+  modalGallery.innerHTML = '';
+  const items = Array.isArray(project.gallery) && project.gallery.length
+    ? project.gallery.map(g => (typeof g === 'string' ? { src: g } : g))
+    : (project.images || []).map(s => ({ src: s }));
 
-  // Fill concept renders (gallery)
-  const conceptItems = Array.isArray(project.gallery) ? project.gallery : (project.images || []);
-  conceptItems.forEach(item => {
-    const data = typeof item === 'string' ? { src: item } : item;
-    if (!data.src) return;
-    const img = document.createElement('img');
-    img.src = data.src;
-    img.alt = data.caption || project.title || '';
-    img.addEventListener('click', () => openLightbox(data.src, data.caption || ''));
-    conceptGroup.appendChild(img);
-  });
-
-  // Fill real photos (livePhotos)
-  if (Array.isArray(project.livePhotos)) {
-    project.livePhotos.forEach(item => {
-      const data = typeof item === 'string' ? { src: item } : item;
-      if (!data.src) return;
-      const img = document.createElement('img');
-      img.src = data.src;
-      img.alt = data.caption || project.title || '';
-      img.addEventListener('click', () => openLightbox(data.src, data.caption || ''));
-      realGroup.appendChild(img);
-    });
-  }
-
-  // Default to concept tab
-  qsa('.tab-btn').forEach(btn => btn.classList.remove('active'));
-  qs(".tab-btn[data-tab='concept']").classList.add("active");
-  conceptGroup.classList.add("active");
-  realGroup.classList.remove("active");
-
-  // Prep lightbox with concept images initially
-  lbImages = conceptItems.map(i => (typeof i === 'string' ? i : i.src)).filter(Boolean);
+  lbImages = items.map(i => i.src).filter(Boolean);
   lbIndex = 0;
+
+  items.forEach(item => {
+    if (!item || !item.src) return;
+    const img = document.createElement('img');
+    img.src = item.src;
+    img.alt = item.caption || project.title || '';
+    img.addEventListener('click', () => openLightbox(item.src, item.caption || ''));
+    modalGallery.appendChild(img);
+  });
 
   modal.classList.add('is-open');
   setLock(true);
 }
-// Tab switching inside modal
-document.addEventListener("click", function(e) {
-  if (e.target.classList.contains("tab-btn")) {
-    const tab = e.target.getAttribute("data-tab");
-
-    // Switch active tab button
-    e.target.parentElement.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-    e.target.classList.add("active");
-
-    // Switch gallery groups
-    const gallery = qs("#modal-gallery");
-    gallery.querySelectorAll(".gallery-group").forEach(g => g.classList.remove("active"));
-    const activeGroup = gallery.querySelector("." + tab);
-    activeGroup.classList.add("active");
-
-    // Update lightbox image list to only include active group’s images
-    lbImages = qsa("img", activeGroup).map(img => img.src);
-    lbIndex = 0;
-  }
-});
-
 
 /* close modal */
 function closeModal() {
@@ -140,12 +97,6 @@ function openLightbox(src, caption = '') {
 function updateLightbox(caption = '') {
   const src = lbImages[lbIndex];
   lightboxImg.src = src || '';
-  // fallback: pull caption from DOM if not passed
-  if (!caption) {
-    const activeGroup = qs("#modal-gallery .gallery-group.active");
-    const imgs = qsa("img", activeGroup);
-    if (imgs[lbIndex]) caption = imgs[lbIndex].alt;
-  }
   lightboxCaption.textContent = caption || '';
 }
 
@@ -222,5 +173,33 @@ function escapeHtml(str = '') {
 }
 
 
+// Embedded projects loader
 
-
+(async function loadProjects(){
+  try {
+    let data = null;
+    const dataEl = document.getElementById('projects-data');
+    if (dataEl) {
+      try { data = JSON.parse(dataEl.textContent); }
+      catch(e) { console.error('Failed to parse embedded projects.json', e); }
+    }
+    if (!data) {
+      const res = await fetch('projects.json');
+      data = await res.json();
+    }
+    // render sections
+    const mappings = {
+      architecture: '#architecture .grid',
+      production: '#production .grid',
+      product: '#product .grid'
+    };
+    Object.keys(mappings).forEach(key => {
+      const list = data[key];
+      const grid = document.querySelector(mappings[key]);
+      if (!grid || !Array.isArray(list)) return;
+      list.forEach(p => renderCard(p, grid));
+    });
+  } catch (err) {
+    console.error('projects.json load failed:', err);
+  }
+})();
