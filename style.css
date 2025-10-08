@@ -23,6 +23,15 @@ img { display:block; max-width:100%; height:auto; }
 }
 .chip:hover { background:#fff; color:#0b0b0c; transform:translateY(-2px); }
 
+.background {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1;               /* keeps it behind all content */
+  pointer-events: none;      /* makes sure it never blocks clicks */
+}
+
+
 /* Sections */
 .section { padding:4rem 6vw; }
 .section__title { margin:0 0 1.5rem; font-size:clamp(1.3rem,3vw,1.9rem); color:#f6f6f8; }
@@ -87,3 +96,4 @@ img { display:block; max-width:100%; height:auto; }
 /* Animations */
 @keyframes slideIn { from{opacity:0; transform:translateX(28px);} to{opacity:1; transform:none;} }
 @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+
