@@ -137,7 +137,9 @@ document.addEventListener('keydown', e => {
 /* load projects.json and render grids
    supports grouped object { architecture:[..], production:[..], product:[..] }
 */
-(async function init() {
+
+
+/* (async function init() {
   try {
     const res = await fetch('projects.json', { cache: 'no-store' });
     const data = await res.json();
@@ -163,7 +165,9 @@ document.addEventListener('keydown', e => {
   } catch (err) {
     console.error('projects.json load failed:', err);
   }
-})();
+})(); */
+
+
 
 /* small helper to avoid XSS if any data is untrusted */
 function escapeHtml(str = '') {
