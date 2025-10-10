@@ -24,17 +24,17 @@
   <main>
     <section id="architecture" class="section">
       <h2 class="section__title">Architecture</h2>
-      <div class="grid" id="architecture-grid"></div>
+      <div id="architecture-grid" class="grid"></div>
     </section>
 
     <section id="production" class="section">
       <h2 class="section__title">Production Design</h2>
-      <div class="grid" id="production-grid"></div>
+      <div id="production-grid" class="grid"></div>
     </section>
 
     <section id="product" class="section">
       <h2 class="section__title">Product Design</h2>
-      <div class="grid" id="product-grid"></div>
+      <div id="product-grid" class="grid"></div>
     </section>
   </main>
 
@@ -44,11 +44,7 @@
       <button class="modal__close" id="modal-close" aria-label="Close project">×</button>
       <h3 id="modal-title" class="modal__title"></h3>
       <p id="modal-description" class="modal__desc"></p>
-      <div id="modal-details" class="modal__details"></div>
-
-      <!-- Tabs -->
-      <div class="modal__tabs"></div>
-      <div id="modal-gallery" class="gallery"></div>
+      <div id="modal-gallery" class="gallery" aria-live="polite"></div>
     </div>
   </div>
 
@@ -61,41 +57,9 @@
     <div id="lightbox-caption" class="lightbox__caption"></div>
   </div>
 
-  <!-- Projects JSON -->
+  <!-- Embedded Projects JSON -->
   <script id="projects-data" type="application/json">
-  {
-    "architecture": [
-      {
-        "title": "Sunset Getaway Office",
-        "description": "Design for a wellness café combining natural materials with minimal interiors.",
-        "thumbnail": "images/architecture/sunset/sunsetcover.png",
-        "gallery": [
-          {"src":"images/architecture/sunset/sunset2.png","caption":"Exploded axonometric showing layout."},
-          {"src":"images/architecture/sunset/sunset1.png","caption":"Accounts section."}
-        ],
-        "livePhotos": [
-          {"src":"images/architecture/sunset/live1.jpg","caption":"Completed office lobby."},
-          {"src":"images/architecture/sunset/live2.jpg","caption":"Workstations in use."}
-        ]
-      }
-    ],
-    "production": [
-      {
-        "title": "Film Set XYZ",
-        "description": "Production design for a period drama, focusing on authentic detailing.",
-        "thumbnail": "images/set1.jpg",
-        "images": ["images/set1.jpg","images/set2.jpg"]
-      }
-    ],
-    "product": [
-      {
-        "title": "Ant Bait Station",
-        "description": "Consumer-friendly product designed for easy assembly and low-cost production.",
-        "thumbnail": "images/product1.jpg",
-        "images": ["images/product1.jpg","images/product2.jpg"]
-      }
-    ]
-  }
+  <!-- Paste your projects.json content here -->
   </script>
 
   <script src="script.js"></script>
