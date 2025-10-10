@@ -1,161 +1,167 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Oum | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <!-- Landing -->
-  <header id="landing" class="landing">
-    <div class="intro">
-      <h1 class="intro__name">Oum</h1>
-      <p class="intro__tagline">Architect · Production Designer · Product Designer</p>
-      <nav class="intro__nav">
-        <a href="#architecture" class="chip">Architecture</a>
-        <a href="#production" class="chip">Production Design</a>
-        <a href="#product" class="chip">Product Design</a>
-      </nav>
-    </div>
-  </header>
+// Parse projects data from inline JSON
+const projectsData = JSON.parse(document.getElementById('projects-data').textContent);
 
-  <!-- Main -->
-  <main>
-    <section id="architecture" class="section">
-      <h2 class="section__title">Architecture</h2>
-      <div id="architecture-grid" class="grid"></div>
-    </section>
+const grids = {
+  architecture: document.getElementById('architecture-grid'),
+  production: document.getElementById('production-grid'),
+  product: document.getElementById('product-grid')
+};
 
-    <section id="production" class="section">
-      <h2 class="section__title">Production Design</h2>
-      <div id="production-grid" class="grid"></div>
-    </section>
+// Utility to create project thumbnail
+function createProjectCard(project, category) {
+  const card = document.createElement('div');
+  card.className = 'project-card';
+  card.innerHTML = `
+    <img src="${project.thumbnail}" alt="${project.title}" />
+    <h3>${project.title}</h3>
+  `;
 
-    <section id="product" class="section">
-      <h2 class="section__title">Product Design</h2>
-      <div id="product-grid" class="grid"></div>
-    </section>
-  </main>
-
-  <!-- Project Modal -->
-  <div id="project-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
-    <div class="modal__panel" role="document">
-      <button class="modal__close" id="modal-close" aria-label="Close project">×</button>
-      <h3 id="modal-title" class="modal__title"></h3>
-      <p id="modal-description" class="modal__desc"></p>
-      <div id="modal-details" class="modal__details"></div>
-      <div id="modal-gallery" class="gallery" aria-live="polite"></div>
-    </div>
-  </div>
-
-  <!-- Lightbox -->
-  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
-    <button class="lightbox__close" id="lightbox-close" aria-label="Close image">×</button>
-    <button class="lightbox__nav lightbox__prev" id="lightbox-prev" aria-label="Previous image">❮</button>
-    <img id="lightbox-img" alt="Enlarged project image" />
-    <button class="lightbox__nav lightbox__next" id="lightbox-next" aria-label="Next image">❯</button>
-    <div id="lightbox-caption" class="lightbox__caption"></div>
-  </div>
-
-  
-<script id="projects-data" type="application/json">
-{
-  "architecture": [
-    {
-      "title": "Sunset Getaway Office",
-      "description": "Design for a wellness café combining natural materials with minimal interiors.",
-      "thumbnail": "images/architecture/sunset/sunsetcover.png",
-      "gallery": [
-        {
-          "src": "images/architecture/sunset/sunset2.png",
-          "caption": "Exploded axonometric showing layout."
-        },
-        {
-          "src": "images/architecture/sunset/sunset1.png",
-          "caption": "Accounts section."
-        },
-        {
-          "src": "images/architecture/sunset/sunset3.png",
-          "caption": "Work section."
-        },
-        {
-          "src": "images/architecture/sunset/sunset4.png",
-          "caption": "Fun zone / Informal meetings zone."
-        },
-        {
-          "src": "images/architecture/sunset/sunset5.png",
-          "caption": "Fun zone / Informal meetings zone."
-        },
-        {
-          "src": "images/architecture/sunset/sunset6.png",
-          "caption": "Entrance axis, Standing discussion table."
-        },
-        {
-          "src": "images/architecture/sunset/sunset7.png",
-          "caption": "Workspaces."
-        }
-      ],
-      "livePhotos": [
-        {
-          "src": "images/architecture/sunset/live1.jpg",
-          "caption": "Completed office lobby."
-        },
-        {
-          "src": "images/architecture/sunset/live2.jpg",
-          "caption": "Workstations in use."
-        }
-      ]
-    },
-    {
-      "title": "Bloom & Brew kiosk",
-      "description": "Compact roadside coffee kiosk designed for a salon lounge and commuters.",
-      "thumbnail": "images/architecture/bb/bbcover.png",
-      "gallery": [
-        {
-          "src": "images/architecture/bb/bb1.png",
-          "caption": "Exploded axonometric showing layout."
-        },
-        {
-          "src": "images/architecture/bb/bb2.png",
-          "caption": "Accounts section."
-        },
-        {
-          "src": "images/architecture/bb/bb3.png",
-          "caption": "Work section."
-        },
-        {
-          "src": "images/architecture/bb/bb4.png",
-          "caption": "Kiosk render."
-        },
-        {
-          "src": "images/architecture/bb/bb5.png",
-          "caption": "Interior render."
-        }
-      ]
-    }
-  ],
-  "production": [
-    {
-      "title": "Film Set XYZ",
-      "description": "Production design for a period drama, focusing on authentic detailing.",
-      "thumbnail": "images/set1.jpg",
-      "images": ["images/set1.jpg", "images/set2.jpg"]
-    }
-  ],
-  "product": [
-    {
-      "title": "Ant Bait Station",
-      "description": "Consumer-friendly product designed for easy assembly and low-cost production.",
-      "thumbnail": "images/product1.jpg",
-      "images": ["images/product1.jpg", "images/product2.jpg"]
-    }
-  ]
+  card.addEventListener('click', () => openProjectModal(project));
+  grids[category].appendChild(card);
 }
-</script>
-<script src="script.js"></script>
-<script src="background.js"></script>
-</body>
-</html>
 
+// Load projects into their respective grids
+Object.keys(projectsData).forEach(cat => {
+  projectsData[cat].forEach(proj => createProjectCard(proj, cat));
+});
 
+// Modal elements
+const modal = document.getElementById('project-modal');
+const modalClose = document.getElementById('modal-close');
+const modalTitle = document.getElementById('modal-title');
+const modalDesc = document.getElementById('modal-description');
+const modalDetails = document.getElementById('modal-details');
+const modalGallery = document.getElementById('modal-gallery');
+
+// Tab buttons (will be dynamically created)
+let tabButtons = [];
+
+// Open modal with tabs
+function openProjectModal(project) {
+  modalTitle.textContent = project.title;
+  modalDesc.textContent = project.description;
+  modalGallery.innerHTML = '';
+  modalDetails.innerHTML = '';
+
+  // Clear previous tabs
+  const existingTabs = modal.querySelector('.tabs');
+  if (existingTabs) existingTabs.remove();
+
+  // Create tab buttons container
+  const tabsContainer = document.createElement('div');
+  tabsContainer.className = 'tabs';
+
+  // Prepare tabs
+  const tabs = [];
+
+  if (project.livePhotos && project.livePhotos.length) {
+    tabs.push({ name: 'Real-life Photos', key: 'livePhotos' });
+  }
+  if (project.gallery && project.gallery.length) {
+    tabs.push({ name: 'Renders / Plans', key: 'gallery' });
+  }
+  if (project.images && project.images.length) {
+    tabs.push({ name: 'Gallery', key: 'images' }); // fallback for production/product
+  }
+
+  // Create tab buttons
+  tabButtons = tabs.map((tab, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'tab-btn';
+    btn.textContent = tab.name;
+    if (idx === 0) btn.classList.add('active');
+    btn.addEventListener('click', () => showTab(tab.key, btn));
+    tabsContainer.appendChild(btn);
+    return btn;
+  });
+
+  modalGallery.parentNode.insertBefore(tabsContainer, modalGallery);
+
+  // Show first tab by default
+  if (tabs[0]) showTab(tabs[0].key, tabButtons[0]);
+
+  modal.style.display = 'block';
+}
+
+// Show selected tab
+function showTab(key, activeBtn) {
+  // Update active button
+  tabButtons.forEach(btn => btn.classList.remove('active'));
+  activeBtn.classList.add('active');
+
+  // Clear gallery
+  modalGallery.innerHTML = '';
+
+  // Get the correct array
+  let imagesArray = [];
+  if (key === 'livePhotos') imagesArray = activeProject.livePhotos || [];
+  else if (key === 'gallery') imagesArray = activeProject.gallery || [];
+  else if (key === 'images') imagesArray = activeProject.images?.map(src => ({ src })) || [];
+
+  // Populate gallery
+  imagesArray.forEach(img => {
+    const imgEl = document.createElement('img');
+    imgEl.src = img.src;
+    if (img.caption) imgEl.alt = img.caption;
+    modalGallery.appendChild(imgEl);
+
+    // Click to open lightbox
+    imgEl.addEventListener('click', () => openLightbox(img.src, img.caption || ''));
+  });
+}
+
+// Close modal
+modalClose.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+
+// Keep track of current project for tabs
+let activeProject = null;
+function openProjectModal(project) {
+  activeProject = project;
+  modalTitle.textContent = project.title;
+  modalDesc.textContent = project.description;
+  modalGallery.innerHTML = '';
+  modalDetails.innerHTML = '';
+
+  // Remove existing tabs if any
+  const oldTabs = modal.querySelector('.tabs');
+  if (oldTabs) oldTabs.remove();
+
+  // Create tabs
+  const tabsContainer = document.createElement('div');
+  tabsContainer.className = 'tabs';
+  modalGallery.parentNode.insertBefore(tabsContainer, modalGallery);
+
+  const tabs = [];
+  if (project.livePhotos?.length) tabs.push({ name: 'Real-life Photos', key: 'livePhotos' });
+  if (project.gallery?.length) tabs.push({ name: 'Renders / Plans', key: 'gallery' });
+  if (project.images?.length) tabs.push({ name: 'Gallery', key: 'images' });
+
+  tabButtons = tabs.map((tab, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'tab-btn';
+    btn.textContent = tab.name;
+    if (idx === 0) btn.classList.add('active');
+    btn.addEventListener('click', () => showTab(tab.key, btn));
+    tabsContainer.appendChild(btn);
+    return btn;
+  });
+
+  if (tabs[0]) showTab(tabs[0].key, tabButtons[0]);
+
+  modal.style.display = 'block';
+}
+
+// Lightbox logic (simple)
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxCaption = document.getElementById('lightbox-caption');
+const lightboxClose = document.getElementById('lightbox-close');
+
+function openLightbox(src, caption = '') {
+  lightboxImg.src = src;
+  lightboxCaption.textContent = caption;
+  lightbox.style.display = 'block';
+}
+lightboxClose.addEventListener('click', () => lightbox.style.display = 'none');
