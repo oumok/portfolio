@@ -5,44 +5,17 @@
       "description": "Design for a wellness café combining natural materials with minimal interiors.",
       "thumbnail": "images/architecture/sunset/sunsetcover.png",
       "gallery": [
-        {
-          "src": "images/architecture/sunset/sunset2.png",
-          "caption": "Exploded axonometric showing layout."
-        },
-        {
-          "src": "images/architecture/sunset/sunset1.png",
-          "caption": "Accounts section."
-        },
-        {
-          "src": "images/architecture/sunset/sunset3.png",
-          "caption": "Work section."
-        },
-        {
-          "src": "images/architecture/sunset/sunset4.png",
-          "caption": "Fun zone / Informal meetings zone."
-        },
-        {
-          "src": "images/architecture/sunset/sunset5.png",
-          "caption": "Fun zone / Informal meetings zone."
-        },
-        {
-          "src": "images/architecture/sunset/sunset6.png",
-          "caption": "Entrance axis, Standing discussion table."
-        },
-        {
-          "src": "images/architecture/sunset/sunset7.png",
-          "caption": "Workspaces."
-        }
+        { "src": "images/architecture/sunset/sunset2.png", "caption": "Exploded axonometric showing layout." },
+        { "src": "images/architecture/sunset/sunset1.png", "caption": "Accounts section." },
+        { "src": "images/architecture/sunset/sunset3.png", "caption": "Work section." },
+        { "src": "images/architecture/sunset/sunset4.png", "caption": "Fun zone / Informal meetings zone." },
+        { "src": "images/architecture/sunset/sunset5.png", "caption": "Fun zone / Informal meetings zone." },
+        { "src": "images/architecture/sunset/sunset6.png", "caption": "Entrance axis, Standing discussion table." },
+        { "src": "images/architecture/sunset/sunset7.png", "caption": "Workspaces." }
       ],
       "livePhotos": [
-        {
-          "src": "images/architecture/sunset/live1.jpg",
-          "caption": "Completed office lobby."
-        },
-        {
-          "src": "images/architecture/sunset/live2.jpg",
-          "caption": "Workstations in use."
-        }
+        { "src": "images/architecture/sunset/live1.jpg", "caption": "Completed office lobby." },
+        { "src": "images/architecture/sunset/live2.jpg", "caption": "Workstations in use." }
       ]
     },
     {
@@ -50,106 +23,60 @@
       "description": "Compact roadside coffee kiosk designed for a salon lounge and commuters.",
       "thumbnail": "images/architecture/bb/bbcover.png",
       "gallery": [
-        {
-          "src": "images/architecture/bb/bb1.png",
-          "caption": "Exploded axonometric showing layout."
-        },
-        {
-          "src": "images/architecture/bb/bb2.png",
-          "caption": "Accounts section."
-        },
-        {
-          "src": "images/architecture/bb/bb3.png",
-          "caption": "Work section."
-        },
-        {
-          "src": "images/architecture/bb/bb4.png",
-          "caption": "Kiosk render."
-        },
-        {
-          "src": "images/architecture/bb/bb5.png",
-          "caption": "Interior render."
-        }
+        { "src": "images/architecture/bb/bb1.png", "caption": "Exploded axonometric showing layout." },
+        { "src": "images/architecture/bb/bb2.png", "caption": "Accounts section." },
+        { "src": "images/architecture/bb/bb3.png", "caption": "Work section." },
+        { "src": "images/architecture/bb/bb4.png", "caption": "Kiosk render." },
+        { "src": "images/architecture/bb/bb5.png", "caption": "Interior render." }
       ]
     },
-
-        {
+    {
       "title": "Benaulim house",
-      "description": "Compact 1 bhk house converted to 2 bhk",
+      "description": "Compact 1BHK house converted to a 2BHK, maximizing space in a modern Goan aesthetic.",
       "thumbnail": "images/architecture/benaulim/benaulimcover.png",
       "gallery": [
-        {
-          "src": "images/architecture/bb/bb1.png",
-          "caption": "Exploded axonometric showing layout."
-        },
-        {
-          "src": "images/architecture/bb/bb2.png",
-          "caption": "Accounts section."
-        },
-        {
-          "src": "images/architecture/bb/bb3.png",
-          "caption": "Work section."
-        },
-        {
-          "src": "images/architecture/bb/bb4.png",
-          "caption": "Kiosk render."
-        },
-        {
-          "src": "images/architecture/bb/bb5.png",
-          "caption": "Interior render."
-        }
+        { "src": "images/architecture/benaulim/benaulim1.png", "caption": "Exploded axonometric showing layout." },
+        { "src": "images/architecture/benaulim/benaulim2.png", "caption": "Living area render." },
+        { "src": "images/architecture/benaulim/benaulim3.png", "caption": "Kitchen and dining zone." },
+        { "src": "images/architecture/benaulim/benaulim4.png", "caption": "Bedroom view." },
+        { "src": "images/architecture/benaulim/benaulim5.png", "caption": "Bathroom design." }
       ]
     },
-
-
-        {
+    {
       "title": "Serendipity installation",
-      "description": "Wayfinder + functional art installation for MOLD magazine at Serendipity arts festival 2024.",
+      "description": "Wayfinder + functional art installation for MOLD magazine at Serendipity Arts Festival 2024.",
       "thumbnail": "images/architecture/serendipity24/serendipity24cover.png",
       "gallery": [
-        {
-          "src": "images/architecture/bb/bb1.png",
-          "caption": "Exploded axonometric showing layout."
-        },
-        {
-          "src": "images/architecture/bb/bb2.png",
-          "caption": "Accounts section."
-        },
-        {
-          "src": "images/architecture/bb/bb3.png",
-          "caption": "Work section."
-        },
-        {
-          "src": "images/architecture/bb/bb4.png",
-          "caption": "Kiosk render."
-        },
-        {
-          "src": "images/architecture/bb/bb5.png",
-          "caption": "Interior render."
-        }
+        { "src": "images/architecture/serendipity24/serendipity1.png", "caption": "Concept visual for installation." },
+        { "src": "images/architecture/serendipity24/serendipity2.png", "caption": "Assembly layout." },
+        { "src": "images/architecture/serendipity24/serendipity3.png", "caption": "Structural frame detail." },
+        { "src": "images/architecture/serendipity24/serendipity4.png", "caption": "Lighting and signage system." },
+        { "src": "images/architecture/serendipity24/serendipity5.png", "caption": "Final render of installation." }
       ]
     }
-    
-    
   ],
+
   "production": [
     {
       "title": "Mirzapur - The film sets",
-      "description": "Production design for a period drama, focusing on authentic detailing.",
-      "thumbnail": "images/production/mirzapur",
-      "images": ["images/set1.jpg", "images/set2.jpg"]
+      "description": "Production design for a period drama, focusing on authentic detailing and environment creation.",
+      "thumbnail": "images/production/mirzapur/mirzapurcover.jpg",
+      "images": [
+        "images/production/mirzapur/set1.jpg",
+        "images/production/mirzapur/set2.jpg"
+      ]
     }
   ],
+
   "product": [
     {
       "title": "Ant Bait Station",
       "description": "Consumer-friendly product designed for easy assembly and low-cost production.",
       "thumbnail": "images/product/product1.jpg",
-      "images": ["images/product/product1.jpg", "images/product2.jpg"]
+      "images": [
+        "images/product/product1.jpg",
+        "images/product/product2.jpg"
+      ]
     }
   ]
 }
-
-
-
-
