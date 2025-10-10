@@ -71,13 +71,72 @@
           "caption": "Interior render."
         }
       ]
-    }
+    },
+
+        {
+      "title": "Benaulim house",
+      "description": "Compact 1 bhk house converted to 2 bhk",
+      "thumbnail": "images/architecture/benaulim/benaulimcover.png",
+      "gallery": [
+        {
+          "src": "images/architecture/bb/bb1.png",
+          "caption": "Exploded axonometric showing layout."
+        },
+        {
+          "src": "images/architecture/bb/bb2.png",
+          "caption": "Accounts section."
+        },
+        {
+          "src": "images/architecture/bb/bb3.png",
+          "caption": "Work section."
+        },
+        {
+          "src": "images/architecture/bb/bb4.png",
+          "caption": "Kiosk render."
+        },
+        {
+          "src": "images/architecture/bb/bb5.png",
+          "caption": "Interior render."
+        }
+      ]
+    },
+
+
+        {
+      "title": "Serendipity installation",
+      "description": "Wayfinder + functional art installation for MOLD magazine at Serendipity arts festival 2024.",
+      "thumbnail": "images/architecture/serendipity24/serendipity24cover.png",
+      "gallery": [
+        {
+          "src": "images/architecture/bb/bb1.png",
+          "caption": "Exploded axonometric showing layout."
+        },
+        {
+          "src": "images/architecture/bb/bb2.png",
+          "caption": "Accounts section."
+        },
+        {
+          "src": "images/architecture/bb/bb3.png",
+          "caption": "Work section."
+        },
+        {
+          "src": "images/architecture/bb/bb4.png",
+          "caption": "Kiosk render."
+        },
+        {
+          "src": "images/architecture/bb/bb5.png",
+          "caption": "Interior render."
+        }
+      ]
+    },
+    
+    
   ],
   "production": [
     {
-      "title": "Film Set XYZ",
+      "title": "Mirzapur - The film sets",
       "description": "Production design for a period drama, focusing on authentic detailing.",
-      "thumbnail": "images/set1.jpg",
+      "thumbnail": "images/production/mirzapur",
       "images": ["images/set1.jpg", "images/set2.jpg"]
     }
   ],
@@ -85,10 +144,11 @@
     {
       "title": "Ant Bait Station",
       "description": "Consumer-friendly product designed for easy assembly and low-cost production.",
-      "thumbnail": "images/product1.jpg",
-      "images": ["images/product1.jpg", "images/product2.jpg"]
+      "thumbnail": "images/product/product1.jpg",
+      "images": ["images/product/product1.jpg", "images/product2.jpg"]
     }
   ]
 }
+
 
 
