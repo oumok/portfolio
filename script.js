@@ -187,9 +187,10 @@ function escapeHtml(str = '') {
       try { data = JSON.parse(dataEl.textContent); }
       catch(e) { console.error('Failed to parse embedded projects.json', e); }
     }
-    if (!data) {
-      const res = await fetch('projects.json');
-      data = await res.json();
+if (!data) {
+  const res = await fetch(`projects.json?nocache=${Date.now()}`, { cache: 'no-store' });
+  data = await res.json();
+}
     }
     // render sections
     const mappings = {
