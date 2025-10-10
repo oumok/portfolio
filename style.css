@@ -117,3 +117,17 @@ img { display:block; max-width:100%; height:auto; }
 @media (max-width:560px){ .gallery-group.active { grid-template-columns:1fr; } }
 
 
+/* Modal tabs */
+.modal__tabs {
+  display:flex; gap:0.6rem; margin-bottom:1rem;
+}
+.modal__tabs .tab-btn {
+  padding:.5rem 1rem; border:none; border-radius:999px; background:#222; color:#ccc; cursor:pointer;
+  transition:background .2s,color .2s;
+}
+.modal__tabs .tab-btn.active { background:#fff; color:#0b0b0c; }
+.gallery-group { display:none; }
+.gallery-group.active { display:grid; grid-template-columns:repeat(3,1fr); gap:.75rem; }
+@media(max-width:900px){ .gallery-group{ grid-template-columns:repeat(2,1fr); } }
+@media(max-width:560px){ .gallery-group{ grid-template-columns:1fr; } }
+
