@@ -1,36 +1,40 @@
 /* =====================================================
-   script.js - Loads projects.json, renders grids,
-   handles project modal and lightbox with prev/next.
-   Works with grouped projects.json (architecture/production/product)
-   or you can keep your existing grouped format.
+   script.js - Cleaned & working version
+   - loads projects (embedded or projects.json)
+   - renders grids
+   - modal with Concept / Real tabs
+   - responsive modal gallery
+   - lightbox with prev/next and keyboard controls
    ===================================================== */
 
 /* helpers */
-const qs = (sel, el = document) => el.querySelector(sel);
-const qsa = (sel, el = document) => Array.from(el.querySelectorAll(sel));
+const qs = (sel, el = document) => el && el.querySelector(sel);
+const qsa = (sel, el = document) => Array.from((el || document).querySelectorAll(sel));
 const setLock = (lock) => document.body.classList.toggle('body--lock', lock);
 
-/* modal elements */
-const modal = qs('#project-modal');
-const modalClose = qs('#modal-close');
-const modalTitle = qs('#modal-title');
-const modalDesc = qs('#modal-description');
-const modalDetails = qs('#modal-details');
-const modalGallery = qs('#modal-gallery');
+/* modal elements (these may exist after DOM load) */
+const modal = () => qs('#project-modal');
+const modalClose = () => qs('#modal-close');
+const modalTitle = () => qs('#modal-title');
+const modalDesc = () => qs('#modal-description');
+const modalDetails = () => qs('#modal-details');
+const modalGalleryContainer = () => qs('#modal-gallery');
 
 /* lightbox elements */
-const lightbox = qs('#lightbox');
-const lightboxImg = qs('#lightbox-img');
-const lightboxClose = qs('#lightbox-close');
-const lightboxPrev = qs('#lightbox-prev');
-const lightboxNext = qs('#lightbox-next');
-const lightboxCaption = qs('#lightbox-caption');
+const lightbox = () => qs('#lightbox');
+const lightboxImg = () => qs('#lightbox-img');
+const lightboxClose = () => qs('#lightbox-close');
+const lightboxPrev = () => qs('#lightbox-prev');
+const lightboxNext = () => qs('#lightbox-next');
+const lightboxCaption = () => qs('#lightbox-caption');
 
 /* state for lightbox navigation */
-let lbImages = [];
+let lbImages = []; // array of src strings for current active group
 let lbIndex = 0;
 
-/* render a single project card inside target grid */
+/* ------------------------------------------------------------------
+   Render a single project card inside target grid element
+   ------------------------------------------------------------------ */
 function renderCard(project, gridEl) {
   const cover = project.thumbnail || (project.images && project.images[0]) || '';
   const title = project.title || '';
@@ -39,173 +43,309 @@ function renderCard(project, gridEl) {
   card.className = 'card';
   card.tabIndex = 0;
   card.innerHTML = `
-    <img class="card__thumb" src="${cover}" alt="${escapeHtml(title)}">
+    <img class="card__thumb" src="${escapeHtml(cover)}" alt="${escapeHtml(title)}">
     <div class="card__label">${escapeHtml(title)}</div>
   `;
 
   const openHandler = () => openProject(project);
   card.addEventListener('click', openHandler);
-  card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openHandler(); } });
+  card.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openHandler(); }
+  });
 
   gridEl.appendChild(card);
 }
 
-/* open project modal */
-function openProject(project) {
-  modalTitle.textContent = project.title || '';
-  modalDesc.textContent = project.description || '';
-  modalDetails.textContent = project.details || '';
+/* ------------------------------------------------------------------
+   Ensure modal gallery structure is present:
+   - .modal__tabs (two buttons with data-tab="concept"/"real")
+   - #modal-gallery .gallery-group.concept
+   - #modal-gallery .gallery-group.real
+   This will create missing elements if the HTML doesn't already include them.
+   ------------------------------------------------------------------ */
+function ensureModalStructure() {
+  const galleryRoot = modalGalleryContainer();
+  if (!galleryRoot) return;
 
-  // Build gallery items
-  modalGallery.innerHTML = '';
-  const items = Array.isArray(project.gallery) && project.gallery.length
-    ? project.gallery.map(g => (typeof g === 'string' ? { src: g } : g))
-    : (project.images || []).map(s => ({ src: s }));
+  // create tabs container if missing
+  let tabs = qs('.modal__tabs', galleryRoot.parentElement || document);
+  if (!tabs) {
+    tabs = document.createElement('div');
+    tabs.className = 'modal__tabs';
+    tabs.innerHTML = `
+      <button class="tab-btn active" data-tab="concept">Concept Renders</button>
+      <button class="tab-btn" data-tab="real">Real-life Photos</button>
+    `;
+    // insert tabs before galleryRoot
+    galleryRoot.parentElement.insertBefore(tabs, galleryRoot);
+  }
 
-  lbImages = items.map(i => i.src).filter(Boolean);
+  // create gallery groups if missing
+  let conceptGroup = qs('.gallery-group.concept', galleryRoot);
+  let realGroup = qs('.gallery-group.real', galleryRoot);
+
+  if (!conceptGroup) {
+    conceptGroup = document.createElement('div');
+    conceptGroup.className = 'gallery-group concept active';
+    galleryRoot.appendChild(conceptGroup);
+  }
+
+  if (!realGroup) {
+    realGroup = document.createElement('div');
+    realGroup.className = 'gallery-group real';
+    galleryRoot.appendChild(realGroup);
+  }
+
+  // add tab click wiring (idempotent)
+  qsa('.tab-btn', tabs).forEach(btn => {
+    btn.removeEventListener('click', tabClickHandler);
+    btn.addEventListener('click', tabClickHandler);
+  });
+}
+
+/* Tab click handler (separate function so we can remove/listen safely) */
+function tabClickHandler(e) {
+  const btn = e.currentTarget;
+  const tab = btn.getAttribute('data-tab');
+  if (!tab) return;
+
+  // toggle active class on buttons
+  const tabs = btn.parentElement.querySelectorAll('.tab-btn');
+  tabs.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  // toggle gallery groups
+  const galleryRoot = modalGalleryContainer();
+  if (!galleryRoot) return;
+  galleryRoot.querySelectorAll('.gallery-group').forEach(g => g.classList.remove('active'));
+  const activeGroup = qs(`.gallery-group.${tab}`, galleryRoot);
+  if (activeGroup) activeGroup.classList.add('active');
+
+  // update lightbox image list to active group's images
+  lbImages = qsa('img', activeGroup).map(i => i.src);
   lbIndex = 0;
+}
 
-  items.forEach(item => {
-    if (!item || !item.src) return;
+/* ------------------------------------------------------------------
+   Open a project into the modal, fill concept / real groups
+   ------------------------------------------------------------------ */
+function openProject(project) {
+  ensureModalStructure(); // safe-guard
+
+  const m = modal();
+  if (!m) return;
+
+  modalTitle().textContent = project.title || '';
+  modalDesc().textContent = project.description || '';
+  modalDetails().textContent = project.details || '';
+
+  // find groups
+  const galleryRoot = modalGalleryContainer();
+  const conceptGroup = qs('.gallery-group.concept', galleryRoot);
+  const realGroup = qs('.gallery-group.real', galleryRoot);
+
+  // clear previous
+  conceptGroup.innerHTML = '';
+  realGroup.innerHTML = '';
+
+  // Fill concept renders (project.gallery or project.images fallback)
+  const conceptItems = Array.isArray(project.gallery) && project.gallery.length
+    ? project.gallery
+    : (Array.isArray(project.images) ? project.images : []);
+
+  conceptItems.forEach(item => {
+    const data = (typeof item === 'string') ? { src: item } : item || {};
+    if (!data.src) return;
     const img = document.createElement('img');
-    img.src = item.src;
-    img.alt = item.caption || project.title || '';
-    img.addEventListener('click', () => openLightbox(item.src, item.caption || ''));
-    modalGallery.appendChild(img);
+    img.src = data.src;
+    img.alt = data.caption || project.title || '';
+    img.addEventListener('click', () => {
+      // ensure lbImages reflect current active group before opening
+      lbImages = qsa('img', conceptGroup).map(i => i.src);
+      lbIndex = lbImages.indexOf(data.src);
+      if (lbIndex < 0) lbIndex = 0;
+      openLightbox(data.src, data.caption || '');
+    });
+    conceptGroup.appendChild(img);
   });
 
-  modal.classList.add('is-open');
+  // Fill real photos (project.livePhotos)
+  if (Array.isArray(project.livePhotos) && project.livePhotos.length) {
+    project.livePhotos.forEach(item => {
+      const data = (typeof item === 'string') ? { src: item } : item || {};
+      if (!data.src) return;
+      const img = document.createElement('img');
+      img.src = data.src;
+      img.alt = data.caption || project.title || '';
+      img.addEventListener('click', () => {
+        lbImages = qsa('img', realGroup).map(i => i.src);
+        lbIndex = lbImages.indexOf(data.src);
+        if (lbIndex < 0) lbIndex = 0;
+        openLightbox(data.src, data.caption || '');
+      });
+      realGroup.appendChild(img);
+    });
+  }
+
+  // default to concept tab active
+  const tabs = document.querySelectorAll('.modal__tabs .tab-btn');
+  tabs.forEach(b => b.classList.remove('active'));
+  const defaultBtn = document.querySelector('.modal__tabs .tab-btn[data-tab="concept"]');
+  if (defaultBtn) defaultBtn.classList.add('active');
+
+  conceptGroup.classList.add('active');
+  realGroup.classList.remove('active');
+
+  // prepare lightbox initially with concept images
+  lbImages = qsa('img', conceptGroup).map(i => i.src);
+  lbIndex = 0;
+
+  m.classList.add('is-open');
   setLock(true);
 }
 
-/* close modal */
+/* ------------------------------------------------------------------
+   Modal and lightbox controls
+   ------------------------------------------------------------------ */
 function closeModal() {
-  modal.classList.remove('is-open');
+  const m = modal();
+  if (!m) return;
+  m.classList.remove('is-open');
   setLock(false);
 }
 
-/* open lightbox showing src (sync index to src) */
 function openLightbox(src, caption = '') {
   lbIndex = lbImages.indexOf(src);
   if (lbIndex < 0) lbIndex = 0;
   updateLightbox(caption);
-  lightbox.classList.add('is-open');
+  const lb = lightbox();
+  if (!lb) return;
+  lb.classList.add('is-open');
   setLock(true);
 }
 
-/* update lightbox image/caption */
 function updateLightbox(caption = '') {
-  const src = lbImages[lbIndex];
-  lightboxImg.src = src || '';
-  lightboxCaption.textContent = caption || '';
+  const imgEl = lightboxImg();
+  const capEl = lightboxCaption();
+  if (!imgEl || !capEl) return;
+  imgEl.src = lbImages[lbIndex] || '';
+  // If caption not passed, try to pull from current active gallery image alt
+  if (!caption) {
+    const activeGroup = qs('#modal-gallery .gallery-group.active');
+    const imgs = activeGroup ? qsa('img', activeGroup) : [];
+    if (imgs[lbIndex]) caption = imgs[lbIndex].alt || '';
+  }
+  capEl.textContent = caption || '';
 }
 
-/* close lightbox */
 function closeLightbox() {
-  lightbox.classList.remove('is-open');
-  lightboxImg.src = '';
-  // if modal still open keep lock; otherwise release
-  if (!modal.classList.contains('is-open')) setLock(false);
+  const lb = lightbox();
+  if (!lb) return;
+  lb.classList.remove('is-open');
+  const imgEl = lightboxImg();
+  if (imgEl) imgEl.src = '';
+  if (!modal().classList.contains('is-open')) setLock(false);
 }
 
-/* move image index */
 function changeLightbox(step) {
-  if (!lbImages.length) return;
+  if (!lbImages || !lbImages.length) return;
   lbIndex = (lbIndex + step + lbImages.length) % lbImages.length;
   updateLightbox();
 }
 
-/* event wiring */
-modalClose.addEventListener('click', closeModal);
-modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+/* ------------------------------------------------------------------
+   Wire up persistent event listeners (modal close, lightbox buttons, keys)
+   ------------------------------------------------------------------ */
+function wireGlobalEvents() {
+  // modal close and click outside
+  const mClose = modalClose();
+  if (mClose) mClose.addEventListener('click', closeModal);
+  const m = modal();
+  if (m) m.addEventListener('click', e => { if (e.target === m) closeModal(); });
 
-lightboxClose.addEventListener('click', closeLightbox);
-lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-lightboxPrev.addEventListener('click', () => changeLightbox(-1));
-lightboxNext.addEventListener('click', () => changeLightbox(1));
+  // lightbox controls
+  const lbClose = lightboxClose();
+  if (lbClose) lbClose.addEventListener('click', closeLightbox);
+  const lb = lightbox();
+  if (lb) lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
 
-document.addEventListener('keydown', e => {
-  if (lightbox.classList.contains('is-open')) {
-    if (e.key === 'ArrowRight') changeLightbox(1);
-    if (e.key === 'ArrowLeft') changeLightbox(-1);
-    if (e.key === 'Escape') closeLightbox();
-  } else if (modal.classList.contains('is-open')) {
-    if (e.key === 'Escape') closeModal();
-  }
-});
+  const lbP = lightboxPrev();
+  const lbN = lightboxNext();
+  if (lbP) lbP.addEventListener('click', () => changeLightbox(-1));
+  if (lbN) lbN.addEventListener('click', () => changeLightbox(1));
 
-/* load projects.json and render grids
-   supports grouped object { architecture:[..], production:[..], product:[..] }
-*/
-
-
-/* (async function init() {
-  try {
-    const res = await fetch('projects.json', { cache: 'no-store' });
-    const data = await res.json();
-
-    const byCat = { architecture: [], production: [], product: [] };
-    if (Array.isArray(data)) {
-      // if data were flat list, you'd need category property on each item
-      data.forEach(p => {
-        const cat = (p.category || '').toLowerCase();
-        if (byCat[cat]) byCat[cat].push(p);
-      });
-    } else if (data && typeof data === 'object') {
-      byCat.architecture = data.architecture || [];
-      byCat.production = data.production || [];
-      byCat.product = data.product || [];
+  // keyboard
+  document.addEventListener('keydown', e => {
+    const lbOpen = lightbox() && lightbox().classList.contains('is-open');
+    const modalOpen = modal() && modal().classList.contains('is-open');
+    if (lbOpen) {
+      if (e.key === 'ArrowRight') changeLightbox(1);
+      if (e.key === 'ArrowLeft') changeLightbox(-1);
+      if (e.key === 'Escape') closeLightbox();
+    } else if (modalOpen) {
+      if (e.key === 'Escape') closeModal();
     }
-
-    Object.entries(byCat).forEach(([cat, list]) => {
-      const grid = qs(`#${cat}-grid`);
-      if (!grid || !Array.isArray(list)) return;
-      list.forEach(p => renderCard(p, grid));
-    });
-  } catch (err) {
-    console.error('projects.json load failed:', err);
-  }
-})(); */
-
-
-
-/* small helper to avoid XSS if any data is untrusted */
-function escapeHtml(str = '') {
-  return String(str).replace(/[&<>"']/g, function (m) {
-    return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[m];
   });
 }
 
-
-// Embedded projects loader
-
-(async function loadProjects(){
+/* ------------------------------------------------------------------
+   Load projects (embedded or external) and render into grids
+   - supports embedded <script id="projects-data"> JSON OR external projects.json
+   - uses cache-busting to avoid stale JSON on GH Pages
+   ------------------------------------------------------------------ */
+(async function loadProjects() {
   try {
     let data = null;
+
+    // 1) try embedded JSON (script tag with id="projects-data")
     const dataEl = document.getElementById('projects-data');
-    if (dataEl) {
-      try { data = JSON.parse(dataEl.textContent); }
-      catch(e) { console.error('Failed to parse embedded projects.json', e); }
+    if (dataEl && dataEl.textContent.trim()) {
+      try {
+        data = JSON.parse(dataEl.textContent);
+      } catch (err) {
+        console.warn('Embedded projects JSON parse failed:', err);
+        data = null;
+      }
     }
-if (!data) {
-  const res = await fetch(`projects.json?nocache=${Date.now()}`, { cache: 'no-store' });
-  data = await res.json();
-}
+
+    // 2) If not embedded, fetch external projects.json (cache-busted)
+    if (!data) {
+      const res = await fetch(`./projects.json?nocache=${Date.now()}`, { cache: 'no-store' });
+      if (!res.ok) throw new Error('projects.json fetch failed: ' + res.status);
+      data = await res.json();
     }
-}
+
+    // ensure modal structure and event wiring are ready
+    ensureModalStructure();
+    wireGlobalEvents();
+
     // render sections
     const mappings = {
       architecture: '#architecture .grid',
       production: '#production .grid',
       product: '#product .grid'
     };
+
     Object.keys(mappings).forEach(key => {
       const list = data[key];
       const grid = document.querySelector(mappings[key]);
       if (!grid || !Array.isArray(list)) return;
+      grid.innerHTML = ''; // clear old
       list.forEach(p => renderCard(p, grid));
     });
+
+    console.log('✅ Projects loaded', data);
+
   } catch (err) {
     console.error('projects.json load failed:', err);
   }
 })();
+
+/* ------------------------------------------------------------------
+   small helper to avoid XSS if any data is untrusted
+   ------------------------------------------------------------------ */
+function escapeHtml(str = '') {
+  return String(str || '').replace(/[&<>"']/g, function (m) {
+    return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[m];
+  });
+}
