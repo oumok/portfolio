@@ -192,6 +192,7 @@ if (!data) {
   data = await res.json();
 }
     }
+}
     // render sections
     const mappings = {
       architecture: '#architecture .grid',
