@@ -1,71 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Oum | Portfolio</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
- <section id="landing">
-  <div class="landing-content">
-    <h1>OUM</h1>
-    <h2>Architect &nbsp;&nbsp;| &nbsp;&nbsp;Production Designer &nbsp;&nbsp;| &nbsp;&nbsp;Product Innovator</h2>
-    
-    <div class="cta-buttons">
-      <a href="#architecture" class="cta">Architecture</a>
-      <a href="#production" class="cta">Production Design</a>
-      <a href="#product" class="cta">Product Design</a>
+  <canvas id="background"></canvas>
+
+  <!-- Landing -->
+  <section id="landing">
+    <div class="landing-content">
+      <h1>OUM</h1>
+      <h2>Architect&nbsp; | &nbsp;Production Designer&nbsp; | &nbsp;Product Innovator</h2>
+
+      <div class="cta-buttons">
+        <a href="#architecture" class="cta">Architecture</a>
+        <a href="#production" class="cta">Production Design</a>
+        <a href="#product" class="cta">Product Design</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Sections -->
+  <main id="portfolio">
+    <section id="architecture">
+      <h2>Architecture</h2>
+      <div class="project-grid" id="architecture-grid"></div>
+    </section>
+
+    <section id="production">
+      <h2>Production Design</h2>
+      <div class="project-grid" id="production-grid"></div>
+    </section>
+
+    <section id="product">
+      <h2>Product Design</h2>
+      <div class="project-grid" id="product-grid"></div>
+    </section>
+  </main>
+
+  <!-- Popup -->
+  <div id="popup" class="hidden">
+    <div class="popup-content">
+      <span id="closePopup">&times;</span>
+      <h3 id="popupTitle"></h3>
+      <p id="popupDesc"></p>
+      <div class="gallery-grid" id="popupGallery"></div>
+    </div>
+    <div id="imageModal" class="hidden">
+      <span id="closeImage">&times;</span>
+      <img id="modalImg" src="" alt="">
+      <div id="caption"></div>
     </div>
   </div>
-</section>
 
-<main id="portfolio">
-  <section id="architecture">
-    <h2>Architecture</h2>
-    <div class="project-grid" id="architecture-grid"></div>
-  </section>
-
-  <section id="production">
-    <h2>Production Design</h2>
-    <div class="project-grid" id="production-grid"></div>
-  </section>
-
-  <section id="product">
-    <h2>Product Design</h2>
-    <div class="project-grid" id="product-grid"></div>
-  </section>
-</main>
-
-
-  <!-- Main -->
-
-
-  <!-- Project Modal -->
-  <div id="project-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
-    <div class="modal__panel" role="document">
-      <button class="modal__close" id="modal-close" aria-label="Close project">×</button>
-      <h3 id="modal-title" class="modal__title"></h3>
-      <p id="modal-description" class="modal__desc"></p>
-      <div id="modal-gallery" class="gallery" aria-live="polite"></div>
-    </div>
-  </div>
-
-  <!-- Lightbox -->
-  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
-    <button class="lightbox__close" id="lightbox-close" aria-label="Close image">×</button>
-    <button class="lightbox__nav lightbox__prev" id="lightbox-prev" aria-label="Previous image">❮</button>
-    <img id="lightbox-img" alt="Enlarged project image" />
-    <button class="lightbox__nav lightbox__next" id="lightbox-next" aria-label="Next image">❯</button>
-    <div id="lightbox-caption" class="lightbox__caption"></div>
-  </div>
-
-  <!-- Embedded Projects JSON -->
-  <script id="projects-data" type="application/json">
-  <!-- Paste your projects.json content here -->
-  </script>
-
-  <script src="script.js"></script>
   <script src="background.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
