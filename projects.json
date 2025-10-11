@@ -45,13 +45,16 @@
     {
       "title": "Serendipity installation",
       "description": "Wayfinder + functional art installation for MOLD magazine at Serendipity Arts Festival 2024.",
-      "thumbnail": "images/architecture/serendipity24/serendipity24cover.png",
+      "thumbnail": "images/architecture/serendipity24/saf24cover.png",
       "gallery": [
-        { "src": "images/architecture/serendipity24/serendipity1.png", "caption": "Concept visual for installation." },
-        { "src": "images/architecture/serendipity24/serendipity2.png", "caption": "Assembly layout." },
-        { "src": "images/architecture/serendipity24/serendipity3.png", "caption": "Structural frame detail." },
-        { "src": "images/architecture/serendipity24/serendipity4.png", "caption": "Lighting and signage system." },
-        { "src": "images/architecture/serendipity24/serendipity5.png", "caption": "Final render of installation." }
+        { "src": "images/architecture/serendipity24/1.png", "caption": "Concept visual for installation." },
+        { "src": "images/architecture/serendipity24/2.png", "caption": "Assembly layout." },
+        { "src": "images/architecture/serendipity24/3.png", "caption": "Structural frame detail." },
+        { "src": "images/architecture/serendipity24/4.png", "caption": "Lighting and signage system." },
+        { "src": "images/architecture/serendipity24/5.png", "caption": "Assembly layout." },
+        { "src": "images/architecture/serendipity24/6.png", "caption": "Structural frame detail." },
+        { "src": "images/architecture/serendipity24/7.png", "caption": "Lighting and signage system." },
+        { "src": "images/architecture/serendipity24/8.png", "caption": "Final render of installation." }
       ]
     }
   ],
@@ -80,3 +83,4 @@
     }
   ]
 }
+
