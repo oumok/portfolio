@@ -1,68 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Oum | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+  <script defer src="background.js"></script>
 </head>
 <body>
-  <!-- Landing -->
-  <header id="landing" class="landing">
-    <div class="intro">
-      <h1 class="intro__name">Oum</h1>
-      <p class="intro__tagline">Architect · Production Designer · Product Designer</p>
-      <nav class="intro__nav">
-        <a href="#architecture" class="chip">Architecture</a>
-        <a href="#production" class="chip">Production Design</a>
-        <a href="#product" class="chip">Product Design</a>
-      </nav>
-    </div>
+  <header>
+    <h1>Portfolio</h1>
   </header>
 
-  <!-- Main -->
-  <main>
-    <section id="architecture" class="section">
-      <h2 class="section__title">Architecture</h2>
-      <div id="architecture-grid" class="grid"></div>
-    </section>
-
-    <section id="production" class="section">
-      <h2 class="section__title">Production Design</h2>
-      <div id="production-grid" class="grid"></div>
-    </section>
-
-    <section id="product" class="section">
-      <h2 class="section__title">Product Design</h2>
-      <div id="product-grid" class="grid"></div>
-    </section>
+  <main id="projectsContainer">
+    <!-- JS will inject sections + cards here -->
   </main>
 
-  <!-- Project Modal -->
-  <div id="project-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
-    <div class="modal__panel" role="document">
-      <button class="modal__close" id="modal-close" aria-label="Close project">×</button>
-      <h3 id="modal-title" class="modal__title"></h3>
-      <p id="modal-description" class="modal__desc"></p>
-      <div id="modal-gallery" class="gallery" aria-live="polite"></div>
+  <!-- Popup gallery -->
+  <div id="popup" class="hidden">
+    <div class="popup-content">
+      <button id="popupClose">×</button>
+      <h2 id="popupTitle"></h2>
+      <p id="popupDescription"></p>
+      <div id="popupImages" class="grid-gallery"></div>
     </div>
   </div>
 
   <!-- Lightbox -->
-  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
-    <button class="lightbox__close" id="lightbox-close" aria-label="Close image">×</button>
-    <button class="lightbox__nav lightbox__prev" id="lightbox-prev" aria-label="Previous image">❮</button>
-    <img id="lightbox-img" alt="Enlarged project image" />
-    <button class="lightbox__nav lightbox__next" id="lightbox-next" aria-label="Next image">❯</button>
-    <div id="lightbox-caption" class="lightbox__caption"></div>
+  <div id="lightbox" class="hidden">
+    <img id="lightboxImg" src="" alt="">
+    <div id="lightboxCaption"></div>
   </div>
-
-  <!-- Embedded Projects JSON -->
-  <script id="projects-data" type="application/json">
-  <!-- Paste your projects.json content here -->
-  </script>
-
-  <script src="script.js"></script>
-  <script src="background.js"></script>
 </body>
 </html>
