@@ -7,36 +7,39 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Landing -->
-  <header id="landing" class="landing">
-    <div class="intro">
-      <h1 class="intro__name">Oum</h1>
-      <p class="intro__tagline">Architect · Production Designer · Product Designer</p>
-      <nav class="intro__nav">
-        <a href="#architecture" class="chip">Architecture</a>
-        <a href="#production" class="chip">Production Design</a>
-        <a href="#product" class="chip">Product Design</a>
-      </nav>
+ <section id="landing">
+  <div class="landing-content">
+    <h1>OUM</h1>
+    <h2>Architect &nbsp;&nbsp;| &nbsp;&nbsp;Production Designer &nbsp;&nbsp;| &nbsp;&nbsp;Product Innovator</h2>
+    
+    <div class="cta-buttons">
+      <a href="#architecture" class="cta">Architecture</a>
+      <a href="#production" class="cta">Production Design</a>
+      <a href="#product" class="cta">Product Design</a>
     </div>
-  </header>
+  </div>
+</section>
+
+<main id="portfolio">
+  <section id="architecture">
+    <h2>Architecture</h2>
+    <div class="project-grid" id="architecture-grid"></div>
+  </section>
+
+  <section id="production">
+    <h2>Production Design</h2>
+    <div class="project-grid" id="production-grid"></div>
+  </section>
+
+  <section id="product">
+    <h2>Product Design</h2>
+    <div class="project-grid" id="product-grid"></div>
+  </section>
+</main>
+
 
   <!-- Main -->
-  <main>
-    <section id="architecture" class="section">
-      <h2 class="section__title">Architecture</h2>
-      <div id="architecture-grid" class="grid"></div>
-    </section>
 
-    <section id="production" class="section">
-      <h2 class="section__title">Production Design</h2>
-      <div id="production-grid" class="grid"></div>
-    </section>
-
-    <section id="product" class="section">
-      <h2 class="section__title">Product Design</h2>
-      <div id="product-grid" class="grid"></div>
-    </section>
-  </main>
 
   <!-- Project Modal -->
   <div id="project-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
