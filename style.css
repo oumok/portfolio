@@ -164,3 +164,73 @@ img { display:block; max-width:100%; height:auto; }
   }
 }
 
+/* =========================
+   Fix: Popup Gallery Scaling
+   ========================= */
+#project-modal.is-open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#project-modal .modal__content {
+  width: 90%;
+  max-width: 1200px;
+  background: var(--modal-bg, #111);
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 2rem;
+  color: #fff;
+}
+
+#modal-gallery {
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+/* Make popup gallery fill modal space neatly */
+#modal-gallery .gallery-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+}
+
+#modal-gallery .gallery-group img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#modal-gallery .gallery-group img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Tabs alignment fix */
+.modal__tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.modal__tabs .tab-btn {
+  background: #222;
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.modal__tabs .tab-btn.active {
+  background: #444;
+}
+
+.modal__tabs .tab-btn:hover {
+  background: #333;
+}
