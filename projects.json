@@ -27,7 +27,16 @@
         { "src": "images/architecture/bb/bb2.png", "caption": "Accounts section." },
         { "src": "images/architecture/bb/bb3.png", "caption": "Work section." },
         { "src": "images/architecture/bb/bb4.png", "caption": "Kiosk render." },
-        { "src": "images/architecture/bb/bb5.png", "caption": "Interior render." }
+		{ "src": "images/architecture/bb/bb5.png", "caption": "Kiosk render." },
+		{ "src": "images/architecture/bb/bb6.png", "caption": "Kiosk render." },
+		{ "src": "images/architecture/bb/bb7.png", "caption": "Kiosk render." },
+		{ "src": "images/architecture/bb/bb8.png", "caption": "Kiosk render." },
+		{ "src": "images/architecture/bb/bb9.png", "caption": "Kiosk render." },
+		{ "src": "images/architecture/bb/bb10.png", "caption": "Kiosk render." },
+		{ "src": "images/architecture/bb/bb11.png", "caption": "Kiosk render." },
+		{ "src": "images/architecture/bb/bb12.png", "caption": "Kiosk render." },
+		
+        { "src": "images/architecture/bb/bb13.png", "caption": "Interior render." }
       ]
     },
     {
