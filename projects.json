@@ -63,7 +63,13 @@
         { "src": "images/architecture/serendipity24/5.jpg", "caption": "Assembly layout." },
         { "src": "images/architecture/serendipity24/6.jpg", "caption": "Structural frame detail." },
         { "src": "images/architecture/serendipity24/7.jpg", "caption": "Lighting and signage system." },
-        { "src": "images/architecture/serendipity24/8.jpg", "caption": "Final render of installation." }
+		{ "src": "images/architecture/serendipity24/8.jpg", "caption": "Lighting and signage system." },
+		{ "src": "images/architecture/serendipity24/9.jpg", "caption": "Lighting and signage system." },
+		{ "src": "images/architecture/serendipity24/10.jpg", "caption": "Lighting and signage system." },
+		{ "src": "images/architecture/serendipity24/11.jpg", "caption": "Lighting and signage system." },
+		{ "src": "images/architecture/serendipity24/12.jpg", "caption": "Lighting and signage system." },
+		{ "src": "images/architecture/serendipity24/13.jpg", "caption": "Lighting and signage system." },
+		{ "src": "images/architecture/serendipity24/14.jpg", "caption": "Lighting and signage system." }
       ]
     }
   ],
