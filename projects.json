@@ -23,20 +23,19 @@
       "description": "Compact roadside coffee kiosk designed for a salon lounge and commuters.",
       "thumbnail": "images/architecture/bb/bbcover.png",
       "gallery": [
-        { "src": "images/architecture/bb/bb1.png", "caption": "Exploded axonometric showing layout." },
-        { "src": "images/architecture/bb/bb2.png", "caption": "Accounts section." },
-        { "src": "images/architecture/bb/bb3.png", "caption": "Work section." },
-        { "src": "images/architecture/bb/bb4.png", "caption": "Kiosk render." },
-		{ "src": "images/architecture/bb/bb5.png", "caption": "Kiosk render." },
-		{ "src": "images/architecture/bb/bb6.png", "caption": "Kiosk render." },
-		{ "src": "images/architecture/bb/bb7.png", "caption": "Kiosk render." },
-		{ "src": "images/architecture/bb/bb8.png", "caption": "Kiosk render." },
-		{ "src": "images/architecture/bb/bb9.png", "caption": "Kiosk render." },
-		{ "src": "images/architecture/bb/bb10.png", "caption": "Kiosk render." },
-		{ "src": "images/architecture/bb/bb11.png", "caption": "Kiosk render." },
-		{ "src": "images/architecture/bb/bb12.png", "caption": "Kiosk render." },
-		
-        { "src": "images/architecture/bb/bb13.png", "caption": "Interior render." }
+        { "src": "images/architecture/bb/bb1.png", "caption": "Isometric illustration." },
+        { "src": "images/architecture/bb/bb2.png", "caption": "Use of counter horizontal elemetns." },
+        { "src": "images/architecture/bb/bb3.png", "caption": "Kiosk sectional illustration." },
+        { "src": "images/architecture/bb/bb4.png", "caption": "Exploded isometric view." },
+		{ "src": "images/architecture/bb/bb5.png", "caption": "Kiosk front elevation render." },
+		{ "src": "images/architecture/bb/bb6.png", "caption": "Kiosk Side elevation render." },
+		{ "src": "images/architecture/bb/bb7.png", "caption": "Kiosk movement mapping." },
+		{ "src": "images/architecture/bb/bb8.png", "caption": "Kiosk interior elevation (menu wall)." },
+		{ "src": "images/architecture/bb/bb9.png", "caption": "Kiosk interior elevation (entrance side)." },
+		{ "src": "images/architecture/bb/bb10.png", "caption": "Kiosk interior elevation (order side)." },
+		{ "src": "images/architecture/bb/bb11.png", "caption": "Kiosk interior elevation (pickup side)." },
+		{ "src": "images/architecture/bb/bb12.png", "caption": "Kiosk interior folded elevation." },
+        { "src": "images/architecture/bb/bb13.png", "caption": "Kiosk plan." }
       ]
     },
     {
