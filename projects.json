@@ -3,15 +3,15 @@
     {
       "title": "Sunset Getaway Office",
       "description": "Design for a wellness café combining natural materials with minimal interiors.",
-      "thumbnail": "images/architecture/sunset/sunsetcover.png",
+      "thumbnail": "images/architecture/sunset/sunsetcover.jpg",
       "gallery": [
-        { "src": "images/architecture/sunset/sunset2.png", "caption": "Exploded axonometric showing layout." },
-        { "src": "images/architecture/sunset/sunset1.png", "caption": "Accounts section." },
-        { "src": "images/architecture/sunset/sunset3.png", "caption": "Work section." },
-        { "src": "images/architecture/sunset/sunset4.png", "caption": "Fun zone / Informal meetings zone." },
-        { "src": "images/architecture/sunset/sunset5.png", "caption": "Fun zone / Informal meetings zone." },
-        { "src": "images/architecture/sunset/sunset6.png", "caption": "Entrance axis, Standing discussion table." },
-        { "src": "images/architecture/sunset/sunset7.png", "caption": "Workspaces." }
+        { "src": "images/architecture/sunset/sunset2.jpg", "caption": "Exploded axonometric showing layout." },
+        { "src": "images/architecture/sunset/sunset1.jpg", "caption": "Accounts section." },
+        { "src": "images/architecture/sunset/sunset3.jpg", "caption": "Work section." },
+        { "src": "images/architecture/sunset/sunset4.jpg", "caption": "Fun zone / Informal meetings zone." },
+        { "src": "images/architecture/sunset/sunset5.jpg", "caption": "Fun zone / Informal meetings zone." },
+        { "src": "images/architecture/sunset/sunset6.jpg", "caption": "Entrance axis, Standing discussion table." },
+        { "src": "images/architecture/sunset/sunset7.jpg", "caption": "Workspaces." }
       ],
       "livePhotos": [
         { "src": "images/architecture/sunset/live1.jpg", "caption": "Completed office lobby." },
@@ -21,41 +21,41 @@
     {
       "title": "Bloom & Brew kiosk",
       "description": "Compact roadside coffee kiosk designed for a salon lounge and commuters.",
-      "thumbnail": "images/architecture/bb/bbcover.png",
+      "thumbnail": "images/architecture/bb/bbcover.jpg",
       "gallery": [
-        { "src": "images/architecture/bb/bb1.png", "caption": "Isometric illustration." },
-        { "src": "images/architecture/bb/bb2.png", "caption": "Use of counter horizontal elemetns." },
-        { "src": "images/architecture/bb/bb3.png", "caption": "Kiosk sectional illustration." },
-        { "src": "images/architecture/bb/bb4.png", "caption": "Exploded isometric view." },
-		{ "src": "images/architecture/bb/bb5.png", "caption": "Kiosk front elevation render." },
-		{ "src": "images/architecture/bb/bb6.png", "caption": "Kiosk Side elevation render." },
-		{ "src": "images/architecture/bb/bb7.png", "caption": "Kiosk movement mapping." },
-		{ "src": "images/architecture/bb/bb8.png", "caption": "Kiosk interior elevation (menu wall)." },
-		{ "src": "images/architecture/bb/bb9.png", "caption": "Kiosk interior elevation (entrance side)." },
-		{ "src": "images/architecture/bb/bb10.png", "caption": "Kiosk interior elevation (order side)." },
-		{ "src": "images/architecture/bb/bb11.png", "caption": "Kiosk interior elevation (pickup side)." },
-		{ "src": "images/architecture/bb/bb12.png", "caption": "Kiosk interior folded elevation." },
-        { "src": "images/architecture/bb/bb13.png", "caption": "Kiosk plan." }
+        { "src": "images/architecture/bb/bb1.jpg", "caption": "Isometric illustration." },
+        { "src": "images/architecture/bb/bb2.jpg", "caption": "Use of counter horizontal elemetns." },
+        { "src": "images/architecture/bb/bb3.jpg", "caption": "Kiosk sectional illustration." },
+        { "src": "images/architecture/bb/bb4.jpg", "caption": "Exploded isometric view." },
+		{ "src": "images/architecture/bb/bb5.jpg", "caption": "Kiosk front elevation render." },
+		{ "src": "images/architecture/bb/bb6.jpg", "caption": "Kiosk Side elevation render." },
+		{ "src": "images/architecture/bb/bb7.jpg", "caption": "Kiosk movement mapping." },
+		{ "src": "images/architecture/bb/bb8.jpg", "caption": "Kiosk interior elevation (menu wall)." },
+		{ "src": "images/architecture/bb/bb9.jpg", "caption": "Kiosk interior elevation (entrance side)." },
+		{ "src": "images/architecture/bb/bb10.jpg", "caption": "Kiosk interior elevation (order side)." },
+		{ "src": "images/architecture/bb/bb11.jpg", "caption": "Kiosk interior elevation (pickup side)." },
+		{ "src": "images/architecture/bb/bb12.jpg", "caption": "Kiosk interior folded elevation." },
+        { "src": "images/architecture/bb/bb13.jpg", "caption": "Kiosk plan." }
       ]
     },
     {
       "title": "Benaulim house",
       "description": "Compact 1BHK house converted to a 2BHK, maximizing space in a modern Goan aesthetic.",
-      "thumbnail": "images/architecture/benaulim/benaulimcover.png",
+      "thumbnail": "images/architecture/benaulim/benaulimcover.jpg",
       "gallery": [
-        { "src": "images/architecture/benaulim/benaulim1.png", "caption": "Living area render." },
-        { "src": "images/architecture/benaulim/benaulim2.png", "caption": "Living area render." },
-        { "src": "images/architecture/benaulim/benaulim3.png", "caption": "Living area render." },
-        { "src": "images/architecture/benaulim/benaulim4.png", "caption": "Kitchen area render." },
-        { "src": "images/architecture/benaulim/benaulim5.png", "caption": "Kitchen area render." },
-		{ "src": "images/architecture/benaulim/benaulim6.png", "caption": "Bathorrm area render." },
-		 { "src": "images/architecture/benaulim/benaulim7.png", "caption": "Bedroom area render." }
+        { "src": "images/architecture/benaulim/benaulim1.jpg", "caption": "Living area render." },
+        { "src": "images/architecture/benaulim/benaulim2.jpg", "caption": "Living area render." },
+        { "src": "images/architecture/benaulim/benaulim3.jpg", "caption": "Living area render." },
+        { "src": "images/architecture/benaulim/benaulim4.jpg", "caption": "Kitchen area render." },
+        { "src": "images/architecture/benaulim/benaulim5.jpg", "caption": "Kitchen area render." },
+		{ "src": "images/architecture/benaulim/benaulim6.jpg", "caption": "Bathorrm area render." },
+		 { "src": "images/architecture/benaulim/benaulim7.jpg", "caption": "Bedroom area render." }
       ]
     },
     {
       "title": "Serendipity installation",
       "description": "Wayfinder + functional art installation for MOLD magazine at Serendipity Arts Festival 2024.",
-      "thumbnail": "images/architecture/serendipity24/saf24cover.png",
+      "thumbnail": "images/architecture/serendipity24/saf24cover.jpg",
       "gallery": [
         { "src": "images/architecture/serendipity24/saf1.jpg", "caption": "Concept visual for installation." },
         { "src": "images/architecture/serendipity24/saf2.jpg", "caption": "Assembly layout." },
@@ -93,8 +93,8 @@
       "description": "Consumer-friendly product designed for easy assembly and low-cost production.",
       "thumbnail": "images/product/product1.jpg",
       "images": [
-        "images/product/product1.jpg",
-        "images/product/product2.jpg"
+        "images/product/antbait1.jpg",
+        "images/product/antbait2.jpg"
       ]
     }
   ]
