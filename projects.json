@@ -43,11 +43,13 @@
       "description": "Compact 1BHK house converted to a 2BHK, maximizing space in a modern Goan aesthetic.",
       "thumbnail": "images/architecture/benaulim/benaulimcover.png",
       "gallery": [
-        { "src": "images/architecture/benaulim/benaulim1.png", "caption": "Exploded axonometric showing layout." },
+        { "src": "images/architecture/benaulim/benaulim1.png", "caption": "Living area render." },
         { "src": "images/architecture/benaulim/benaulim2.png", "caption": "Living area render." },
-        { "src": "images/architecture/benaulim/benaulim3.png", "caption": "Kitchen and dining zone." },
-        { "src": "images/architecture/benaulim/benaulim4.png", "caption": "Bedroom view." },
-        { "src": "images/architecture/benaulim/benaulim5.png", "caption": "Bathroom design." }
+        { "src": "images/architecture/benaulim/benaulim3.png", "caption": "Living area render." },
+        { "src": "images/architecture/benaulim/benaulim4.png", "caption": "Kitchen area render." },
+        { "src": "images/architecture/benaulim/benaulim5.png", "caption": "Kitchen area render." },
+		{ "src": "images/architecture/benaulim/benaulim6.png", "caption": "Bathorrm area render." },
+		 { "src": "images/architecture/benaulim/benaulim7.png", "caption": "Bedroom area render." }
       ]
     },
     {
@@ -58,14 +60,14 @@
         { "src": "images/architecture/serendipity24/saf1.jpg", "caption": "Concept visual for installation." },
         { "src": "images/architecture/serendipity24/saf2.jpg", "caption": "Assembly layout." },
         { "src": "images/architecture/serendipity24/saf3.jpg", "caption": "Structural frame detail." },
-        { "src": "images/architecture/serendipity24/saf4.jpg", "caption": "Lighting and signage system." },
-        { "src": "images/architecture/serendipity24/saf5.jpg", "caption": "Assembly layout." },
-        { "src": "images/architecture/serendipity24/saf6.jpg", "caption": "Structural frame detail." },
-        { "src": "images/architecture/serendipity24/saf7.jpg", "caption": "Lighting and signage system." },
-		{ "src": "images/architecture/serendipity24/saf8.jpg", "caption": "Lighting and signage system." },
-		{ "src": "images/architecture/serendipity24/saf9.jpg", "caption": "Lighting and signage system." },
-		{ "src": "images/architecture/serendipity24/saf10.jpg", "caption": "Lighting and signage system." },
-		{ "src": "images/architecture/serendipity24/saf11.jpg", "caption": "Section ." },
+        { "src": "images/architecture/serendipity24/saf4.jpg", "caption": "Real life image of book library." },
+        { "src": "images/architecture/serendipity24/saf5.jpg", "caption": "Real life image of book library." },
+        { "src": "images/architecture/serendipity24/saf6.jpg", "caption": "Real life image of book library." },
+        { "src": "images/architecture/serendipity24/saf7.jpg", "caption": "Real life image of book library." },
+		{ "src": "images/architecture/serendipity24/saf8.jpg", "caption": "Real life image of seed library." },
+		{ "src": "images/architecture/serendipity24/saf9.jpg", "caption": "Real life image of seed library." },
+		{ "src": "images/architecture/serendipity24/saf10.jpg", "caption": "Layer wise plan." },
+		{ "src": "images/architecture/serendipity24/saf11.jpg", "caption": "Sections ." },
 		{ "src": "images/architecture/serendipity24/saf12.jpg", "caption": "Staggered layout design for book library." },
 		{ "src": "images/architecture/serendipity24/saf13.jpg", "caption": "Seed library design and lighting detail." },
 		{ "src": "images/architecture/serendipity24/saf14.jpg", "caption": "Cardboard chair design & detail." }
