@@ -72,6 +72,19 @@
 		{ "src": "images/architecture/serendipity24/saf13.jpg", "caption": "Seed library design and lighting detail." },
 		{ "src": "images/architecture/serendipity24/saf14.jpg", "caption": "Cardboard chair design & detail." }
       ]
+    } ,
+	    {
+      "title": "Chaiyo Tinto",
+      "description": "A concept for small all day bar",
+      "thumbnail": "images/architecture/tinto/saf24cover.jpg",
+      "gallery": [
+        { "src": "images/architecture/tinto/tinto1.jpg", "caption": "Daytime bar counter render + standing area." },
+        { "src": "images/architecture/tinto/tinto2.jpg", "caption": "Daytime bar counter render + standing area." },
+        { "src": "images/architecture/tinto/tinto3.jpg", "caption": "Bar sitting zone / Entrance." },
+        { "src": "images/architecture/tinto/tinto4.jpg", "caption": "Entrance / photobooth." },
+        { "src": "images/architecture/tinto/tinto5.jpg", "caption": "Sitting zone" },
+        { "src": "images/architecture/tinto/tinto6.jpg", "caption": "Dance / screening zone." }
+      ]
     }
   ],
 
@@ -90,7 +103,7 @@
   "product": [
     {
       "title": "Ant Bait Station",
-      "description": "Consumer-friendly product designed for easy assembly and low-cost production.",
+      "description": "3D-Printable product for a company focus on user refillable, cleanable and sustainable",
       "thumbnail": "images/product/product1.jpg",
       "images": [
         "images/product/antbait1.jpg",
