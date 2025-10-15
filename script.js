@@ -99,13 +99,18 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Smooth Scroll for Navigation Chips
-  document.querySelectorAll('.intro__nav a').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const target = document.querySelector(link.getAttribute('href'));
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
-    });
+document.querySelectorAll('.intro__nav a').forEach(link => {
+  link.addEventListener('click', e => {
+    const href = link.getAttribute('href');
+
+    // If it's an external link (starts with http or https), let it open normally
+    if (/^https?:\/\//i.test(href)) return;
+
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
   });
+});
 
   // Load Projects
   (async function loadProjects() {
