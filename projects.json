@@ -116,7 +116,7 @@
     {
       "title": "Interior makeovers",
       "description": "Quick beautifications of section / small projects",
-      "thumbnail": "images/product/product1.jpg",
+      "thumbnail": "images/freelance/interior/interiorcover.jpg",
       "images": [
         "images/product/antbait1.jpg",
         "images/product/antbait2.jpg"
@@ -126,7 +126,7 @@
 	    {
       "title": "Photography / Aerials",
       "description": "Photography, Videography, Drone shoots",
-      "thumbnail": "images/product/product1.jpg",
+      "thumbnail": "images/freelance/photos/photoscover.jpg",
       "images": [
         "images/product/antbait1.jpg",
         "images/product/antbait2.jpg"
@@ -136,7 +136,7 @@
 	    {
       "title": "3D renderings",
       "description": "Renders for events and sets",
-      "thumbnail": "images/product/product1.jpg",
+      "thumbnail": "images/freelance/3d/3dcover.jpg",
       "images": [
         "images/product/antbait1.jpg",
         "images/product/antbait2.jpg"
