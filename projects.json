@@ -104,10 +104,13 @@
     {
       "title": "Ant Bait Station",
       "description": "3D-Printable product for a company focus on user refillable, cleanable and sustainable",
-      "thumbnail": "images/product/product1.jpg",
+      "thumbnail": "images/product/antbaitcover.jpg",
       "images": [
         "images/product/antbait1.jpg",
-        "images/product/antbait2.jpg"
+        "images/product/antbait2.jpg",
+		"images/product/antbait3.jpg",
+		"images/product/antbait4.jpg"
+		
       ]
     }
   ],
