@@ -126,7 +126,7 @@ document.querySelectorAll('.intro__nav a').forEach(link => {
       catch (err) { console.error('Failed to load projects.json', err); return; }
     }
 
-    const mappings = { architecture: '#architecture .grid', production: '#production .grid', product: '#product .grid' };
+    const mappings = { architecture: '#architecture .grid', production: '#production .grid', product: '#product .grid',freelance: '#freelance .grid' };
     Object.keys(mappings).forEach(k => {
       const grid = document.querySelector(mappings[k]);
       const list = data[k];
