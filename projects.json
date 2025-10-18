@@ -141,7 +141,14 @@
       "description": "Renders for events and sets",
       "thumbnail": "images/freelance/3d/3dcover.jpg",
       "images": [
-        "images/product/antbait1.jpg",
+        "images/product/freelance/3d/jawa/jawa1.jpg",
+		"images/product/freelance/3d/jawa/jawa2.jpg",
+		"images/product/freelance/3d/jawa/jawa3.jpg",
+		"images/product/freelance/3d/jawa/jawa4.jpg",
+		"images/product/freelance/3d/jawa/jawa5.jpg",
+		"images/product/freelance/3d/jawa/jawa6.jpg",
+		"images/product/freelance/3d/jawa/jawa7.jpg",
+		"images/product/freelance/3d/jawa/jawa8.jpg",
         "images/product/antbait2.jpg"
       ]
     }
