@@ -135,5 +135,23 @@ document.querySelectorAll('.intro__nav a').forEach(link => {
       list.forEach(p => renderCard(p, grid));
     });
   })();
+  
+  
+  // -------------------- Visitor Counter --------------------
+document.addEventListener('DOMContentLoaded', async () => {
+  const counter = document.getElementById('visit-count');
+  if (!counter) return;
+
+  try {
+    // Simple free counter using countapi.xyz (no backend needed)
+    const res = await fetch('https://api.countapi.xyz/hit/oum-portfolio/visits');
+    const data = await res.json();
+    counter.textContent = data.value.toLocaleString();
+  } catch (err) {
+    console.error('Visit counter failed:', err);
+    counter.textContent = 'N/A';
+  }
+});
+
 
 });
