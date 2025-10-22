@@ -24,22 +24,20 @@
       "thumbnail": "images/architecture/bb/bbcover.jpg",
       "gallery": [
         { "src": "images/architecture/bb/bb1.jpg", "caption": "Isometric illustration." },
-        { "src": "images/architecture/bb/bb2.jpg", "caption": "Use of counter horizontal elemetns." },
+        { "src": "images/architecture/bb/bb2.jpg", "caption": "Use of counter horizontal elements." },
         { "src": "images/architecture/bb/bb3.jpg", "caption": "Kiosk sectional illustration." },
         { "src": "images/architecture/bb/bb4.jpg", "caption": "Exploded isometric view." },
-		{ "src": "images/architecture/bb/bb5.jpg", "caption": "Kiosk front elevation render." },
-		{ "src": "images/architecture/bb/bb6.jpg", "caption": "Kiosk Side elevation render." },
-		{ "src": "images/architecture/bb/bb7.jpg", "caption": "Kiosk movement mapping." },
-		{ "src": "images/architecture/bb/bb8.jpg", "caption": "Kiosk interior elevation (menu wall)." },
-		{ "src": "images/architecture/bb/bb9.jpg", "caption": "Kiosk interior elevation (entrance side)." },
-		{ "src": "images/architecture/bb/bb10.jpg", "caption": "Kiosk interior elevation (order side)." },
-		{ "src": "images/architecture/bb/bb11.jpg", "caption": "Kiosk interior elevation (pickup side)." },
-		{ "src": "images/architecture/bb/bb12.jpg", "caption": "Kiosk interior folded elevation." },
+        { "src": "images/architecture/bb/bb5.jpg", "caption": "Kiosk front elevation render." },
+        { "src": "images/architecture/bb/bb6.jpg", "caption": "Kiosk Side elevation render." },
+        { "src": "images/architecture/bb/bb7.jpg", "caption": "Kiosk movement mapping." },
+        { "src": "images/architecture/bb/bb8.jpg", "caption": "Kiosk interior elevation (menu wall)." },
+        { "src": "images/architecture/bb/bb9.jpg", "caption": "Kiosk interior elevation (entrance side)." },
+        { "src": "images/architecture/bb/bb10.jpg", "caption": "Kiosk interior elevation (order side)." },
+        { "src": "images/architecture/bb/bb11.jpg", "caption": "Kiosk interior elevation (pickup side)." },
+        { "src": "images/architecture/bb/bb12.jpg", "caption": "Kiosk interior folded elevation." },
         { "src": "images/architecture/bb/bb13.jpg", "caption": "Kiosk plan." },
-		{ "src": "images/architecture/bb/bblive1.jpg", "caption": "Completed structure." },
+        { "src": "images/architecture/bb/bblive1.jpg", "caption": "Completed structure." }
       ]
-	  ],
-   
     },
     {
       "title": "Benaulim house",
@@ -51,8 +49,8 @@
         { "src": "images/architecture/benaulim/benaulim3.jpg", "caption": "Living area render." },
         { "src": "images/architecture/benaulim/benaulim4.jpg", "caption": "Kitchen area render." },
         { "src": "images/architecture/benaulim/benaulim5.jpg", "caption": "Kitchen area render." },
-		{ "src": "images/architecture/benaulim/benaulim6.jpg", "caption": "Bathorrm area render." },
-		 { "src": "images/architecture/benaulim/benaulim7.jpg", "caption": "Bedroom area render." }
+        { "src": "images/architecture/benaulim/benaulim6.jpg", "caption": "Bathroom area render." },
+        { "src": "images/architecture/benaulim/benaulim7.jpg", "caption": "Bedroom area render." }
       ]
     },
     {
@@ -67,25 +65,25 @@
         { "src": "images/architecture/serendipity24/saf5.jpg", "caption": "Real life image of book library." },
         { "src": "images/architecture/serendipity24/saf6.jpg", "caption": "Real life image of book library." },
         { "src": "images/architecture/serendipity24/saf7.jpg", "caption": "Real life image of book library." },
-		{ "src": "images/architecture/serendipity24/saf8.jpg", "caption": "Real life image of seed library." },
-		{ "src": "images/architecture/serendipity24/saf9.jpg", "caption": "Real life image of seed library." },
-		{ "src": "images/architecture/serendipity24/saf10.jpg", "caption": "Layer wise plan." },
-		{ "src": "images/architecture/serendipity24/saf11.jpg", "caption": "Sections ." },
-		{ "src": "images/architecture/serendipity24/saf12.jpg", "caption": "Staggered layout design for book library." },
-		{ "src": "images/architecture/serendipity24/saf13.jpg", "caption": "Seed library design and lighting detail." },
-		{ "src": "images/architecture/serendipity24/saf14.jpg", "caption": "Cardboard chair design & detail." }
+        { "src": "images/architecture/serendipity24/saf8.jpg", "caption": "Real life image of seed library." },
+        { "src": "images/architecture/serendipity24/saf9.jpg", "caption": "Real life image of seed library." },
+        { "src": "images/architecture/serendipity24/saf10.jpg", "caption": "Layer wise plan." },
+        { "src": "images/architecture/serendipity24/saf11.jpg", "caption": "Sections." },
+        { "src": "images/architecture/serendipity24/saf12.jpg", "caption": "Staggered layout design for book library." },
+        { "src": "images/architecture/serendipity24/saf13.jpg", "caption": "Seed library design and lighting detail." },
+        { "src": "images/architecture/serendipity24/saf14.jpg", "caption": "Cardboard chair design & detail." }
       ]
-    } ,
-	    {
+    },
+    {
       "title": "Chaiyo Tinto",
-      "description": "A concept for small all day bar",
+      "description": "A concept for small all day bar.",
       "thumbnail": "images/architecture/tinto/tintocover.jpg",
       "gallery": [
         { "src": "images/architecture/tinto/tinto1.jpg", "caption": "Daytime bar counter render + standing area." },
         { "src": "images/architecture/tinto/tinto2.jpg", "caption": "Daytime bar counter render + standing area." },
         { "src": "images/architecture/tinto/tinto3.jpg", "caption": "Bar sitting zone / Entrance." },
         { "src": "images/architecture/tinto/tinto4.jpg", "caption": "Entrance / photobooth." },
-        { "src": "images/architecture/tinto/tinto5.jpg", "caption": "Sitting zone" },
+        { "src": "images/architecture/tinto/tinto5.jpg", "caption": "Sitting zone." },
         { "src": "images/architecture/tinto/tinto6.jpg", "caption": "Dance / screening zone." }
       ]
     }
@@ -98,15 +96,15 @@
       "thumbnail": "images/production/mirzapur/mtfcover.jpg",
       "gallery": [
         { "src": "images/production/mirzapur/mtf1.jpg", "caption": "Tripathi haveli set." },
-        {"src": "images/production/mirzapur/mtf2.jpg", "caption": "Tripathi haveli set." },
-        {"src": "images/production/mirzapur/mtf3.jpg", "caption": "Tripathi haveli set." },
-        {"src": "images/production/mirzapur/mtf4.jpg", "caption": "Tripathi haveli set." },
-        {"src": "images/production/mirzapur/mtf5.jpg", "caption": "Tripathi haveli set." },
-        {"src": "images/production/mirzapur/mtf6.jpg", "caption": "Tripathi haveli set." },
-		{"src": "images/production/mirzapur/mtf7.jpg", "caption": "Tripathi haveli set." },
-		{"src": "images/production/mirzapur/mtf8.jpg", "caption": "Cultural ground set." },
-		{"src": "images/production/mirzapur/mtf9.jpg", "caption": "Cultural ground set." },
-		{"src": "images/production/mirzapur/mtf10.jpg", "caption": "Cultural ground set." },
+        { "src": "images/production/mirzapur/mtf2.jpg", "caption": "Tripathi haveli set." },
+        { "src": "images/production/mirzapur/mtf3.jpg", "caption": "Tripathi haveli set." },
+        { "src": "images/production/mirzapur/mtf4.jpg", "caption": "Tripathi haveli set." },
+        { "src": "images/production/mirzapur/mtf5.jpg", "caption": "Tripathi haveli set." },
+        { "src": "images/production/mirzapur/mtf6.jpg", "caption": "Tripathi haveli set." },
+        { "src": "images/production/mirzapur/mtf7.jpg", "caption": "Tripathi haveli set." },
+        { "src": "images/production/mirzapur/mtf8.jpg", "caption": "Cultural ground set." },
+        { "src": "images/production/mirzapur/mtf9.jpg", "caption": "Cultural ground set." },
+        { "src": "images/production/mirzapur/mtf10.jpg", "caption": "Cultural ground set." }
       ]
     }
   ],
@@ -114,56 +112,50 @@
   "product": [
     {
       "title": "Ant Bait Station",
-      "description": "3D-Printable product for a company focus on user refillable, cleanable and sustainable",
+      "description": "3D-Printable product for a company focused on user refillable, cleanable and sustainable design.",
       "thumbnail": "images/product/antbait/antbaitcover.jpg",
       "images": [
         "images/product/antbait/antbait1.jpg",
         "images/product/antbait/antbait2.jpg",
-		"images/product/antbait/antbait3.jpg",
-		"images/product/antbait/antbait4.jpg"
+        "images/product/antbait/antbait3.jpg",
+        "images/product/antbait/antbait4.jpg"
       ]
     }
   ],
-  
+
   "freelance": [
     {
       "title": "Interior makeovers",
-      "description": "Quick beautifications of section / small projects",
+      "description": "Quick beautifications of section / small projects.",
       "thumbnail": "images/freelance/interior/interiorcover.jpg",
       "images": [
-        "images/product/antbait1.jpg",
-        "images/product/antbait2.jpg"
+        "images/freelance/interior/interior1.jpg",
+        "images/freelance/interior/interior2.jpg"
       ]
     },
-	
-	    {
+    {
       "title": "Photography / Aerials",
-      "description": "Photography, Videography, Drone shoots",
+      "description": "Photography, Videography, Drone shoots.",
       "thumbnail": "images/freelance/photos/photoscover.jpg",
       "images": [
-        "images/product/antbait1.jpg",
-        "images/product/antbait2.jpg"
+        "images/freelance/photos/photos1.jpg",
+        "images/freelance/photos/photos2.jpg"
       ]
     },
-	
-	    {
+    {
       "title": "3D renderings",
-      "description": "Renders for events and sets",
+      "description": "Renders for events and sets.",
       "thumbnail": "images/freelance/3d/3dcover.jpg",
       "images": [
         "images/freelance/3d/jawa/jawa1.jpg",
-		"images/freelance/3d/jawa/jawa2.jpg",
-		"images/freelance/3d/jawa/jawa3.jpg",
-		"images/freelance/3d/jawa/jawa4.jpg",
-		"images/freelance/3d/jawa/jawa5.jpg",
-		"images/freelance/3d/jawa/jawa6.jpg",
-		"images/freelance/3d/jawa/jawa7.jpg",
-		"images/freelance/3d/jawa/jawa8.jpg",
-        "images/product/antbait2.jpg"
+        "images/freelance/3d/jawa/jawa2.jpg",
+        "images/freelance/3d/jawa/jawa3.jpg",
+        "images/freelance/3d/jawa/jawa4.jpg",
+        "images/freelance/3d/jawa/jawa5.jpg",
+        "images/freelance/3d/jawa/jawa6.jpg",
+        "images/freelance/3d/jawa/jawa7.jpg",
+        "images/freelance/3d/jawa/jawa8.jpg"
       ]
     }
-	
   ]
 }
-
-
