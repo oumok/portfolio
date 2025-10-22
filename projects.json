@@ -35,14 +35,11 @@
 		{ "src": "images/architecture/bb/bb10.jpg", "caption": "Kiosk interior elevation (order side)." },
 		{ "src": "images/architecture/bb/bb11.jpg", "caption": "Kiosk interior elevation (pickup side)." },
 		{ "src": "images/architecture/bb/bb12.jpg", "caption": "Kiosk interior folded elevation." },
-        { "src": "images/architecture/bb/bb13.jpg", "caption": "Kiosk plan." }
+        { "src": "images/architecture/bb/bb13.jpg", "caption": "Kiosk plan." },
+		{ "src": "images/architecture/bb/bblive1.jpg", "caption": "Completed structure." },
       ]
 	  ],
-      "livePhotos": [
-        { "src": "images/architecture/bb/bblive1.jpg", "caption": "Completed structure." },
-		]
    
-      ]
     },
     {
       "title": "Benaulim house",
