@@ -65,7 +65,7 @@
         { "src": "images/architecture/serendipity24/saf1.jpg", "caption": "Concept visual for installation." },
         { "src": "images/architecture/serendipity24/saf2.jpg", "caption": "Assembly layout." },
         { "src": "images/architecture/serendipity24/saf3.jpg", "caption": "Structural frame detail." },
-        { "src": "images/architecture/serendipity24/saf4.JPG", "caption": "Real life image of book library." },
+        { "src": "images/architecture/serendipity24/saf4.jpg", "caption": "Real life image of book library." },
         { "src": "images/architecture/serendipity24/saf5.JPG", "caption": "Real life image of book library." },
         { "src": "images/architecture/serendipity24/saf6.JPG", "caption": "Real life image of book library." },
         { "src": "images/architecture/serendipity24/saf7.JPG", "caption": "Real life image of book library." },
@@ -98,9 +98,17 @@
       "title": "Mirzapur - The film sets",
       "description": "Production design for a period drama, focusing on authentic detailing and environment creation.",
       "thumbnail": "images/production/mirzapur/mtfcover.jpg",
-      "images": [
-        "images/production/mirzapur/set1.jpg",
-        "images/production/mirzapur/set2.jpg"
+      "gallery": [
+        { "src": "images/production/mirzapur/mtf1.jpeg", "caption": "Tripathi haveli set." },
+        {"src": "images/production/mirzapur/mtf2.jpeg", "caption": "Tripathi haveli set." },
+        {"src": "images/production/mirzapur/mtf3.jpeg", "caption": "Tripathi haveli set." },
+        {"src": "images/production/mirzapur/mtf4.jpeg", "caption": "Tripathi haveli set." },
+        {"src": "images/production/mirzapur/mtf5.jpeg", "caption": "Tripathi haveli set." },
+        {"src": "images/production/mirzapur/mtf6.jpeg", "caption": "Tripathi haveli set." },
+		{"src": "images/production/mirzapur/mtf7.jpeg", "caption": "Tripathi haveli set." },
+		{"src": "images/production/mirzapur/mtf8.jpeg", "caption": "Cultural ground set." },
+		{"src": "images/production/mirzapur/mtf9.jpg", "caption": "Cultural ground set." },
+		{"src": "images/production/mirzapur/mtf10.jpg", "caption": "Cultural ground set." },
       ]
     }
   ],
