@@ -203,4 +203,3 @@ document.querySelectorAll('.intro__nav a').forEach(link => {
 
 });
 
-});
