@@ -4,87 +4,52 @@
       "title": "Sunset Getaway Office",
       "description": "Design for a wellness café combining natural materials with minimal interiors.",
       "thumbnail": "images/architecture/sunset/sunsetcover.jpg",
-      "gallery": [
-        { "src": "images/architecture/sunset/sunset2.jpg", "caption": "Exploded axonometric showing layout." },
-        { "src": "images/architecture/sunset/sunset1.jpg", "caption": "Accounts section." },
-        { "src": "images/architecture/sunset/sunset3.jpg", "caption": "Work section." },
-        { "src": "images/architecture/sunset/sunset4.jpg", "caption": "Fun zone / Informal meetings zone." },
-        { "src": "images/architecture/sunset/sunset5.jpg", "caption": "Fun zone / Informal meetings zone." },
-        { "src": "images/architecture/sunset/sunset6.jpg", "caption": "Entrance axis, Standing discussion table." },
-        { "src": "images/architecture/sunset/sunset7.jpg", "caption": "Workspaces." }
-      ],
-      "livePhotos": [
-        { "src": "images/architecture/sunset/live1.jpg", "caption": "Completed office lobby." },
-        { "src": "images/architecture/sunset/live2.jpg", "caption": "Workstations in use." }
+      "groups": [
+        {
+          "name": "Gallery",
+          "images": [
+            { "src": "images/architecture/sunset/sunset2.jpg", "caption": "Exploded axonometric showing layout." },
+            { "src": "images/architecture/sunset/sunset1.jpg", "caption": "Accounts section." },
+            { "src": "images/architecture/sunset/sunset3.jpg", "caption": "Work section." },
+            { "src": "images/architecture/sunset/sunset4.jpg", "caption": "Fun zone / Informal meetings zone." },
+            { "src": "images/architecture/sunset/sunset5.jpg", "caption": "Fun zone / Informal meetings zone." },
+            { "src": "images/architecture/sunset/sunset6.jpg", "caption": "Entrance axis, Standing discussion table." },
+            { "src": "images/architecture/sunset/sunset7.jpg", "caption": "Workspaces." }
+          ]
+        },
+        {
+          "name": "Live Photos",
+          "images": [
+            { "src": "images/architecture/sunset/live1.jpg", "caption": "Completed office lobby." },
+            { "src": "images/architecture/sunset/live2.jpg", "caption": "Workstations in use." }
+          ]
+        }
       ]
     },
     {
       "title": "Bloom & Brew kiosk",
       "description": "Compact roadside coffee kiosk designed for a salon lounge and commuters.",
       "thumbnail": "images/architecture/bb/bbcover.jpg",
-      "gallery": [
-        { "src": "images/architecture/bb/bb1.jpg", "caption": "Isometric illustration." },
-        { "src": "images/architecture/bb/bb2.jpg", "caption": "Use of counter horizontal elements." },
-        { "src": "images/architecture/bb/bb3.jpg", "caption": "Kiosk sectional illustration." },
-        { "src": "images/architecture/bb/bb4.jpg", "caption": "Exploded isometric view." },
-        { "src": "images/architecture/bb/bb5.jpg", "caption": "Kiosk front elevation render." },
-        { "src": "images/architecture/bb/bb6.jpg", "caption": "Kiosk Side elevation render." },
-        { "src": "images/architecture/bb/bb7.jpg", "caption": "Kiosk movement mapping." },
-        { "src": "images/architecture/bb/bb8.jpg", "caption": "Kiosk interior elevation (menu wall)." },
-        { "src": "images/architecture/bb/bb9.jpg", "caption": "Kiosk interior elevation (entrance side)." },
-        { "src": "images/architecture/bb/bb10.jpg", "caption": "Kiosk interior elevation (order side)." },
-        { "src": "images/architecture/bb/bb11.jpg", "caption": "Kiosk interior elevation (pickup side)." },
-        { "src": "images/architecture/bb/bb12.jpg", "caption": "Kiosk interior folded elevation." },
-        { "src": "images/architecture/bb/bb13.jpg", "caption": "Kiosk plan." },
-        { "src": "images/architecture/bb/bblive1.jpg", "caption": "Completed structure." }
-      ]
-    },
-    {
-      "title": "Benaulim house",
-      "description": "Compact 1BHK house converted to a 2BHK, maximizing space in a modern Goan aesthetic.",
-      "thumbnail": "images/architecture/benaulim/benaulimcover.jpg",
-      "gallery": [
-        { "src": "images/architecture/benaulim/benaulim1.jpg", "caption": "Living area render." },
-        { "src": "images/architecture/benaulim/benaulim2.jpg", "caption": "Living area render." },
-        { "src": "images/architecture/benaulim/benaulim3.jpg", "caption": "Living area render." },
-        { "src": "images/architecture/benaulim/benaulim4.jpg", "caption": "Kitchen area render." },
-        { "src": "images/architecture/benaulim/benaulim5.jpg", "caption": "Kitchen area render." },
-        { "src": "images/architecture/benaulim/benaulim6.jpg", "caption": "Bathroom area render." },
-        { "src": "images/architecture/benaulim/benaulim7.jpg", "caption": "Bedroom area render." }
-      ]
-    },
-    {
-      "title": "Serendipity installation",
-      "description": "Wayfinder + functional art installation for MOLD magazine at Serendipity Arts Festival 2024.",
-      "thumbnail": "images/architecture/serendipity24/saf24cover.jpg",
-      "gallery": [
-        { "src": "images/architecture/serendipity24/saf1.jpg", "caption": "Concept visual for installation." },
-        { "src": "images/architecture/serendipity24/saf2.jpg", "caption": "Assembly layout." },
-        { "src": "images/architecture/serendipity24/saf3.jpg", "caption": "Structural frame detail." },
-        { "src": "images/architecture/serendipity24/saf4.jpg", "caption": "Real life image of book library." },
-        { "src": "images/architecture/serendipity24/saf5.jpg", "caption": "Real life image of book library." },
-        { "src": "images/architecture/serendipity24/saf6.jpg", "caption": "Real life image of book library." },
-        { "src": "images/architecture/serendipity24/saf7.jpg", "caption": "Real life image of book library." },
-        { "src": "images/architecture/serendipity24/saf8.jpg", "caption": "Real life image of seed library." },
-        { "src": "images/architecture/serendipity24/saf9.jpg", "caption": "Real life image of seed library." },
-        { "src": "images/architecture/serendipity24/saf10.jpg", "caption": "Layer wise plan." },
-        { "src": "images/architecture/serendipity24/saf11.jpg", "caption": "Sections." },
-        { "src": "images/architecture/serendipity24/saf12.jpg", "caption": "Staggered layout design for book library." },
-        { "src": "images/architecture/serendipity24/saf13.jpg", "caption": "Seed library design and lighting detail." },
-        { "src": "images/architecture/serendipity24/saf14.jpg", "caption": "Cardboard chair design & detail." }
-      ]
-    },
-    {
-      "title": "Chaiyo Tinto",
-      "description": "A concept for small all day bar.",
-      "thumbnail": "images/architecture/tinto/tintocover.jpg",
-      "gallery": [
-        { "src": "images/architecture/tinto/tinto1.jpg", "caption": "Daytime bar counter render + standing area." },
-        { "src": "images/architecture/tinto/tinto2.jpg", "caption": "Daytime bar counter render + standing area." },
-        { "src": "images/architecture/tinto/tinto3.jpg", "caption": "Bar sitting zone / Entrance." },
-        { "src": "images/architecture/tinto/tinto4.jpg", "caption": "Entrance / photobooth." },
-        { "src": "images/architecture/tinto/tinto5.jpg", "caption": "Sitting zone." },
-        { "src": "images/architecture/tinto/tinto6.jpg", "caption": "Dance / screening zone." }
+      "groups": [
+        {
+          "name": "Gallery",
+          "images": [
+            { "src": "images/architecture/bb/bb1.jpg", "caption": "Isometric illustration." },
+            { "src": "images/architecture/bb/bb2.jpg", "caption": "Use of counter horizontal elements." },
+            { "src": "images/architecture/bb/bb3.jpg", "caption": "Kiosk sectional illustration." },
+            { "src": "images/architecture/bb/bb4.jpg", "caption": "Exploded isometric view." },
+            { "src": "images/architecture/bb/bb5.jpg", "caption": "Kiosk front elevation render." },
+            { "src": "images/architecture/bb/bb6.jpg", "caption": "Kiosk Side elevation render." },
+            { "src": "images/architecture/bb/bb7.jpg", "caption": "Kiosk movement mapping." },
+            { "src": "images/architecture/bb/bb8.jpg", "caption": "Kiosk interior elevation (menu wall)." },
+            { "src": "images/architecture/bb/bb9.jpg", "caption": "Kiosk interior elevation (entrance side)." },
+            { "src": "images/architecture/bb/bb10.jpg", "caption": "Kiosk interior elevation (order side)." },
+            { "src": "images/architecture/bb/bb11.jpg", "caption": "Kiosk interior elevation (pickup side)." },
+            { "src": "images/architecture/bb/bb12.jpg", "caption": "Kiosk interior folded elevation." },
+            { "src": "images/architecture/bb/bb13.jpg", "caption": "Kiosk plan." },
+            { "src": "images/architecture/bb/bblive1.jpg", "caption": "Completed structure." }
+          ]
+        }
       ]
     }
   ],
@@ -94,17 +59,22 @@
       "title": "Mirzapur - The film sets",
       "description": "Production design for a period drama, focusing on authentic detailing and environment creation.",
       "thumbnail": "images/production/mirzapur/mtfcover.jpg",
-      "gallery": [
-        { "src": "images/production/mirzapur/mtf1.jpg", "caption": "Tripathi haveli set." },
-        { "src": "images/production/mirzapur/mtf2.jpg", "caption": "Tripathi haveli set." },
-        { "src": "images/production/mirzapur/mtf3.jpg", "caption": "Tripathi haveli set." },
-        { "src": "images/production/mirzapur/mtf4.jpg", "caption": "Tripathi haveli set." },
-        { "src": "images/production/mirzapur/mtf5.jpg", "caption": "Tripathi haveli set." },
-        { "src": "images/production/mirzapur/mtf6.jpg", "caption": "Tripathi haveli set." },
-        { "src": "images/production/mirzapur/mtf7.jpg", "caption": "Tripathi haveli set." },
-        { "src": "images/production/mirzapur/mtf8.jpg", "caption": "Cultural ground set." },
-        { "src": "images/production/mirzapur/mtf9.jpg", "caption": "Cultural ground set." },
-        { "src": "images/production/mirzapur/mtf10.jpg", "caption": "Cultural ground set." }
+      "groups": [
+        {
+          "name": "Gallery",
+          "images": [
+            { "src": "images/production/mirzapur/mtf1.jpg", "caption": "Tripathi haveli set." },
+            { "src": "images/production/mirzapur/mtf2.jpg", "caption": "Tripathi haveli set." },
+            { "src": "images/production/mirzapur/mtf3.jpg", "caption": "Tripathi haveli set." },
+            { "src": "images/production/mirzapur/mtf4.jpg", "caption": "Tripathi haveli set." },
+            { "src": "images/production/mirzapur/mtf5.jpg", "caption": "Tripathi haveli set." },
+            { "src": "images/production/mirzapur/mtf6.jpg", "caption": "Tripathi haveli set." },
+            { "src": "images/production/mirzapur/mtf7.jpg", "caption": "Tripathi haveli set." },
+            { "src": "images/production/mirzapur/mtf8.jpg", "caption": "Cultural ground set." },
+            { "src": "images/production/mirzapur/mtf9.jpg", "caption": "Cultural ground set." },
+            { "src": "images/production/mirzapur/mtf10.jpg", "caption": "Cultural ground set." }
+          ]
+        }
       ]
     }
   ],
@@ -114,11 +84,16 @@
       "title": "Ant Bait Station",
       "description": "3D-Printable product for a company focused on user refillable, cleanable and sustainable design.",
       "thumbnail": "images/product/antbait/antbaitcover.jpg",
-      "images": [
-        "images/product/antbait/antbait1.jpg",
-        "images/product/antbait/antbait2.jpg",
-        "images/product/antbait/antbait3.jpg",
-        "images/product/antbait/antbait4.jpg"
+      "groups": [
+        {
+          "name": "Gallery",
+          "images": [
+            { "src": "images/product/antbait/antbait1.jpg", "caption": "3D-printed prototype." },
+            { "src": "images/product/antbait/antbait2.jpg", "caption": "Top view showing liquid refill slot." },
+            { "src": "images/product/antbait/antbait3.jpg", "caption": "Side view detail." },
+            { "src": "images/product/antbait/antbait4.jpg", "caption": "Final product with user setup." }
+          ]
+        }
       ]
     }
   ],
@@ -128,9 +103,14 @@
       "title": "Interior makeovers",
       "description": "Quick beautifications of section / small projects.",
       "thumbnail": "images/freelance/interior/interiorcover.jpg",
-      "images": [
-        "images/freelance/interior/bar51/b51-1.jpg",
-        "images/freelance/interior/bar51/b51-2.jpg"
+      "groups": [
+        {
+          "name": "Gallery",
+          "images": [
+            { "src": "images/freelance/interior/bar51/b51-1.jpg", "caption": "Before / After." },
+            { "src": "images/freelance/interior/bar51/b51-2.jpg", "caption": "Before / After." }
+          ]
+        }
       ]
     },
     {
@@ -138,35 +118,40 @@
       "description": "Photography, Videography, Drone shoots.",
       "thumbnail": "images/freelance/photos/photoscover.jpg",
       "groups": [
-	   {
-      "name": "Portraits",
-      "images": [
-	  {"src":"images/freelance/photos/portraits/cat1.jpg", "caption":"portrait"},
-		 {"src":"images/freelance/photos/portraits/cat2.jpg", "caption":"portrait"}	
+        {
+          "name": "Portraits",
+          "images": [
+            { "src": "images/freelance/photos/portraits/cat1.jpg", "caption": "Portrait 1." },
+            { "src": "images/freelance/photos/portraits/cat2.jpg", "caption": "Portrait 2." }
+          ]
+        },
+        {
+          "name": "Aerials",
+          "images": [
+            { "src": "images/freelance/photos/aerial/aerial1.jpg", "caption": "Aerial 1." },
+            { "src": "images/freelance/photos/aerial/aerial2.jpg", "caption": "Aerial 2." }
+          ]
+        }
       ]
     },
-		   {
-      "name": "Aerials",
-      "images": [
-	  {"src":"images/freelance/photos/aerial/aerial1.jpg", "caption":"portrait"},
-		 {"src":"images/freelance/photos/aerial/aerial2.jpg", "caption":"portrait"}	
-      ]
-    },
-	]
-	
     {
       "title": "3D renderings",
       "description": "Renders for events and sets.",
       "thumbnail": "images/freelance/3d/3dcover.jpg",
-      "images": [
-        "images/freelance/3d/jawa/jawa1.jpg",
-        "images/freelance/3d/jawa/jawa2.jpg",
-        "images/freelance/3d/jawa/jawa3.jpg",
-        "images/freelance/3d/jawa/jawa4.jpg",
-        "images/freelance/3d/jawa/jawa5.jpg",
-        "images/freelance/3d/jawa/jawa6.jpg",
-        "images/freelance/3d/jawa/jawa7.jpg",
-        "images/freelance/3d/jawa/jawa8.jpg"
+      "groups": [
+        {
+          "name": "Gallery",
+          "images": [
+            { "src": "images/freelance/3d/jawa/jawa1.jpg", "caption": "Render 1." },
+            { "src": "images/freelance/3d/jawa/jawa2.jpg", "caption": "Render 2." },
+            { "src": "images/freelance/3d/jawa/jawa3.jpg", "caption": "Render 3." },
+            { "src": "images/freelance/3d/jawa/jawa4.jpg", "caption": "Render 4." },
+            { "src": "images/freelance/3d/jawa/jawa5.jpg", "caption": "Render 5." },
+            { "src": "images/freelance/3d/jawa/jawa6.jpg", "caption": "Render 6." },
+            { "src": "images/freelance/3d/jawa/jawa7.jpg", "caption": "Render 7." },
+            { "src": "images/freelance/3d/jawa/jawa8.jpg", "caption": "Render 8." }
+          ]
+        }
       ]
     }
   ]
