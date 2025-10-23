@@ -137,11 +137,23 @@
       "title": "Photography / Aerials",
       "description": "Photography, Videography, Drone shoots.",
       "thumbnail": "images/freelance/photos/photoscover.jpg",
+      "groups": [
+	   {
+      "name": "Portraits",
       "images": [
-        "images/freelance/photos/photos1.jpg",
-        "images/freelance/photos/photos2.jpg"
+	  {"src":"images/freelance/photos/photos1.jpg", "caption":"portrait"},
+		 {"src":"images/freelance/photos/photos1.jpg", "caption":"portrait"}	
       ]
     },
+		   {
+      "name": "Aerials",
+      "images": [
+	  {"src":"images/freelance/photos/photos1.jpg", "caption":"portrait"},
+		 {"src":"images/freelance/photos/photos1.jpg", "caption":"portrait"}	
+      ]
+    },
+	]
+	
     {
       "title": "3D renderings",
       "description": "Renders for events and sets.",

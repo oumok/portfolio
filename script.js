@@ -38,7 +38,7 @@ function renderCard(project, gridEl) {
   gridEl.appendChild(card);
 }
 
-/* -------------------- Open Project (Single Gallery) -------------------- */
+/* -------------------- Open Project (Tabbed Gallery) -------------------- */
 function openProject(project) {
   const galleryEl = modalGallery();
   galleryEl.innerHTML = ''; // Clear previous content
@@ -46,29 +46,77 @@ function openProject(project) {
   modalTitle().textContent = project.title || '';
   modalDesc().textContent = project.description || '';
 
-  // Combine all images in one gallery
-  const allImages = [].concat(project.gallery || [], project.images || [], project.livePhotos || []);
+  // --- Handle grouped galleries (with tabs) ---
+  if (Array.isArray(project.groups) && project.groups.length > 0) {
+    // Create tab buttons
+    const tabButtons = document.createElement('div');
+    tabButtons.className = 'tab-buttons';
+    tabButtons.innerHTML = project.groups
+      .map((g, i) => `<button class="tab-btn ${i === 0 ? 'active' : ''}" data-tab="tab${i}">${g.name}</button>`)
+      .join('');
+    galleryEl.appendChild(tabButtons);
 
-  allImages.forEach(i => {
-    const src = typeof i === 'string' ? i : i.src;
-    const caption = (typeof i === 'string' ? project.title : i.caption) || project.title;
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = caption;
-    img.addEventListener('click', () => {
-      lbImages = allImages.map(img => typeof img === 'string' ? img : img.src);
-      lbIndex = lbImages.indexOf(src);
-      openLightbox(src, caption);
+    // Create tab contents
+    project.groups.forEach((group, i) => {
+      const tab = document.createElement('div');
+      tab.className = `tab-content ${i === 0 ? 'active' : ''}`;
+      tab.id = `tab${i}`;
+
+      const galleryGrid = document.createElement('div');
+      galleryGrid.className = 'popup-gallery';
+
+      group.images.forEach((imgSrc) => {
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.alt = group.name;
+        img.addEventListener('click', () => {
+          lbImages = group.images;
+          lbIndex = group.images.indexOf(imgSrc);
+          openLightbox(imgSrc, group.name);
+        });
+        galleryGrid.appendChild(img);
+      });
+
+      tab.appendChild(galleryGrid);
+      galleryEl.appendChild(tab);
     });
-    galleryEl.appendChild(img);
-  });
+
+    // Tab switching
+    galleryEl.querySelectorAll('.tab-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const tabId = btn.dataset.tab;
+        galleryEl.querySelectorAll('.tab-btn').forEach((b) => b.classList.remove('active'));
+        galleryEl.querySelectorAll('.tab-content').forEach((c) => c.classList.remove('active'));
+        btn.classList.add('active');
+        galleryEl.querySelector(`#${tabId}`).classList.add('active');
+      });
+    });
+  }
+
+  // --- Handle simple gallery (no groups) ---
+  else {
+    const allImages = [].concat(project.gallery || [], project.images || [], project.livePhotos || []);
+    allImages.forEach((i) => {
+      const src = typeof i === 'string' ? i : i.src;
+      const caption = (typeof i === 'string' ? project.title : i.caption) || project.title;
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = caption;
+      img.addEventListener('click', () => {
+        lbImages = allImages.map((img) => (typeof img === 'string' ? img : img.src));
+        lbIndex = lbImages.indexOf(src);
+        openLightbox(src, caption);
+      });
+      galleryEl.appendChild(img);
+    });
+
+    lbImages = allImages.map((img) => (typeof img === 'string' ? img : img.src));
+  }
 
   modal().classList.add('is-open');
   setLock(true);
-
-  lbImages = allImages.map(img => typeof img === 'string' ? img : img.src);
-  lbIndex = 0;
 }
+
 
 /* -------------------- Modal & Lightbox Controls -------------------- */
 function closeModal() { modal().classList.remove('is-open'); setLock(false); }
@@ -138,20 +186,21 @@ document.querySelectorAll('.intro__nav a').forEach(link => {
   
   
   // -------------------- Visitor Counter --------------------
-document.addEventListener('DOMContentLoaded', async () => {
-  const counter = document.getElementById('visit-count');
-  if (!counter) return;
+  (async () => {
+    const counter = document.getElementById('visit-count');
+    if (!counter) return;
 
-  try {
-    // Simple free counter using countapi.xyz (no backend needed)
-    const res = await fetch('https://api.countapi.xyz/hit/oum-portfolio/visits');
-    const data = await res.json();
-    counter.textContent = data.value.toLocaleString();
-  } catch (err) {
-    console.error('Visit counter failed:', err);
-    counter.textContent = 'N/A';
-  }
+    try {
+      // Simple free counter using countapi.xyz (no backend needed)
+      const res = await fetch('https://api.countapi.xyz/hit/oum-portfolio/visits');
+      const data = await res.json();
+      counter.textContent = data.value.toLocaleString();
+    } catch (err) {
+      console.error('Visit counter failed:', err);
+      counter.textContent = 'N/A';
+    }
+  })();
+
 });
-
 
 });
