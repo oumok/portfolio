@@ -141,15 +141,15 @@
 	   {
       "name": "Portraits",
       "images": [
-	  {"src":"images/freelance/photos/photos1.jpg", "caption":"portrait"},
-		 {"src":"images/freelance/photos/photos1.jpg", "caption":"portrait"}	
+	  {"src":"images/freelance/photos/portraits/cat1.jpg", "caption":"portrait"},
+		 {"src":"images/freelance/photos/portraits/cat2.jpg", "caption":"portrait"}	
       ]
     },
 		   {
       "name": "Aerials",
       "images": [
-	  {"src":"images/freelance/photos/photos1.jpg", "caption":"portrait"},
-		 {"src":"images/freelance/photos/photos1.jpg", "caption":"portrait"}	
+	  {"src":"images/freelance/photos/aerial/aerial1.jpg", "caption":"portrait"},
+		 {"src":"images/freelance/photos/aerial/aerial2.jpg", "caption":"portrait"}	
       ]
     },
 	]
