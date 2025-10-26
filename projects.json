@@ -14,6 +14,21 @@
         { "src": "images/architecture/sunset/sunset7.jpg", "caption": "Workspaces." }
       ],
       "livePhotos": [
+	  { "src": "images/architecture/sunset/sunsetlive1.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive2.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive3.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive4.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive5.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive6.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive7.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive8.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive9.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive10.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive11.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive12.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive13.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive14.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive15.jpg", "caption": "Live photos." },
       ]
     },
     {
@@ -136,8 +151,21 @@
       "description": "Photography, Videography, Drone shoots.",
       "thumbnail": "images/freelance/photos/photoscover.jpg",
       "images": [
-        "images/freelance/photos/photos1.jpg",
-        "images/freelance/photos/photos2.jpg"
+        "images/freelance/photos/abstract/abs1.jpg",
+        "images/freelance/photos/abstract/abs2.jpg",
+        "images/freelance/photos/abstract/abs3.jpg",
+        "images/freelance/photos/abstract/abs4.jpg",
+        "images/freelance/photos/abstract/abs5.jpg",
+        "images/freelance/photos/aerial/aerial1.jpg",
+        "images/freelance/photos/aerial/aerial2.jpg",
+        "images/freelance/photos/aerial/aerial3.jpg",
+        "images/freelance/photos/portraits/cat1.jpg",
+        "images/freelance/photos/portraits/cat2.jpg",
+        "images/freelance/photos/portraits/cat3.jpg",
+        "images/freelance/photos/portraits/cat4.jpg",
+        "images/freelance/photos/portraits/cat5.jpg",
+        "images/freelance/photos/portraits/dog1.jpg",
+		"images/freelance/photos/abstract/dog2.jpg",
       ]
     },
     {
