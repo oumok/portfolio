@@ -14,14 +14,10 @@ img { display:block; max-width:100%; height:auto; }
   align-items: center;
   justify-content: flex-end;
   padding: 4rem 6vw;
-  background: 
-    linear-gradient(180deg, rgba(15,15,16,0.8), rgba(11,11,12,0.9)),  line for gradient  
+  background:
+    linear-gradient(180deg, rgba(15,15,16,0.8), rgba(11,11,12,0.9)),
     url('images/hero-bg.jpg') center/cover no-repeat;
-color: #fff;}
-  
-  
- /*  min-height:100vh; display:flex; align-items:center; justify-content:flex-end;
-  padding:4rem 6vw; background:linear-gradient(180deg,#0f0f10,#0b0b0c); */
+  color: #fff;
 }
 .intro { text-align:right; animation:slideIn .8s ease-out both; }
 .intro__name { margin:0; font-size:clamp(2.4rem,6vw,4.8rem); }
@@ -32,8 +28,6 @@ color: #fff;}
   background:transparent; color:inherit; transition:transform .15s, background .18s;
 }
 .chip:hover { background:#fff; color:#0b0b0c; transform:translateY(-2px); }
-
-
 
 /* Sections */
 .section { padding:4rem 6vw; }
@@ -62,6 +56,8 @@ color: #fff;}
   position:fixed; inset:0; display:none; place-items:center; padding:3vh 3vw;
   background:rgba(0,0,0,.85); z-index:50;
 }
+/* Ensure clicks on panel don't fall through */
+.modal__panel { pointer-events:auto; }
 .modal.is-open { display:grid; animation:fadeIn .18s ease; }
 .modal__panel {
   width:min(100%,1100px); max-height:90vh; overflow:auto; background:#0f0f11; border-radius:12px;
@@ -72,14 +68,53 @@ color: #fff;}
 .modal__desc { margin:0 0 .75rem; color:#d8d8df; }
 .modal__details { margin:0 0 1rem; color:#bdbdc6; font-size:.95rem; }
 
-/* Gallery in modal (3-up) */
-.gallery {
-  display:grid; grid-template-columns:repeat(3,1fr); gap:.75rem;
+/* Tabs (top) */
+.modal__tabs { display:flex; gap:1rem; margin-bottom:1rem; flex-wrap:wrap; }
+.tab-btn {
+  padding:.5rem 1rem; border-radius:999px; background:#222; color:#fff; border:none; cursor:pointer;
+  transition:background .18s, transform .12s;
 }
-@media (max-width:900px){ .gallery{ grid-template-columns:repeat(2,1fr); } }
-@media (max-width:560px){ .gallery{ grid-template-columns:1fr; } }
-.gallery img { width:100%; border-radius:8px; cursor:pointer; transition:transform .18s ease; }
-.gallery img:hover { transform:scale(1.03); }
+.tab-btn:hover { background:#333; transform:translateY(-2px); }
+.tab-btn.active { background:#fff; color:#0b0b0c; }
+
+/* Gallery groups inside modal (popup-gallery uses 4-per-row) */
+#modal-gallery { margin-top:1rem; }
+.gallery-group {
+  display:none;
+  gap:.75rem;
+  margin-top:.5rem;
+}
+.gallery-group.active { display:grid; }
+
+/* 4 columns on wide screens */
+@media (min-width: 900px) {
+  .gallery-group.active { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* 3 columns medium */
+@media (min-width: 640px) and (max-width:899px) {
+  .gallery-group.active { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* 2 columns small */
+@media (max-width: 639px) {
+  .gallery-group.active { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* single column extra small */
+@media (max-width: 420px) {
+  .gallery-group.active { grid-template-columns: 1fr; }
+}
+
+.gallery-group img {
+  width:100%;
+  height:auto;
+  object-fit:cover;
+  border-radius:8px;
+  cursor:pointer;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.gallery-group img:hover { transform:scale(1.03); box-shadow:0 8px 30px rgba(0,0,0,.5); }
 
 /* Lightbox */
 .lightbox {
@@ -100,152 +135,7 @@ color: #fff;}
 @keyframes slideIn { from{opacity:0; transform:translateX(28px);} to{opacity:1; transform:none;} }
 @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
 
-/* Modal Tabs */
-.modal__tabs {
-  display: flex;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-}
-.tab-btn {
-  padding: 0.5rem 1rem;
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 999px;
-  background: transparent;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 0.95rem;
-}
-.tab-btn:hover { background: rgba(255,255,255,0.1); transform: translateY(-1px); }
-.tab-btn.active { background: #fff; color: #0b0b0c; border-color: #fff; }
-
-/* Gallery groups inside modal (for tab switching) */
-.gallery-group { display:none; }
-.gallery-group.active { display:grid; grid-template-columns:repeat(3,1fr); gap:.75rem; }
-@media (max-width:900px){ .gallery-group.active { grid-template-columns:repeat(2,1fr); } }
-@media (max-width:560px){ .gallery-group.active { grid-template-columns:1fr; } }
-
-
-/* Modal tabs */
-.modal__tabs {
-  display:flex; gap:0.6rem; margin-bottom:1rem;
-}
-.modal__tabs .tab-btn {
-  padding:.5rem 1rem; border:none; border-radius:999px; background:#222; color:#ccc; cursor:pointer;
-  transition:background .2s,color .2s;
-}
-.modal__tabs .tab-btn.active { background:#fff; color:#0b0b0c; }
-.gallery-group { display:none; }
-.gallery-group.active { display:grid; grid-template-columns:repeat(3,1fr); gap:.75rem; }
-@media(max-width:900px){ .gallery-group{ grid-template-columns:repeat(2,1fr); } }
-@media(max-width:560px){ .gallery-group{ grid-template-columns:1fr; } }
-
-/* Modal gallery images */
-.gallery-group img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: transform 0.2s ease;
-}
-
-.gallery-group img:hover {
-  transform: scale(1.05);
-}
-
-/* Make gallery group grid responsive inside modal */
-#modal-gallery .gallery-group {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 0.75rem;
-}
-
-@media (max-width: 900px) {
-  #modal-gallery .gallery-group {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  }
-}
-
-@media (max-width: 560px) {
-  #modal-gallery .gallery-group {
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  }
-}
-
-/* =========================
-   Fix: Popup Gallery Scaling
-   ========================= */
-#project-modal.is-open {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#project-modal .modal__content {
-  width: 90%;
-  max-width: 1200px;
-  background: var(--modal-bg, #111);
-  border-radius: 12px;
-  overflow: hidden;
-  padding: 2rem;
-  color: #fff;
-}
-
-#modal-gallery {
-  margin-top: 1.5rem;
-  width: 100%;
-}
-
-/* Make popup gallery fill modal space neatly */
-#modal-gallery .gallery-group {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
-  justify-items: center;
-}
-
-#modal-gallery .gallery-group img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  object-fit: cover;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-#modal-gallery .gallery-group img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-}
-
-/* Tabs alignment fix */
-.modal__tabs {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.modal__tabs .tab-btn {
-  background: #222;
-  border: none;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.modal__tabs .tab-btn.active {
-  background: #444;
-}
-
-.modal__tabs .tab-btn:hover {
-  background: #333;
-}
-
-
+/* Footer */
 .footer {
   background:#0b0b0c;
   border-top:1px solid rgba(255,255,255,0.1);
@@ -254,34 +144,9 @@ color: #fff;}
   font-size:0.9rem;
   color:#cfcfd6;
 }
+.footer__content { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:.5rem; }
+.footer__socials a { color:#cfcfd6; margin:0 .4rem; text-decoration:none; transition:color .2s ease; }
+.footer__socials a:hover { color:#fff; }
+.footer__visits { font-family:monospace; opacity:0.8; }
 
-.footer__content {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:.5rem;
-}
-
-.footer__socials a {
-  color:#cfcfd6;
-  margin:0 .4rem;
-  text-decoration:none;
-  transition:color .2s ease;
-}
-
-.footer__socials a:hover {
-  color:#fff;
-}
-
-.footer__visits {
-  font-family:monospace;
-  opacity:0.8;
-}
-
-@media (max-width:600px) {
-  .footer__content {
-    flex-direction:column;
-    gap:.3rem;
-  }
-}
+@media (max-width:600px) { .footer__content { flex-direction:column; gap:.3rem; } }

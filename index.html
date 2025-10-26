@@ -16,7 +16,7 @@
         <a href="#architecture" class="chip">Architecture</a>
         <a href="#production" class="chip">Production Design</a>
         <a href="#product" class="chip">Product Design</a>
-		<a href="https://drive.google.com/drive/folders/1K9Hwl2-mKDw9o_KwfkjBg42A5Wtr9e3R?usp=sharing" class="chip">PDF portfolio</a>
+        <a href="https://drive.google.com/drive/folders/1K9Hwl2-mKDw9o_KwfkjBg42A5Wtr9e3R?usp=sharing" class="chip" target="_blank" rel="noopener noreferrer">PDF portfolio</a>
       </nav>
     </div>
   </header>
@@ -37,11 +37,11 @@
       <h2 class="section__title">Product Design</h2>
       <div id="product-grid" class="grid"></div>
     </section>
-	
+
     <section id="freelance" class="section">
       <h2 class="section__title">Freelance gigs</h2>
       <div id="freelance-grid" class="grid"></div>
-    </section>	
+    </section>
   </main>
 
   <!-- Project Modal -->
@@ -50,6 +50,11 @@
       <button class="modal__close" id="modal-close" aria-label="Close project">×</button>
       <h3 id="modal-title" class="modal__title"></h3>
       <p id="modal-description" class="modal__desc"></p>
+
+      <!-- Tabs (injected) -->
+      <div id="modal-tabs" class="modal__tabs" aria-hidden="false"></div>
+
+      <!-- Gallery groups will be injected here -->
       <div id="modal-gallery" class="gallery" aria-live="polite"></div>
     </div>
   </div>
@@ -63,25 +68,24 @@
     <div id="lightbox-caption" class="lightbox__caption"></div>
   </div>
 
-  <!-- Projects JSON -->
+  <!-- Projects JSON (optional inline; can be empty) -->
   <script id="projects-data" type="application/json">
-  <!-- Optional: paste projects.json here; otherwise script fetches projects.json file -->
+  <!-- Leave empty to fetch projects.json; or paste the JSON here (no HTML comments) -->
   </script>
 
   <script src="script.js"></script>
-   <script src="background.js"></script>
-   
-   <!-- Footer -->
-<footer class="footer">
-  <div class="footer__content">
-    <span class="footer__visits">Visits: <span id="visit-count">...</span></span>
-    <div class="footer__socials">
-      <a href="https://github.com/oumok" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="https://www.linkedin.com/in/oum-kuvelkar" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="https://www.instagram.com/oumkuvelkar" target="_blank" rel="noopener noreferrer">Instagram</a>
+  <script src="background.js"></script>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__content">
+      <span class="footer__visits">Visits: <span id="visit-count">...</span></span>
+      <div class="footer__socials">
+        <a href="https://github.com/oumok" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/oum-kuvelkar" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://www.instagram.com/oumkuvelkar" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
     </div>
-  </div>
-</footer>
-   
+  </footer>
 </body>
 </html>
