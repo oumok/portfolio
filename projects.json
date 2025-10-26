@@ -111,7 +111,7 @@
           "images": [
 		    { "src": "images/architecture/serendipity24/saf1.jpg", "caption": "Concept visual for installation." },
             { "src": "images/architecture/serendipity24/saf2.jpg", "caption": "Assembly layout." },
-            { "src": "images/architecture/serendipity24/saf3.jpg", "caption": "Structural frame detail." }
+            { "src": "images/architecture/serendipity24/saf3.jpg", "caption": "Structural frame detail." },
             { "src": "images/architecture/serendipity24/saf10.jpg", "caption": "Layer wise plan." },
             { "src": "images/architecture/serendipity24/saf11.jpg", "caption": "Sections." },
             { "src": "images/architecture/serendipity24/saf12.jpg", "caption": "Staggered layout design for book library." },
@@ -229,7 +229,7 @@
 			{ "src":         "images/freelance/photos/portraits/cat5.jpg", "caption": "" },
 			{ "src":         "images/freelance/photos/portraits/dog1.jpg", "caption": "" },			
 			{ "src":         "images/freelance/photos/portraits/dog2.jpg", "caption": "" },
-			{ "src":         "images/freelance/photos/portraits/dog3.jpg", "caption": "" },
+			{ "src":         "images/freelance/photos/portraits/dog3.jpg", "caption": "" }
 			
 			
           ]
