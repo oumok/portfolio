@@ -150,3 +150,4 @@ img { display:block; max-width:100%; height:auto; }
 .footer__visits { font-family:monospace; opacity:0.8; }
 
 @media (max-width:600px) { .footer__content { flex-direction:column; gap:.3rem; } }
+
