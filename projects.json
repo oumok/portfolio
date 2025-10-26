@@ -6,25 +6,36 @@
       "thumbnail": "images/architecture/sunset/sunsetcover.jpg",
       "gallery": [
         {
-          "group": "Concept Sketches",
-          "images": [
-            { "src": "images/architecture/sunset/sunset2.jpg", "caption": "Exploded axonometric showing layout." },
-            { "src": "images/architecture/sunset/sunset1.jpg", "caption": "Accounts section." }
-          ]
-        },
-        {
+			
           "group": "Renders",
           "images": [
-            { "src": "images/architecture/sunset/sunset3.jpg", "caption": "Work section." },
-            { "src": "images/architecture/sunset/sunset4.jpg", "caption": "Fun zone / Informal meetings zone." },
-            { "src": "images/architecture/sunset/sunset5.jpg", "caption": "Fun zone / Informal meetings zone." }
+        { "src": "images/architecture/sunset/sunset2.jpg", "caption": "Exploded axonometric showing layout." },
+        { "src": "images/architecture/sunset/sunset1.jpg", "caption": "Accounts section." },
+        { "src": "images/architecture/sunset/sunset3.jpg", "caption": "Work section." },
+        { "src": "images/architecture/sunset/sunset4.jpg", "caption": "Fun zone / Informal meetings zone." },
+        { "src": "images/architecture/sunset/sunset5.jpg", "caption": "Fun zone / Informal meetings zone." },
+        { "src": "images/architecture/sunset/sunset6.jpg", "caption": "Entrance axis, Standing discussion table." },
+        { "src": "images/architecture/sunset/sunset7.jpg", "caption": "Workspaces."
           ]
         },
         {
           "group": "Live Photos",
           "images": [
-            { "src": "images/architecture/sunset/sunset6.jpg", "caption": "Entrance axis, Standing discussion table." },
-            { "src": "images/architecture/sunset/sunset7.jpg", "caption": "Workspaces." }
+	  { "src": "images/architecture/sunset/sunsetlive1.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive2.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive3.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive4.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive5.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive6.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive7.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive8.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive9.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive10.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive11.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive12.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive13.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive14.jpg", "caption": "Live photos." },
+	  { "src": "images/architecture/sunset/sunsetlive15.jpg", "caption": "Live photos." }
           ]
         }
       ]
@@ -85,14 +96,6 @@
       "thumbnail": "images/architecture/serendipity24/saf24cover.jpg",
       "gallery": [
         {
-          "group": "Concept Sketches",
-          "images": [
-            { "src": "images/architecture/serendipity24/saf1.jpg", "caption": "Concept visual for installation." },
-            { "src": "images/architecture/serendipity24/saf2.jpg", "caption": "Assembly layout." },
-            { "src": "images/architecture/serendipity24/saf3.jpg", "caption": "Structural frame detail." }
-          ]
-        },
-        {
           "group": "Live Photos",
           "images": [
             { "src": "images/architecture/serendipity24/saf4.jpg", "caption": "Real life image of book library." },
@@ -106,6 +109,9 @@
         {
           "group": "Renders & Diagrams",
           "images": [
+		    { "src": "images/architecture/serendipity24/saf1.jpg", "caption": "Concept visual for installation." },
+            { "src": "images/architecture/serendipity24/saf2.jpg", "caption": "Assembly layout." },
+            { "src": "images/architecture/serendipity24/saf3.jpg", "caption": "Structural frame detail." }
             { "src": "images/architecture/serendipity24/saf10.jpg", "caption": "Layer wise plan." },
             { "src": "images/architecture/serendipity24/saf11.jpg", "caption": "Sections." },
             { "src": "images/architecture/serendipity24/saf12.jpg", "caption": "Staggered layout design for book library." },
@@ -141,8 +147,8 @@
       "description": "Production design for a period drama, focusing on authentic detailing and environment creation.",
       "thumbnail": "images/production/mirzapur/mtfcover.jpg",
       "gallery": [
-        {
-          "group": "Renders",
+	   {
+          "group": "Live Photos",
           "images": [
             { "src": "images/production/mirzapur/mtf1.jpg", "caption": "Tripathi haveli set." },
             { "src": "images/production/mirzapur/mtf2.jpg", "caption": "Tripathi haveli set." },
@@ -154,6 +160,12 @@
             { "src": "images/production/mirzapur/mtf8.jpg", "caption": "Cultural ground set." },
             { "src": "images/production/mirzapur/mtf9.jpg", "caption": "Cultural ground set." },
             { "src": "images/production/mirzapur/mtf10.jpg", "caption": "Cultural ground set." }
+          ]
+        },
+        {
+          "group": "Renders",
+          "images": [
+
           ]
         }
       ]
@@ -202,8 +214,24 @@
         {
           "group": "Photos",
           "images": [
-            { "src": "images/freelance/photos/photos1.jpg", "caption": "" },
-            { "src": "images/freelance/photos/photos2.jpg", "caption": "" }
+            { "src":         "images/freelance/photos/abstract/abs1.jpg", "caption": "" },
+            { "src":         "images/freelance/photos/abstract/abs2.jpg", "caption": "" },
+			{ "src":         "images/freelance/photos/abstract/abs3.jpg", "caption": "" },
+			{ "src":         "images/freelance/photos/abstract/abs4.jpg", "caption": "" },
+			{ "src":         "images/freelance/photos/abstract/abs5.jpg", "caption": "" },
+			{ "src":         "images/freelance/photos/aerial/aerial1.jpg", "caption": "" },
+			{ "src":         "images/freelance/photos/aerial/aerial2.jpg", "caption": "" },
+			{ "src":         "images/freelance/photos/aerial/aerial3.jpg", "caption": "" },
+			{ "src":         "images/freelance/photos/portraits/cat1.jpg", "caption": "" },
+			{ "src":         "images/freelance/photos/portraits/cat2.jpg", "caption": "" },
+			{ "src":         "images/freelance/photos/portraits/cat3.jpg", "caption": "" },
+			{ "src":         "images/freelance/photos/portraits/cat4.jpg", "caption": "" },
+			{ "src":         "images/freelance/photos/portraits/cat5.jpg", "caption": "" },
+			{ "src":         "images/freelance/photos/portraits/dog1.jpg", "caption": "" },			
+			{ "src":         "images/freelance/photos/portraits/dog2.jpg", "caption": "" },
+			{ "src":         "images/freelance/photos/portraits/dog3.jpg", "caption": "" },
+			
+			
           ]
         }
       ]
