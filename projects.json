@@ -87,6 +87,16 @@
             { "src": "images/architecture/benaulim/benaulim6.jpg", "caption": "Bathroom area render." },
             { "src": "images/architecture/benaulim/benaulim7.jpg", "caption": "Bedroom area render." }
           ]
+        },
+		{
+          "group": "Live Photos",
+          "images": [
+            { "src": "images/architecture/benaulim/benaulimlive1.jpg", "caption": "Exterior context." },
+			{ "src": "images/architecture/benaulim/benaulimlive2.jpg", "caption": "Window exterior style." },
+			{ "src": "images/architecture/benaulim/benaulimlive3.jpg", "caption": "Exterior context." },
+			{ "src": "images/architecture/benaulim/benaulimlive4.jpg", "caption": "Work in progress." },
+			{ "src": "images/architecture/benaulim/benaulimlive5.jpg", "caption": "Work in progress." }
+          ]
         }
       ]
     },
