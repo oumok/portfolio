@@ -285,18 +285,27 @@ document.addEventListener('DOMContentLoaded', () => {
   })();
 
   // visitor counter
-  (async function visitorCounter() {
-    const counter = document.getElementById('visit-count');
-    if (!counter) return;
-    try {
-      const res = await fetch('https://api.countapi.xyz/hit/oum-portfolio/visits');
-      const json = await res.json();
-      counter.textContent = (json && json.value) ? Number(json.value).toLocaleString() : 'N/A';
-    } catch (err) {
-      console.error('Visit counter failed:', err);
-      counter.textContent = 'N/A';
-    }
-  })();
+(async function visitorCounter() {
+  const counter = document.getElementById('visit-count');
+  if (!counter) return;
+
+  const key = "oumkuvelkar_portfolio_visits";
+
+  try {
+    // Ensure counter exists if first-time setup — increment afterwards
+    await fetch(`https://api.countapi.xyz/create?namespace=oumkuvelkar&key=${key}&value=0`, { method: "GET" });
+
+    const res = await fetch(`https://api.countapi.xyz/hit/oumkuvelkar/${key}`);
+    const json = await res.json();
+
+    counter.textContent = (json && json.value)
+      ? Number(json.value).toLocaleString()
+      : "N/A";
+  } catch (err) {
+    console.error("Visit counter failed:", err);
+    counter.textContent = "N/A";
+  }
+})();
 });
 
 /* -------------------- end script -------------------- */
