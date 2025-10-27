@@ -1,268 +1,247 @@
-/* -------------------- Helpers -------------------- */
-const qs = (sel, el = document) => (el || document).querySelector(sel);
-const qsa = (sel, el = document) => Array.from((el || document).querySelectorAll(sel));
+/* Helpers */
+const qs = (sel, el=document) => el.querySelector(sel);
+const qsa = (sel, el=document) => Array.from(el.querySelectorAll(sel));
 const setLock = (lock) => document.body.classList.toggle('body--lock', lock);
 
-/* -------------------- Elements -------------------- */
-const modal = () => qs('#project-modal');
-const modalPanel = () => qs('.modal__panel');
-const modalClose = () => qs('#modal-close');
+/* Modal & Lightbox elements */
+const modalEl = () => qs('#project-modal');
+const modalCloseBtn = () => qs('#modal-close');
 const modalTitle = () => qs('#modal-title');
 const modalDesc = () => qs('#modal-description');
 const modalTabs = () => qs('#modal-tabs');
 const modalGallery = () => qs('#modal-gallery');
 
-const lightbox = () => qs('#lightbox');
+const lightboxEl = () => qs('#lightbox');
 const lightboxImg = () => qs('#lightbox-img');
-const lightboxClose = () => qs('#lightbox-close');
-const lightboxPrev = () => qs('#lightbox-prev');
-const lightboxNext = () => qs('#lightbox-next');
 const lightboxCaption = () => qs('#lightbox-caption');
+const lightboxCloseBtn = () => qs('#lightbox-close');
+const lightboxPrevBtn = () => qs('#lightbox-prev');
+const lightboxNextBtn = () => qs('#lightbox-next');
 
-let lbImages = []; // [{src, caption}]
-let lbIndex = 0;
+let lbImages = [], lbIndex = 0;
 
-/* -------------------- Normalizers -------------------- */
-function normalizeImage(item) {
-  if (!item) return { src: '', caption: '' };
-  if (typeof item === 'string') return { src: item, caption: '' };
-  return { src: item.src || item, caption: item.caption || item.alt || '' };
+/* Escape HTML safe */
+function escapeHtml(s=''){ return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m])); }
+
+/* Render card in homepage uniform grid */
+function renderCard(project, gridEl){
+  const thumb = project.thumbnail || (project.images && project.images[0]) || '';
+  const article = document.createElement('article');
+  article.className = 'card';
+  article.tabIndex = 0;
+  article.innerHTML = `<img class="card__thumb" loading="lazy" src="${escapeHtml(thumb)}" alt="${escapeHtml(project.title)}">
+    <div class="card__label">${escapeHtml(project.title)}</div>`;
+  // click opens project
+  article.addEventListener('click', (e)=>{ e.stopPropagation(); openProject(project); });
+  article.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); openProject(project); }});
+  gridEl.appendChild(article);
 }
 
-function normalizeGroupsFromProject(project) {
-  // Option A: expect project.gallery to be an array of groups:
-  // project.gallery = [ { group: "Concept Sketches", images: [ {src,caption}, ... ] }, ... ]
-  if (Array.isArray(project.gallery) && project.gallery.length && project.gallery[0].group) {
-    return project.gallery.map(g => ({
-      name: g.group || g.name || 'Gallery',
-      images: Array.isArray(g.images) ? g.images.map(normalizeImage) : []
-    }));
-  }
-
-  // Fallback: legacy shapes -> gallery/images/livePhotos arrays
-  const combined = [];
-  ['gallery', 'images', 'livePhotos'].forEach(key => {
-    if (Array.isArray(project[key])) {
-      project[key].forEach(i => combined.push(normalizeImage(i)));
-    }
-  });
-
-  // If there are explicit project.groups (alternate shape), support that
-  if (Array.isArray(project.groups) && project.groups.length) {
-    return project.groups.map(g => ({
-      name: g.name || g.group || 'Gallery',
-      images: Array.isArray(g.images) ? g.images.map(normalizeImage) : []
-    }));
-  }
-
-  // Wrap combined into a single group if nothing else
-  if (combined.length) {
-    return [{ name: 'Gallery', images: combined }];
-  }
-
-  // Empty fallback
-  return [{ name: 'Gallery', images: [] }];
-}
-
-/* -------------------- Render Card -------------------- */
-function getThumb(project) {
-  if (project.thumbnail) return project.thumbnail;
-  // look for first image in any common field
-  const fields = ['gallery', 'images', 'livePhotos', 'groups'];
-  for (const k of fields) {
-    const val = project[k];
-    if (Array.isArray(val) && val.length) {
-      // if groups shape, dive
-      if (k === 'groups' && val[0] && val[0].images && val[0].images.length) {
-        return typeof val[0].images[0] === 'string' ? val[0].images[0] : (val[0].images[0].src || '');
-      }
-      const first = val[0];
-      if (typeof first === 'string') return first;
-      if (first && first.src) return first.src;
-    }
-  }
-  return '';
-}
-
-function renderCard(project, gridEl) {
-  const thumb = getThumb(project) || '';
-  const card = document.createElement('article');
-  card.className = 'card';
-  card.tabIndex = 0;
-  card.innerHTML = `
-    <img class="card__thumb" src="${escapeHtml(thumb)}" alt="${escapeHtml(project.title||'')}">
-    <div class="card__label">${escapeHtml(project.title||'')}</div>
-  `;
-  card.addEventListener('click', () => openProject(project));
-  card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openProject(project); }});
-  gridEl.appendChild(card);
-}
-
-/* -------------------- Escape HTML -------------------- */
-function escapeHtml(str='') {
-  return String(str||'').replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
-}
-
-/* -------------------- Open Project (tabs & groups) -------------------- */
-function openProject(project) {
-  const galleryEl = modalGallery();
-  const tabsEl = modalTabs();
-  if (!galleryEl || !tabsEl) return;
-
-  galleryEl.innerHTML = '';
-  tabsEl.innerHTML = '';
+/* Open project modal with tabs and grouped galleries */
+function openProject(project){
+  modalTabs().innerHTML = '';
+  modalGallery().innerHTML = '';
   modalTitle().textContent = project.title || '';
   modalDesc().textContent = project.description || '';
 
-  const groups = normalizeGroupsFromProject(project);
-
-  // render tabs (only if >1 group)
-  if (groups.length > 1) {
-    groups.forEach((g, idx) => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'tab-btn' + (idx === 0 ? ' active' : '');
-      btn.textContent = g.name || `Group ${idx+1}`;
-      btn.addEventListener('click', () => {
-        // tab toggle
-        qsa('.tab-btn', tabsEl).forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-        // show corresponding gallery-group
-        qsa('.gallery-group', galleryEl).forEach(c=>c.classList.remove('active'));
-        const target = qs(`#gallery-group-${idx}`, galleryEl);
-        if (target) target.classList.add('active');
-      });
-      tabsEl.appendChild(btn);
+  let groups = [];
+  if (Array.isArray(project.gallery) && project.gallery.length && project.gallery[0].group) {
+    groups = project.gallery.map((g, i) => {
+      const imgs = (g.images || []).map(it => (typeof it==='string')? {src:it, caption:''} : {src:it.src||'', caption:it.caption||''});
+      const groupType = 'bento'; // Force bento for all
+      return { id: `tab${i}`, name: g.group || `Group ${i+1}`, images: imgs, type: groupType };
     });
+  } else {
+    // Fallback logic
+    const all = (project.images || project.gallery || []).map(it => (typeof it==='string')?{src:it, caption:''}:{src:it.src||'', caption:it.caption||''});
+    if (all.length) groups.push({ id:'all', name:'All', images:all, type:'bento' });
   }
 
-  // render gallery groups
   groups.forEach((g, idx) => {
-    const groupWrap = document.createElement('div');
-    groupWrap.className = 'gallery-group' + (idx===0 ? ' active' : '');
-    groupWrap.id = `gallery-group-${idx}`;
+    if (!g.images.length) return;
 
-    (g.images || []).forEach(imgObj => {
-      const n = normalizeImage(imgObj);
-      const img = document.createElement('img');
-      img.src = n.src || '';
-      img.alt = n.caption || project.title || '';
-      // Clicking an image loads the lightbox for this group's images
-      img.addEventListener('click', () => {
-        lbImages = (g.images || []).map(normalizeImage);
-        lbIndex = lbImages.findIndex(i=>i.src === n.src);
-        if (lbIndex < 0) lbIndex = 0;
-        openLightbox(lbImages[lbIndex].src, lbImages[lbIndex].caption);
+    const btn = document.createElement('button');
+    btn.className = 'tab-btn' + (idx===0 ? ' active' : '');
+    btn.textContent = g.name;
+    btn.dataset.tab = g.id;
+    modalTabs().appendChild(btn);
+
+    const container = document.createElement('div');
+    container.className = 'tab-content' + (idx===0 ? ' active' : '');
+    container.id = g.id;
+
+    if (g.type === 'bento') {
+      const bento = document.createElement('div'); bento.className = 'bento';
+      g.images.forEach((imgObj, imgIndex) => {
+        const item = document.createElement('div'); item.className = 'bento-item';
+        const img = document.createElement('img');
+        img.loading = 'lazy'; img.alt = imgObj.caption || project.title || '';
+        img.src = imgObj.src;
+        img.addEventListener('click', (e)=> {
+          e.stopPropagation();
+          lbImages = g.images; 
+          lbIndex = imgIndex;
+          openLightbox(imgObj.caption || project.title);
+        });
+        item.appendChild(img); bento.appendChild(item);
       });
-      groupWrap.appendChild(img);
+      container.appendChild(bento);
+    } // 'else' for uniform grid is no longer needed
+
+    modalGallery().appendChild(container);
+  });
+
+  modalTabs().querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', ()=>{
+      modalTabs().querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      modalGallery().querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      btn.classList.add('active');
+      const target = modalGallery().querySelector(`#${btn.dataset.tab}`);
+      if (target) target.classList.add('active');
     });
-
-    galleryEl.appendChild(groupWrap);
   });
 
-  modal().classList.add('is-open');
+  modalEl().classList.add('is-open');
+  setLock(true);
+
+  if (window.gtag) {
+    try { gtag('event','open_project',{ 'project_title': project.title }); } catch(e) {}
+  }
+}
+
+/* Modal controls */
+function closeModal(){ modalEl().classList.remove('is-open'); setLock(false); }
+
+/* Lightbox controls */
+function openLightbox(caption=''){
+  const imgObj = lbImages[lbIndex];
+  if (!imgObj || !imgObj.src) return;
+  
+  lightboxImg().src = imgObj.src;
+  lightboxCaption().textContent = caption || imgObj.caption || ''; 
+  lightboxEl().classList.add('is-open');
   setLock(true);
 }
-
-/* -------------------- Modal & Lightbox Controls -------------------- */
-function closeModal() {
-  const m = modal();
-  if (!m) return;
-  m.classList.remove('is-open');
-  setLock(false);
+function closeLightbox(){ lightboxEl().classList.remove('is-open'); if(!modalEl().classList.contains('is-open')) setLock(false); }
+function changeLightbox(step){ 
+  lbIndex = (lbIndex + step + lbImages.length) % lbImages.length; 
+  openLightbox(lbImages[lbIndex].caption || ''); 
 }
 
-function openLightbox(src, caption='') {
-  if (!src) return;
-  const lb = lightbox();
-  if (!lb) return;
-  if (!Array.isArray(lbImages) || lbImages.length === 0) lbImages = [{ src, caption }];
-  lbIndex = lbImages.findIndex(i=>i.src === src);
-  if (lbIndex < 0) lbIndex = 0;
-  updateLightbox();
-  lb.classList.add('is-open');
-  setLock(true);
-}
+/* === NEW: Function to fade hero on scroll === */
+function initHeroFade() {
+  const hero = qs('#landing');
+  if (!hero) return;
+  const fadeEnd = 500; // Pixels to scroll before hero is fully faded
 
-function closeLightbox() {
-  const lb = lightbox();
-  if (!lb) return;
-  lb.classList.remove('is-open');
-  // if modal is closed too, unlock
-  if (!modal().classList.contains('is-open')) setLock(false);
-}
-
-function changeLightbox(step) {
-  if (!Array.isArray(lbImages) || lbImages.length === 0) return;
-  lbIndex = (lbIndex + step + lbImages.length) % lbImages.length;
-  updateLightbox();
-}
-
-function updateLightbox() {
-  const img = lightboxImg();
-  const cap = lightboxCaption();
-  if (!img || !cap) return;
-  const entry = lbImages[lbIndex] || {};
-  img.src = entry.src || '';
-  cap.textContent = entry.caption || '';
-}
-
-/* -------------------- Wiring & init -------------------- */
-document.addEventListener('DOMContentLoaded', () => {
-  // modal panel click: close only when clicking background outside panel
-  modal()?.addEventListener('click', (e) => {
-    if (!modalPanel()) return;
-    if (!modalPanel().contains(e.target)) closeModal();
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    let opacity = 1 - (scrollY / fadeEnd);
+    opacity = Math.max(0, Math.min(1, opacity)); // Clamp between 0 and 1
+    hero.style.opacity = opacity;
   });
+}
 
-  modalClose()?.addEventListener('click', closeModal);
+/* Function to show/hide sticky nav */
+function initStickyNav() {
+  const stickyNav = qs('#sticky-nav');
+  const header = qs('#landing');
+  if (!stickyNav || !header) return;
 
-  lightboxClose()?.addEventListener('click', closeLightbox);
-  lightbox()?.addEventListener('click', (e) => { if (e.target === lightbox()) closeLightbox(); });
+  const headerHeight = header.offsetHeight;
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > headerHeight - 50) { 
+      stickyNav.classList.add('is-sticky');
+    } else {
+      stickyNav.classList.remove('is-sticky');
+    }
+  });
+}
 
-  lightboxPrev()?.addEventListener('click', () => changeLightbox(-1));
-  lightboxNext()?.addEventListener('click', () => changeLightbox(1));
+/* Function to highlight active section in sticky nav */
+function initSectionObserver() {
+  const stickyLinks = qsa('#sticky-nav a.chip');
+  if (!stickyLinks.length) return;
 
-  document.addEventListener('keydown', (e) => {
-    if (lightbox()?.classList.contains('is-open')) {
-      if (e.key === 'ArrowRight') changeLightbox(1);
-      if (e.key === 'ArrowLeft') changeLightbox(-1);
-      if (e.key === 'Escape') closeLightbox();
-    } else if (modal()?.classList.contains('is-open')) {
-      if (e.key === 'Escape') closeModal();
+  const observerOptions = {
+    root: null, 
+    rootMargin: "-40% 0px -60% 0px",
+    threshold: 0
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        const activeLink = qs(`#sticky-nav a[href="#${id}"]`);
+        
+        stickyLinks.forEach(link => link.classList.remove('active'));
+        if (activeLink) {
+          activeLink.classList.add('active');
+        }
+      }
+    });
+  }, observerOptions);
+
+  qsa('main .section').forEach(section => {
+    observer.observe(section);
+  });
+}
+
+/* Event wiring */
+document.addEventListener('DOMContentLoaded', ()=>{
+
+  // modal & lightbox basic wiring
+  modalCloseBtn()?.addEventListener('click', closeModal);
+  modalEl()?.addEventListener('click', e => { if (e.target === modalEl()) closeModal(); });
+  lightboxCloseBtn()?.addEventListener('click', closeLightbox);
+  lightboxEl()?.addEventListener('click', e => { if (e.target === lightboxEl()) closeLightbox(); });
+  lightboxPrevBtn()?.addEventListener('click', ()=>changeLightbox(-1));
+  lightboxNextBtn()?.addEventListener('click', ()=>changeLightbox(1));
+  document.addEventListener('keydown', e=>{
+    if (lightboxEl()?.classList.contains('is-open')){
+      if (e.key==='ArrowRight') changeLightbox(1);
+      if (e.key==='ArrowLeft') changeLightbox(-1);
+      if (e.key==='Escape') closeLightbox();
+    } else if (modalEl()?.classList.contains('is-open')){
+      if (e.key==='Escape') closeModal();
     }
   });
 
-  // smooth scroll for local nav chips (external links are left alone)
-  qsa('.intro__nav a').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const href = link.getAttribute('href') || '';
-      if (/^https?:\/\//i.test(href)) return;
-      if (!href.startsWith('#')) return;
+  // navigation chips: smooth-scroll for all hash links
+  document.querySelectorAll('a[href^="#"]').forEach(link=>{
+    link.addEventListener('click', e=>{
       e.preventDefault();
+      const href = link.getAttribute('href');
       const target = document.querySelector(href);
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
+      if (target) {
+        const stickyNavHeight = qs('#sticky-nav')?.offsetHeight || 0;
+        const targetPosition = target.getBoundingClientRect().top + window.scrollY - stickyNavHeight - 16; 
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
     });
   });
 
-  // load projects: embedded JSON first (clean comment stripping), fallback to fetch
-  (async function loadProjects() {
+  /* Load projects from embedded JSON or fetch projects.json */
+  (async function loadProjects(){
     let data = null;
     const dataEl = document.getElementById('projects-data');
-    if (dataEl && dataEl.textContent.trim()) {
-      try {
-        const raw = dataEl.textContent.replace(/<!--[\s\S]*?-->/g, '').trim();
-        data = JSON.parse(raw);
-      } catch (err) {
-        console.error('Error parsing embedded JSON:', err);
-      }
+    if (dataEl && dataEl.textContent && dataEl.textContent.trim().length > 50){
+      try { data = JSON.parse(dataEl.textContent); }
+      catch (e){ console.error('Error parsing embedded JSON:', e); }
     }
-
-    if (!data) {
+    
+    if (!data){
       try {
-        const res = await fetch('./projects.json', { cache: 'no-store' });
+        console.log('Embedded data not found, fetching projects.json...');
+        const res = await fetch('./projects.json');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
         data = await res.json();
-      } catch (err) {
+      } catch (err){
         console.error('Failed to load projects.json', err);
         return;
       }
@@ -274,39 +253,74 @@ document.addEventListener('DOMContentLoaded', () => {
       product: '#product-grid',
       freelance: '#freelance-grid'
     };
-
-    Object.keys(mappings).forEach(k => {
+    Object.keys(mappings).forEach(k=>{
       const grid = document.querySelector(mappings[k]);
-      const list = data[k];
-      if (!grid || !Array.isArray(list)) return;
-      grid.innerHTML = '';
+      const list = data[k] || [];
+      if (!grid) return;
+      grid.innerHTML = ''; // clear
       list.forEach(p => renderCard(p, grid));
     });
+
+    qsAllLoadedSetup();
   })();
 
-  // visitor counter
-(async function visitorCounter() {
-  const counter = document.getElementById('visit-count');
-  if (!counter) return;
+  // init skill meters
+  (function initSkillMeters(){
+    const skillsSection = document.getElementById('skills');
+    if (!skillsSection) return;
+    const items = skillsSection.querySelectorAll('.skill-circle');
+    items.forEach(it => { it.style.setProperty('--deg','0deg'); });
 
-  const key = "oumkuvelkar_portfolio_visits";
+    const io = new IntersectionObserver((entries, obs)=>{
+      entries.forEach(en=>{
+        if (en.isIntersecting){
+          items.forEach(it=>{
+            const pct = Number(it.getAttribute('data-percent')||0);
+            const deg = Math.round((pct/100)*360);
+            requestAnimationFrame(()=> { it.style.setProperty('--deg', deg + 'deg'); it.classList.add('animated'); });
+          });
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.25 });
+    io.observe(skillsSection);
+  })();
 
-  try {
-    // Ensure counter exists if first-time setup — increment afterwards
-    await fetch(`https://api.countapi.xyz/create?namespace=oumkuvelkar&key=${key}&value=0`, { method: "GET" });
+  // init experience ticker
+  (function initTicker(){
+    const sc = qs('.scroll-content');
+    if (!sc) return;
+    sc.innerHTML = sc.innerHTML + ' • ' + sc.innerHTML; // duplicate
+  })();
 
-    const res = await fetch(`https://api.countapi.xyz/hit/oumkuvelkar/${key}`);
-    const json = await res.json();
+  // === INITIALIZE NEW FEATURES ===
+  initHeroFade(); // Fades hero on scroll
+  initStickyNav(); // Shows sticky nav on scroll
+  initSectionObserver(); // Highlights nav links on scroll
 
-    counter.textContent = (json && json.value)
-      ? Number(json.value).toLocaleString()
-      : "N/A";
-  } catch (err) {
-    console.error("Visit counter failed:", err);
-    counter.textContent = "N/A";
-  }
-})();
 });
 
-/* -------------------- end script -------------------- */
+/* helper after loading thumbnails */
+function qsAllLoadedSetup(){
+  const imgs = qsa('.card__thumb, .modal-gallery img, .bento img');
+  const io = new IntersectionObserver((entries, obs)=>{
+    entries.forEach(entry=>{
+      if (entry.isIntersecting){
+        entry.target.classList.add('loaded');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.06 });
 
+  imgs.forEach(img=>{
+    io.observe(img);
+    if (img.closest('.modal-gallery') || img.closest('.bento')) {
+      img.addEventListener('click', e=> e.stopPropagation());
+    }
+  });
+}
+
+/* lightbox navigation */
+document.addEventListener('click', (e) => {
+  // nothing additional
+});
