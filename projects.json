@@ -10,7 +10,7 @@
         "client": "Sunset Getaways",
         "duration": "3 Months (Design + Build)",
         "software": ["AutoCAD", "SketchUp", "Enscape", "Photoshop"],
-        "scope": ["Concept Design", "3D Visualization", "Construction Drawings", "Site Supervision"]
+        "scope": ["Concept Design", "3D Visualization", "Construction Drawings", "Site Supervision","Sourcing"]
       },
       "gallery": [
         {
@@ -91,6 +91,14 @@
       "title": "Benaulim house",
       "description": "Compact 1BHK house converted to a 2BHK, maximizing space in a modern Goan aesthetic.",
       "thumbnail": "images/architecture/benaulim/benaulimcover.jpg",
+	        "details": {
+        "location": "Porvorim-Goa, India",
+        "area": "46 sq m",
+        "client": "Tania & Caje",
+        "duration": "In - Progress",
+        "software": ["AutoCAD", "SketchUp", "Enscape", "Photoshop"],
+        "scope": ["Concept Design", "3D Visualization", "Construction Drawings", "Site Supervision"]
+      },
       "gallery": [
         {
           "group": "Renders",
@@ -120,6 +128,13 @@
       "title": "Serendipity installation",
       "description": "Wayfinder + functional art installation for MOLD magazine at Serendipity Arts Festival 2024.",
       "thumbnail": "images/architecture/serendipity24/saf24cover.jpg",
+	        "details": {
+        "location": "ESG-Goa, India",
+        "client": "Serendipity Arts Festival & MOLD",
+        "duration": "1 Month (Design + Build)",
+        "software": ["AutoCAD", "SketchUp", "Fusion360", "Photoshop", "Rhino", "3D-Printing", "modelling & Prototyping"],
+        "scope": ["Concept Design", "3D Visualization", "Construction Drawings", "Installtion & Supervision"]
+      },
       "gallery": [
         {
           "group": "Live Photos",
@@ -151,6 +166,14 @@
       "title": "Chaiyo Tinto",
       "description": "A concept for small all day bar.",
       "thumbnail": "images/architecture/tinto/tintocover.jpg",
+	        "details": {
+        "location": "Taligao-Goa, India",
+        "area": "45 sq m",
+        "client": "Concept",
+        "duration": "Concept",
+        "software": ["AutoCAD", "SketchUp", "Enscape", "Photoshop"],
+        "scope": ["Concept Design", "3D Visualization", "Ideation"]
+      },
       "gallery": [
         {
           "group": "Renders",
