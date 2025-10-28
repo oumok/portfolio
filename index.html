@@ -10,7 +10,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-NYP8SS9V8F', { 'anonymize_ip': true });
+    gtag('config', 'G-NYP8SS9V8F', { 'anonymize_ip': true }); // Keep anonymize_ip for privacy
   </script>
   <script src="background.js" defer></script>
 </head>
@@ -70,9 +70,10 @@
         <img src="images/logos/coreldraw.png" alt="CorelDRAW logo">
       </div>
     </div>
+
     <div id="experience-scroll" class="experience-scroll" aria-hidden="false">
       <div class="scroll-content">
-           Space design    •    Experience design    •    Architecture    •    Interior design    •    Product design    •    3D printing    •    Laser CNC    •    2D Animation
+        Space design • Experience design • Architecture • Interior design • Product design • 3D printing • Laser CNC • 2D Animation
       </div>
     </div>
   </section>
@@ -110,13 +111,28 @@
     </div>
   </footer>
 
-
   <div id="project-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
     <div class="modal__panel" role="document" aria-modal="true">
       <button class="modal__close" id="modal-close" aria-label="Close project">×</button>
-      <h3 id="modal-title" class="modal__title"></h3>
-      <p id="modal-description" class="modal__desc"></p>
-
+      
+      <div class="modal__info-container">
+        <div class="modal__info-left">
+          <h3 id="modal-title" class="modal__title"></h3>
+          <p id="modal-description" class="modal__desc"></p>
+        </div>
+        <div class="modal__info-right">
+          <h4>Project Details</h4>
+          <ul id="modal-details-list" class="modal__details-list">
+            <li id="modal-detail-location"></li>
+            <li id="modal-detail-area"></li>
+            <li id="modal-detail-client"></li>
+            <li id="modal-detail-duration"></li>
+            <li id="modal-detail-software"></li>
+            <li id="modal-detail-scope"></li>
+          </ul>
+        </div>
+      </div>
+      
       <div id="modal-tabs" class="modal__tabs" role="tablist" aria-label="Project tabs"></div>
 
       <div id="modal-gallery" class="modal-gallery" aria-live="polite"></div>

@@ -4,6 +4,14 @@
       "title": "Sunset Getaway Office",
       "description": "Design for a wellness café combining natural materials with minimal interiors.",
       "thumbnail": "images/architecture/sunset/sunsetcover.jpg",
+      "details": {
+        "location": "Goa, India",
+        "area": "130 sq m",
+        "client": "Sunset Getaways",
+        "duration": "3 Months (Design + Build)",
+        "software": ["AutoCAD", "SketchUp", "Enscape", "Photoshop"],
+        "scope": ["Concept Design", "3D Visualization", "Construction Drawings", "Site Supervision"]
+      },
       "gallery": [
         {
 			
@@ -44,6 +52,14 @@
       "title": "Bloom & Brew kiosk",
       "description": "Compact roadside coffee kiosk designed for a salon lounge and commuters.",
       "thumbnail": "images/architecture/bb/bbcover.jpg",
+      "details": {
+        "location": "Porvorim-Goa, India",
+        "area": "6 sq m",
+        "client": "Bloom & brew",
+        "duration": "6 Months (Design + Build)",
+        "software": ["AutoCAD", "SketchUp", "Enscape", "Photoshop"],
+        "scope": ["Concept Design", "3D Visualization", "Construction Drawings", "Site Supervision"]
+      },
       "gallery": [
         {
           "group": "Renders",
@@ -160,30 +176,14 @@
                 {
           "group": "Vidhyanchal mohotsav",
           "images": [
-           { "src": "images/production/mirzapur/vidhyanchal1.jpg", "caption": "Vidhyanchal mohotsav set." },
-            { "src": "images/production/mirzapur/vidhyanchal2.jpg", "caption": "Vidhyanchal mohotsav set." },
-            { "src": "images/production/mirzapur/vidhyanchal3.jpg", "caption": "Vidhyanchal mohotsav set." },
-           { "src": "images/production/mirzapur/vidhyanchal4.jpg", "caption": "Vidhyanchal mohotsav set." },
-            { "src": "images/production/mirzapur/vidhyanchal5.jpg", "caption": "Vidhyanchal mohotsav set." },
-            { "src": "images/production/mirzapur/vidhyanchal7.jpg", "caption": "Vidhyanchal mohotsav set." },
-            { "src": "images/production/mirzapur/vidhyanchal8.jpg", "caption": "Vidhyanchal mohotsav set." }
-          ]
-        },
-		        	   {
-          "group": "Pakka ghat",
-          "images": [
-            { "src": "images/production/mirzapur/pakka1.jpg", "caption": "Pakka ghat dressing." },
-            { "src": "images/production/mirzapur/pakka2.jpg", "caption": "Pakka ghat dressing." },
-            { "src": "images/production/mirzapur/pakka3.jpg", "caption": "Pakka ghat dressing." },
-			{ "src": "images/production/mirzapur/pakka4.jpg", "caption": "Pakka ghat dressing." },
-            { "src": "images/production/mirzapur/pakka5.jpg", "caption": "Pakka ghat dressing." },
-            { "src": "images/production/mirzapur/pakka6.jpg", "caption": "Pakka ghat dressing." },
-            { "src": "images/production/mirzapur/pakka7.jpg", "caption": "Pakka ghat dressing." },
-            { "src": "images/production/mirzapur/pakka8.jpg", "caption": "Pakka ghat dressing." },
-            { "src": "images/production/mirzapur/pakka9.jpg", "caption": "Pakka ghat dressing." },
-            { "src": "images/production/mirzapur/pakka10.jpg", "caption": "Pakka ghat dressing." },
-            { "src": "images/production/mirzapur/pakka11.jpg", "caption": "Pakka ghat dressing." }
-			
+           { "src": "images/production/mirzapur/vidhyanchal1.jpg", "caption": "Tripathi haveli set." },
+            { "src": "images/production/mirzapur/vidhyanchal2.jpg", "caption": "Tripathi haveli set." },
+            { "src": "images/production/mirzapur/vidhyanchal3.jpg", "caption": "Tripathi haveli set." },
+           { "src": "images/production/mirzapur/vidhyanchal4.jpg", "caption": "Tripathi haveli set." },
+            { "src": "images/production/mirzapur/vidhyanchal5.jpg", "caption": "Tripathi haveli set." },
+            { "src": "images/production/mirzapur/vidhyanchal6.jpg", "caption": "Tripathi haveli set." },
+            { "src": "images/production/mirzapur/vidhyanchal7.jpg", "caption": "Tripathi haveli set." },
+            { "src": "images/production/mirzapur/vidhyanchal8.jpg", "caption": "Tripathi haveli set." }
           ]
         },
 	   {

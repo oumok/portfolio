@@ -25,7 +25,7 @@ function escapeHtml(s=''){ return String(s||'').replace(/[&<>"']/g,m=>({'&':'&am
 
 /* Render card in homepage uniform grid */
 function renderCard(project, gridEl){
-  const thumb = project.thumbnail || (project.images && project.images[0]) || '';
+  const thumb = project.thumbnail || (project.gallery && project.gallery[0] && project.gallery[0].images && project.gallery[0].images[0] ? project.gallery[0].images[0].src : ''); // Better fallback
   const article = document.createElement('article');
   article.className = 'card';
   article.tabIndex = 0;
@@ -44,12 +44,39 @@ function openProject(project){
   modalTitle().textContent = project.title || '';
   modalDesc().textContent = project.description || '';
 
+  // Populate Project Details
+  const details = project.details || {}; 
+  const locEl = qs('#modal-detail-location');
+  const areaEl = qs('#modal-detail-area');
+  const clientEl = qs('#modal-detail-client');
+  const durationEl = qs('#modal-detail-duration');
+  const softwareEl = qs('#modal-detail-software');
+  const scopeEl = qs('#modal-detail-scope');
+
+  const populateDetail = (el, label, value) => {
+    if (el && value) {
+      const displayValue = Array.isArray(value) ? value.join(', ') : value;
+      el.innerHTML = `<strong>${label}:</strong> ${escapeHtml(displayValue)}`;
+      el.style.display = ''; 
+    } else if (el) {
+      el.innerHTML = ''; 
+      el.style.display = 'none'; 
+    }
+  };
+
+  populateDetail(locEl, 'Location', details.location);
+  populateDetail(areaEl, 'Area', details.area);
+  populateDetail(clientEl, 'Client', details.client);
+  populateDetail(durationEl, 'Duration', details.duration);
+  populateDetail(softwareEl, 'Software', details.software);
+  populateDetail(scopeEl, 'Scope', details.scope);
+
+  // Build image groups (always bento)
   let groups = [];
   if (Array.isArray(project.gallery) && project.gallery.length && project.gallery[0].group) {
     groups = project.gallery.map((g, i) => {
       const imgs = (g.images || []).map(it => (typeof it==='string')? {src:it, caption:''} : {src:it.src||'', caption:it.caption||''});
-      const groupType = 'bento'; // Force bento for all
-      return { id: `tab${i}`, name: g.group || `Group ${i+1}`, images: imgs, type: groupType };
+      return { id: `tab${i}`, name: g.group || `Group ${i+1}`, images: imgs, type: 'bento' };
     });
   } else {
     // Fallback logic
@@ -57,40 +84,47 @@ function openProject(project){
     if (all.length) groups.push({ id:'all', name:'All', images:all, type:'bento' });
   }
 
+  // Create tabs and content
+  let firstVisibleTabIndex = -1; // Track the index of the first tab with images
   groups.forEach((g, idx) => {
-    if (!g.images.length) return;
+    if (!g.images.length) return; // Skip empty groups
 
+    if (firstVisibleTabIndex === -1) {
+        firstVisibleTabIndex = idx; // Mark the first non-empty tab
+    }
+
+    // Create Tab Button
     const btn = document.createElement('button');
-    btn.className = 'tab-btn' + (idx===0 ? ' active' : '');
+    btn.className = 'tab-btn' + (idx === firstVisibleTabIndex ? ' active' : ''); // Activate the first visible tab
     btn.textContent = g.name;
     btn.dataset.tab = g.id;
     modalTabs().appendChild(btn);
 
+    // Create Content Container
     const container = document.createElement('div');
-    container.className = 'tab-content' + (idx===0 ? ' active' : '');
+    container.className = 'tab-content' + (idx === firstVisibleTabIndex ? ' active' : ''); // Activate the first visible content
     container.id = g.id;
 
-    if (g.type === 'bento') {
-      const bento = document.createElement('div'); bento.className = 'bento';
-      g.images.forEach((imgObj, imgIndex) => {
-        const item = document.createElement('div'); item.className = 'bento-item';
-        const img = document.createElement('img');
-        img.loading = 'lazy'; img.alt = imgObj.caption || project.title || '';
-        img.src = imgObj.src;
-        img.addEventListener('click', (e)=> {
-          e.stopPropagation();
-          lbImages = g.images; 
-          lbIndex = imgIndex;
-          openLightbox(imgObj.caption || project.title);
-        });
-        item.appendChild(img); bento.appendChild(item);
+    // Create Bento Grid
+    const bento = document.createElement('div'); bento.className = 'bento';
+    g.images.forEach((imgObj, imgIndex) => {
+      const item = document.createElement('div'); item.className = 'bento-item';
+      const img = document.createElement('img');
+      img.loading = 'lazy'; img.alt = imgObj.caption || project.title || '';
+      img.src = imgObj.src;
+      img.addEventListener('click', (e)=> {
+        e.stopPropagation();
+        lbImages = g.images; 
+        lbIndex = imgIndex;
+        openLightbox(imgObj.caption || project.title);
       });
-      container.appendChild(bento);
-    } // 'else' for uniform grid is no longer needed
-
+      item.appendChild(img); bento.appendChild(item);
+    });
+    container.appendChild(bento);
     modalGallery().appendChild(container);
   });
 
+  // Tab switching behavior
   modalTabs().querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', ()=>{
       modalTabs().querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -101,9 +135,11 @@ function openProject(project){
     });
   });
 
+  // Show modal
   modalEl().classList.add('is-open');
   setLock(true);
 
+  // Analytics
   if (window.gtag) {
     try { gtag('event','open_project',{ 'project_title': project.title }); } catch(e) {}
   }
@@ -128,16 +164,16 @@ function changeLightbox(step){
   openLightbox(lbImages[lbIndex].caption || ''); 
 }
 
-/* === NEW: Function to fade hero on scroll === */
+/* Function to fade hero on scroll */
 function initHeroFade() {
   const hero = qs('#landing');
   if (!hero) return;
-  const fadeEnd = 500; // Pixels to scroll before hero is fully faded
+  const fadeEnd = 500; 
 
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
     let opacity = 1 - (scrollY / fadeEnd);
-    opacity = Math.max(0, Math.min(1, opacity)); // Clamp between 0 and 1
+    opacity = Math.max(0, Math.min(1, opacity)); 
     hero.style.opacity = opacity;
   });
 }
@@ -165,7 +201,7 @@ function initSectionObserver() {
 
   const observerOptions = {
     root: null, 
-    rootMargin: "-40% 0px -60% 0px",
+    rootMargin: "-40% 0px -60% 0px", // Middle 20% of viewport
     threshold: 0
   };
 
@@ -183,7 +219,7 @@ function initSectionObserver() {
     });
   }, observerOptions);
 
-  qsa('main .section').forEach(section => {
+  qsa('main .section.frosted-pane').forEach(section => { // Observe only frosted sections in main
     observer.observe(section);
   });
 }
@@ -191,7 +227,7 @@ function initSectionObserver() {
 /* Event wiring */
 document.addEventListener('DOMContentLoaded', ()=>{
 
-  // modal & lightbox basic wiring
+  // Modal & Lightbox Wiring
   modalCloseBtn()?.addEventListener('click', closeModal);
   modalEl()?.addEventListener('click', e => { if (e.target === modalEl()) closeModal(); });
   lightboxCloseBtn()?.addEventListener('click', closeLightbox);
@@ -208,7 +244,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
   });
 
-  // navigation chips: smooth-scroll for all hash links
+  // Smooth Scroll Wiring
   document.querySelectorAll('a[href^="#"]').forEach(link=>{
     link.addEventListener('click', e=>{
       e.preventDefault();
@@ -226,7 +262,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     });
   });
 
-  /* Load projects from embedded JSON or fetch projects.json */
+  // Load Projects
   (async function loadProjects(){
     let data = null;
     const dataEl = document.getElementById('projects-data');
@@ -237,12 +273,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
     
     if (!data){
       try {
-        console.log('Embedded data not found, fetching projects.json...');
         const res = await fetch('./projects.json');
         if (!res.ok) throw new Error('HTTP ' + res.status);
         data = await res.json();
       } catch (err){
         console.error('Failed to load projects.json', err);
+        // Maybe display an error message on the page here
         return;
       }
     }
@@ -257,14 +293,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
       const grid = document.querySelector(mappings[k]);
       const list = data[k] || [];
       if (!grid) return;
-      grid.innerHTML = ''; // clear
+      grid.innerHTML = ''; 
       list.forEach(p => renderCard(p, grid));
     });
 
-    qsAllLoadedSetup();
+    qsAllLoadedSetup(); // Setup lazy loading after cards are added
   })();
 
-  // init skill meters
+  // Init Skill Meters
   (function initSkillMeters(){
     const skillsSection = document.getElementById('skills');
     if (!skillsSection) return;
@@ -279,34 +315,34 @@ document.addEventListener('DOMContentLoaded', ()=>{
             const deg = Math.round((pct/100)*360);
             requestAnimationFrame(()=> { it.style.setProperty('--deg', deg + 'deg'); it.classList.add('animated'); });
           });
-          obs.disconnect();
+          obs.disconnect(); // Animate only once
         }
       });
     }, { threshold: 0.25 });
     io.observe(skillsSection);
   })();
 
-  // init experience ticker
+  // Init Experience Ticker
   (function initTicker(){
     const sc = qs('.scroll-content');
     if (!sc) return;
-    sc.innerHTML = sc.innerHTML + ' • ' + sc.innerHTML; // duplicate
+    sc.innerHTML = sc.innerHTML + ' • ' + sc.innerHTML; // Duplicate for smooth loop
   })();
 
-  // === INITIALIZE NEW FEATURES ===
-  initHeroFade(); // Fades hero on scroll
-  initStickyNav(); // Shows sticky nav on scroll
-  initSectionObserver(); // Highlights nav links on scroll
+  // Initialize Scroll-Based Features
+  initHeroFade(); 
+  initStickyNav(); 
+  initSectionObserver(); 
 
 });
 
-/* helper after loading thumbnails */
+/* Lazy Loading Setup */
 function qsAllLoadedSetup(){
-  const imgs = qsa('.card__thumb, .modal-gallery img, .bento img');
+  const imgs = qsa('.card__thumb, .modal-gallery img'); // Select only relevant images
   const io = new IntersectionObserver((entries, obs)=>{
     entries.forEach(entry=>{
       if (entry.isIntersecting){
-        entry.target.classList.add('loaded');
+        entry.target.classList.add('loaded'); // You might need a CSS rule for `.loaded` opacity transition
         obs.unobserve(entry.target);
       }
     });
@@ -314,13 +350,11 @@ function qsAllLoadedSetup(){
 
   imgs.forEach(img=>{
     io.observe(img);
+    // Stop propagation only for modal/bento images
     if (img.closest('.modal-gallery') || img.closest('.bento')) {
       img.addEventListener('click', e=> e.stopPropagation());
     }
   });
 }
 
-/* lightbox navigation */
-document.addEventListener('click', (e) => {
-  // nothing additional
-});
+// No extra click listener needed at the end
