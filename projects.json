@@ -160,14 +160,28 @@
                 {
           "group": "Vidhyanchal mohotsav",
           "images": [
-           { "src": "images/production/mirzapur/vidhyanchal1.jpg", "caption": "Tripathi haveli set." },
-            { "src": "images/production/mirzapur/vidhyanchal2.jpg", "caption": "Tripathi haveli set." },
-            { "src": "images/production/mirzapur/vidhyanchal3.jpg", "caption": "Tripathi haveli set." },
-           { "src": "images/production/mirzapur/vidhyanchal4.jpg", "caption": "Tripathi haveli set." },
-            { "src": "images/production/mirzapur/vidhyanchal5.jpg", "caption": "Tripathi haveli set." },
-            { "src": "images/production/mirzapur/vidhyanchal6.jpg", "caption": "Tripathi haveli set." },
-            { "src": "images/production/mirzapur/vidhyanchal7.jpg", "caption": "Tripathi haveli set." },
-            { "src": "images/production/mirzapur/vidhyanchal8.jpg", "caption": "Tripathi haveli set." }
+           { "src": "images/production/mirzapur/vidhyanchal1.jpg", "caption": "Vidhyanchal mohotsav set." },
+            { "src": "images/production/mirzapur/vidhyanchal2.jpg", "caption": "Vidhyanchal mohotsav set." },
+            { "src": "images/production/mirzapur/vidhyanchal3.jpg", "caption": "Vidhyanchal mohotsav set." },
+           { "src": "images/production/mirzapur/vidhyanchal4.jpg", "caption": "Vidhyanchal mohotsav set." },
+            { "src": "images/production/mirzapur/vidhyanchal5.jpg", "caption": "Vidhyanchal mohotsav set." },
+            { "src": "images/production/mirzapur/vidhyanchal7.jpg", "caption": "Vidhyanchal mohotsav set." },
+            { "src": "images/production/mirzapur/vidhyanchal8.jpg", "caption": "Vidhyanchal mohotsav set." }
+          ]
+        },
+		        	   {
+          "group": "Pakka ghat",
+          "images": [
+            { "src": "images/production/mirzapur/pakka1.jpg", "caption": "Pakka ghat dressing." },
+            { "src": "images/production/mirzapur/pakka2.jpg", "caption": "Pakka ghat dressing." },
+            { "src": "images/production/mirzapur/pakka3.jpg", "caption": "Pakka ghat dressing." },
+			{ "src": "images/production/mirzapur/pakka1.jpg", "caption": "Pakka ghat dressing." },
+            { "src": "images/production/mirzapur/pakka2.jpg", "caption": "Pakka ghat dressing." },
+            { "src": "images/production/mirzapur/pakka3.jpg", "caption": "Pakka ghat dressing." },
+            { "src": "images/production/mirzapur/pakka1.jpg", "caption": "Pakka ghat dressing." },
+            { "src": "images/production/mirzapur/pakka2.jpg", "caption": "Pakka ghat dressing." },
+            { "src": "images/production/mirzapur/pakka3.jpg", "caption": "Pakka ghat dressing." },
+			
           ]
         },
 	   {
