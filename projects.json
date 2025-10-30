@@ -303,7 +303,7 @@
       "thumbnail": "images/freelance/3d/3dcover.jpg",
       "gallery": [
         {
-          "group": "Renders",
+          "group": "Jawa",
           "images": [
             { "src": "images/freelance/3d/jawa/jawa1.jpg", "caption": "" },
             { "src": "images/freelance/3d/jawa/jawa2.jpg", "caption": "" },
@@ -313,6 +313,17 @@
             { "src": "images/freelance/3d/jawa/jawa6.jpg", "caption": "" },
             { "src": "images/freelance/3d/jawa/jawa7.jpg", "caption": "" },
             { "src": "images/freelance/3d/jawa/jawa8.jpg", "caption": "" }
+          ]
+        },
+		        {
+          "group": "MTF",
+          "images": [
+            { "src": "images/freelance/3d/mtf/mtf1.jpg", "caption": "" },
+            { "src": "images/freelance/3d/mtf/mtf2.jpg", "caption": "" },
+            { "src": "images/freelance/3d/mtf/mtf3.jpg", "caption": "" },
+            { "src": "images/freelance/3d/mtf/mtf4.jpg", "caption": "" },
+            { "src": "images/freelance/3d/mtf/mtf5.jpg", "caption": "" },
+            { "src": "images/freelance/3d/mtf/mtf6.jpg", "caption": "" }
           ]
         }
       ]
