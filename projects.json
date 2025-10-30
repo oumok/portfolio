@@ -238,6 +238,12 @@
       "title": "Ant Bait Station",
       "description": "3D-Printable product for a company focused on user refillable, cleanable and sustainable design.",
       "thumbnail": "images/product/antbait/antbaitcover.jpg",
+	  	  	        "details": {
+        "client": "Gaiagen Technologies Private Limited",
+        "duration": "3 months",
+        "software": ["Fusion 360", "Autocad", "Photoshop"],
+        "scope": ["Concept Design", "3D Visualization", "Ideation", "3D modelling"]
+      },
       "gallery": [
         {
           "group": "Renders",
